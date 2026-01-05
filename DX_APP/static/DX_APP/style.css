@@ -1,0 +1,153 @@
+/* Premium UI Custom Styles */
+body, html {
+  font-family: 'Poppins', Arial, sans-serif;
+}
+.premium-bg {
+  background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+  min-height: 100vh;
+}
+.animated-bg {
+  background: linear-gradient(-45deg, #e0eafc, #cfdef3, #a1c4fd, #c2e9fb);
+  background-size: 400% 400%;
+  animation: gradientBG 12s ease infinite;
+}
+@keyframes gradientBG {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+.premium-navbar {
+  background: linear-gradient(90deg, #0f2027 0%, #2c5364 100%) !important;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.10);
+  border-radius: 0 0 2rem 2rem;
+  backdrop-filter: blur(8px);
+  border-bottom: 1.5px solid rgba(255,255,255,0.15);
+  margin-bottom: 1.5rem;
+}
+.premium-navbar .navbar-brand {
+  font-size: 2rem;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px rgba(56,239,125,0.10);
+}
+.premium-navbar .nav-link {
+  color: #e0eafc !important;
+  font-weight: 500;
+  font-size: 1.1rem;
+  border-radius: 1rem;
+  padding: 0.5rem 1.2rem;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+.premium-navbar .nav-link.active, .premium-navbar .nav-link:hover {
+  background: linear-gradient(90deg, #38ef7d 0%, #11998e 100%);
+  color: #fff !important;
+  box-shadow: 0 2px 8px 0 rgba(56,239,125,0.10);
+}
+.premium-navbar .navbar-toggler {
+  border: none;
+  box-shadow: 0 2px 8px 0 rgba(56,239,125,0.10);
+}
+.premium-card {
+  border-radius: 2rem;
+  background: #fff;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  transition: box-shadow 0.3s;
+}
+.premium-card:hover {
+  box-shadow: 0 16px 48px 0 rgba(31, 38, 135, 0.25);
+}
+.glass-card {
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.3);
+}
+.btn-gradient {
+  background: linear-gradient(90deg, #11998e 0%, #38ef7d 100%);
+  color: #fff;
+  border: none;
+  transition: background 0.3s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px 0 rgba(56,239,125,0.10);
+  position: relative;
+  overflow: hidden;
+}
+.btn-gradient:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem #38ef7d44;
+}
+.btn-gradient:hover {
+  background: linear-gradient(90deg, #38ef7d 0%, #11998e 100%);
+  color: #fff;
+  box-shadow: 0 4px 16px 0 rgba(56,239,125,0.18);
+}
+/* Ripple effect */
+.ripple::after {
+  content: '';
+  display: block;
+  position: absolute;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  top: 50%;
+  left: 50%;
+  pointer-events: none;
+  background: rgba(56,239,125,0.25);
+  transform: scale(0) translate(-50%, -50%);
+  opacity: 0;
+  transition: transform 0.4s, opacity 0.8s;
+}
+.btn-gradient:active.ripple::after {
+  transform: scale(1.5) translate(-50%, -50%);
+  opacity: 1;
+  transition: 0s;
+}
+.text-gradient {
+  background: linear-gradient(90deg, #11998e 0%, #38ef7d 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+.premium-footer {
+  background: linear-gradient(90deg, #232526 0%, #414345 100%) !important;
+  color: #fff;
+  border-top: 0;
+}
+.premium-result {
+  border-radius: 1rem;
+  font-size: 1.25rem;
+  background: linear-gradient(90deg, #e0eafc 0%, #cfdef3 100%);
+  color: #11998e;
+  font-weight: 600;
+  box-shadow: 0 2px 8px 0 rgba(56,239,125,0.10);
+}
+.form-floating > label {
+  left: 1.1rem;
+  color: #11998e;
+  font-weight: 500;
+  opacity: 0.85;
+}
+.form-floating > .form-control:focus ~ label,
+.form-floating > .form-control:not(:placeholder-shown) ~ label {
+  color: #38ef7d;
+  font-weight: 600;
+  opacity: 1;
+}
+.form-control:focus {
+  border-color: #38ef7d;
+  box-shadow: 0 0 0 0.2rem #38ef7d33;
+}
+.premium-form input[type="number"],
+.premium-form input[type="text"],
+.premium-form input[type="email"],
+.premium-form input[type="password"] {
+  border-radius: 1rem;
+  background: rgba(255,255,255,0.85);
+  border: 1.5px solid #e0eafc;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+.premium-form input[type="number"]:focus {
+  border-color: #38ef7d;
+  box-shadow: 0 0 0 0.2rem #38ef7d33;
+}
+.min-vh-80 {
+  min-height: 80vh;
+}
