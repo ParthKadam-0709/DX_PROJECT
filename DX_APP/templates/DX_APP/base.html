@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en" class="smooth-scroll">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI-Powered Crop Recommendation System for sustainable farming">
+    <meta name="keywords" content="agriculture, AI, crop recommendation, farming, machine learning">
+    <meta name="author" content="CropAI">
+    
+    <!-- Primary Meta Tags -->
+    <title>CropAI | AI-Powered Crop Recommendation System</title>
+    <meta property="og:title" content="CropAI | AI-Powered Crop Recommendation">
+    <meta property="og:description" content="Revolutionizing agriculture with AI-driven crop recommendations">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/static/DX_APP/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/DX_APP/apple-touch-icon.png">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" as="style">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbs5b4pB5E4U7k5d5e8IyK2I6SpN8s1j5p5k5n5p5E5n5p5l5a5g5e5m5g5" crossorigin="anonymous">
+    
+    <!-- Google Fonts: Poppins + Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    
+    <!-- Animate.css for animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    
+    <!-- AOS (Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/DX_APP/style.css">
+    
+    <!-- Inline Critical CSS -->
+    <style>
+        :root {
+            --primary-green: #2ecc71;
+            --primary-dark-green: #27ae60;
+            --primary-blue: #3498db;
+            --primary-purple: #9b59b6;
+            --primary-dark: #0f172a;
+            --primary-light: #f8fafc;
+            --gradient-primary: linear-gradient(135deg, var(--primary-green), var(--primary-blue), var(--primary-purple));
+            --gradient-dark: linear-gradient(135deg, var(--primary-dark), #1e293b);
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --shadow-soft: 0 8px 32px rgba(31, 38, 135, 0.07);
+            --shadow-hard: 0 20px 60px rgba(0, 0, 0, 0.1);
+            --transition-smooth: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+        
+        /* Base Styles */
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            color: #1e293b;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Animated Background */
+        .premium-bg {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .premium-bg::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(46, 204, 113, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(52, 152, 219, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(155, 89, 182, 0.05) 0%, transparent 50%);
+            z-index: -1;
+            animation: bgPulse 20s ease-in-out infinite alternate;
+        }
+        
+        @keyframes bgPulse {
+            0% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0.5;
+                transform: scale(1.1);
+            }
+        }
+        
+        /* Floating Particles */
+        .floating-particles {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .particle {
+            position: absolute;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 20s infinite linear;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-1000px) rotate(720deg);
+            }
+        }
+        
+        /* Enhanced Loading Spinner */
+        #loading-spinner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.3s ease;
+        }
+        
+        .spinner-container {
+            text-align: center;
+        }
+        
+        .spinner-glow {
+            width: 80px;
+            height: 80px;
+            border: 5px solid rgba(46, 204, 113, 0.1);
+            border-top: 5px solid var(--primary-green);
+            border-radius: 50%;
+            animation: spinGlow 1s linear infinite;
+            box-shadow: 0 0 20px rgba(46, 204, 113, 0.3);
+            position: relative;
+        }
+        
+        .spinner-glow::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 5px solid transparent;
+            border-top: 5px solid var(--primary-blue);
+            border-radius: 50%;
+            animation: spinGlow 1.5s linear infinite reverse;
+            opacity: 0.5;
+        }
+        
+        @keyframes spinGlow {
+            0% {
+                transform: rotate(0deg);
+                box-shadow: 0 0 10px rgba(46, 204, 113, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 30px rgba(46, 204, 113, 0.5);
+            }
+            100% {
+                transform: rotate(360deg);
+                box-shadow: 0 0 10px rgba(46, 204, 113, 0.3);
+            }
+        }
+        
+        .spinner-text {
+            margin-top: 20px;
+            color: var(--primary-dark);
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        /* Progress Bar */
+        #progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: var(--gradient-primary);
+            z-index: 9998;
+            transition: width 0.3s ease;
+            box-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
+        }
+        
+        /* Back to Top Button */
+        #back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 999;
+            box-shadow: var(--shadow-hard);
+        }
+        
+        #back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        #back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(46, 204, 113, 0.4);
+        }
+        
+        /* Notification System */
+        .notification-container {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            z-index: 9999;
+            max-width: 400px;
+            width: 100%;
+        }
+        
+        .notification {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: var(--shadow-hard);
+            border-left: 5px solid var(--primary-green);
+            transform: translateX(100%);
+            opacity: 0;
+            animation: slideInRight 0.5s ease forwards;
+        }
+        
+        @keyframes slideInRight {
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        .notification.success {
+            border-left-color: var(--primary-green);
+        }
+        
+        .notification.info {
+            border-left-color: var(--primary-blue);
+        }
+        
+        .notification.warning {
+            border-left-color: #f39c12;
+        }
+        
+        .notification.error {
+            border-left-color: #e74c3c;
+        }
+        
+        /* Main Content */
+        .premium-main {
+            flex: 1;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Glass Morphism Container */
+        .glass-container {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition-smooth);
+        }
+        
+        .glass-container:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hard);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+        
+        .text-gradient {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--gradient-primary);
+            border-radius: 10px;
+            border: 3px solid #f1f5f9;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, var(--primary-dark-green), #2980b9, #8e44ad);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            #back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+            }
+            
+            .notification-container {
+                top: 80px;
+                right: 10px;
+                left: 10px;
+                max-width: none;
+            }
+        }
+        
+        /* Accessibility */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        
+        /* Focus Styles */
+        :focus {
+            outline: 3px solid rgba(46, 204, 113, 0.5);
+            outline-offset: 2px;
+        }
+        
+        :focus:not(:focus-visible) {
+            outline: none;
+        }
+        
+        /* Print Styles */
+        @media print {
+            #loading-spinner,
+            #back-to-top,
+            .notification-container,
+            .floating-particles {
+                display: none !important;
+            }
+            
+            body {
+                background: white !important;
+                color: black !important;
+            }
+        }
+    </style>
+</head>
+<body class="premium-bg">
+    <!-- Floating Particles -->
+    <div class="floating-particles" id="particles"></div>
+    
+    <!-- Progress Bar -->
+    <div id="progress-bar"></div>
+    
+    <!-- Loading Spinner -->
+    <div id="loading-spinner">
+        <div class="spinner-container">
+            <div class="spinner-glow"></div>
+            <div class="spinner-text">Processing</div>
+        </div>
+    </div>
+    
+    <!-- Notification Container -->
+    <div class="notification-container" id="notification-container"></div>
+    
+    <!-- Back to Top Button -->
+    <button id="back-to-top" aria-label="Back to top">
+        <i class="bi bi-chevron-up fs-5"></i>
+    </button>
+    
+    <!-- Header -->
+    {% include 'DX_APP/header.html' %}
+    
+    <!-- Main Content -->
+    <main class="container-fluid px-0 premium-main">
+        {% block hero %}{% endblock %}
+        
+        <div class="container py-5">
+            {% block content %}{% endblock %}
+        </div>
+        
+        {% block extra_section %}{% endblock %}
+    </main>
+    
+    <!-- Footer -->
+    {% include 'DX_APP/footer.html' %}
+    
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-rbs5b4pB5E4U7k5d5e8IyK2I6SpN8s1j5p5k5n5p5E5n5p5l5a5g5e5m5g5" crossorigin="anonymous"></script>
+    
+    <!-- AOS (Animate On Scroll) -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+        
+        // Generate floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 20;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random size
+                const size = Math.random() * 100 + 20;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Random position
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                
+                // Random animation
+                const duration = Math.random() * 30 + 20;
+                const delay = Math.random() * 5;
+                particle.style.animation = `float ${duration}s linear infinite ${delay}s`;
+                
+                // Random gradient
+                const colors = [
+                    'rgba(46, 204, 113, 0.1)',
+                    'rgba(52, 152, 219, 0.1)',
+                    'rgba(155, 89, 182, 0.1)'
+                ];
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        // Progress bar on scroll
+        function updateProgressBar() {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progress-bar').style.width = scrolled + '%';
+        }
+        
+        // Back to top button
+        function setupBackToTop() {
+            const backToTopButton = document.getElementById('back-to-top');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    backToTopButton.classList.add('show');
+                } else {
+                    backToTopButton.classList.remove('show');
+                }
+            });
+            
+            backToTopButton.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+        
+        // Enhanced loading spinner
+        function setupLoadingSpinner() {
+            const forms = document.querySelectorAll('form');
+            forms.forEach(function(form) {
+                form.addEventListener('submit', function() {
+                    const spinner = document.getElementById('loading-spinner');
+                    spinner.style.display = 'flex';
+                    
+                    // Add processing text
+                    const spinnerText = spinner.querySelector('.spinner-text');
+                    let dots = 0;
+                    const interval = setInterval(() => {
+                        dots = (dots + 1) % 4;
+                        spinnerText.textContent = 'Processing' + '.'.repeat(dots);
+                    }, 500);
+                    
+                    // Clear interval when page loads (in case of error)
+                    window.addEventListener('load', () => {
+                        clearInterval(interval);
+                        spinner.style.display = 'none';
+                    });
+                });
+            });
+            
+            // Hide spinner on page load
+            window.addEventListener('load', function() {
+                setTimeout(() => {
+                    document.getElementById('loading-spinner').style.display = 'none';
+                }, 500);
+            });
+        }
+        
+        // Notification system
+        function showNotification(message, type = 'info', duration = 5000) {
+            const container = document.getElementById('notification-container');
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            
+            // Notification content
+            const icon = {
+                'success': 'bi-check-circle-fill',
+                'info': 'bi-info-circle-fill',
+                'warning': 'bi-exclamation-triangle-fill',
+                'error': 'bi-x-circle-fill'
+            }[type];
+            
+            const color = {
+                'success': 'text-success',
+                'info': 'text-primary',
+                'warning': 'text-warning',
+                'error': 'text-danger'
+            }[type];
+            
+            notification.innerHTML = `
+                <div class="d-flex align-items-start">
+                    <i class="bi ${icon} ${color} fs-5 me-3"></i>
+                    <div class="flex-grow-1">
+                        <div class="fw-semibold mb-1">${type.charAt(0).toUpperCase() + type.slice(1)}</div>
+                        <div class="text-muted small">${message}</div>
+                    </div>
+                    <button class="btn-close btn-sm" onclick="this.parentElement.parentElement.remove()"></button>
+                </div>
+            `;
+            
+            container.appendChild(notification);
+            
+            // Auto remove after duration
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.style.animation = 'slideInRight 0.5s ease reverse forwards';
+                    setTimeout(() => notification.remove(), 500);
+                }
+            }, duration);
+        }
+        
+        // Keyboard shortcuts
+        function setupKeyboardShortcuts() {
+            document.addEventListener('keydown', (e) => {
+                // Ctrl + / to focus search
+                if (e.ctrlKey && e.key === '/') {
+                    e.preventDefault();
+                    const searchInput = document.querySelector('input[type="search"], input[placeholder*="search" i]');
+                    if (searchInput) {
+                        searchInput.focus();
+                    }
+                }
+                
+                // Escape to close modals
+                if (e.key === 'Escape') {
+                    const modals = document.querySelectorAll('.modal.show');
+                    modals.forEach(modal => {
+                        const modalInstance = bootstrap.Modal.getInstance(modal);
+                        if (modalInstance) modalInstance.hide();
+                    });
+                }
+            });
+        }
+        
+        // Performance monitoring
+        function monitorPerformance() {
+            if ('performance' in window) {
+                window.addEventListener('load', () => {
+                    const timing = performance.getEntriesByType('navigation')[0];
+                    if (timing) {
+                        const loadTime = timing.loadEventEnd - timing.navigationStart;
+                        if (loadTime > 3000) {
+                            console.warn(`Page loaded in ${loadTime}ms - consider optimizing`);
+                        }
+                    }
+                });
+            }
+        }
+        
+        // Service worker registration (if available)
+        function registerServiceWorker() {
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/static/DX_APP/sw.js')
+                        .then(registration => {
+                            console.log('ServiceWorker registered:', registration);
+                        })
+                        .catch(error => {
+                            console.log('ServiceWorker registration failed:', error);
+                        });
+                });
+            }
+        }
+        
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            setupBackToTop();
+            setupLoadingSpinner();
+            setupKeyboardShortcuts();
+            monitorPerformance();
+            // registerServiceWorker(); // Uncomment if you have a service worker
+            
+            // Set up scroll event for progress bar
+            window.addEventListener('scroll', updateProgressBar);
+            
+            // Example: Show welcome notification
+            setTimeout(() => {
+                showNotification('Welcome to CropAI! Get personalized crop recommendations based on your field conditions.', 'success', 4000);
+            }, 1000);
+        });
+        
+        // Export functions for use in child templates
+        window.showNotification = showNotification;
+        window.createParticles = createParticles;
+    </script>
+    
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
