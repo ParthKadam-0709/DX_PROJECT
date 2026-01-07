@@ -1,418 +1,392 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CropAI - Smart Agriculture</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --cropai-green: #2ecc71;
-            --cropai-dark-green: #27ae60;
-            --cropai-light-green: #55efc4;
-            --cropai-blue: #3498db;
-            --cropai-purple: #9b59b6;
-            --cropai-dark: #0f172a;
-            --cropai-darker: #0a0f1c;
-            --gradient-primary: linear-gradient(135deg, #2ecc71, #3498db);
-            --gradient-nav: linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(26, 35, 47, 0.98));
-        }
-        
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-            color: #1e293b;
-            min-height: 100vh;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .premium-navbar {
-            background: var(--gradient-nav);
-            backdrop-filter: blur(15px);
-            border-bottom: 2px solid rgba(46, 204, 113, 0.3);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
-            padding: 0.8rem 0;
-            position: relative;
-            z-index: 1000;
-        }
-        
-        .premium-navbar::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--gradient-primary);
-            z-index: 1001;
-        }
-        
-        .navbar-brand {
-            font-size: 1.8rem;
-            font-weight: 800;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            transition: all 0.3s ease;
-            padding: 5px 0;
-        }
-        
-        .navbar-brand:hover {
-            transform: translateY(-2px);
-        }
-        
-        .navbar-brand i {
-            font-size: 2rem;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            filter: drop-shadow(0 2px 5px rgba(46, 204, 113, 0.3));
-        }
-        
-        .nav-link {
-            font-weight: 600;
-            color: #cbd5e1 !important;
-            margin: 0 5px;
-            padding: 10px 20px !important;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .nav-link::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(46, 204, 113, 0.15), transparent);
-            transition: left 0.6s ease;
-        }
-        
-        .nav-link:hover::before {
-            left: 100%;
-        }
-        
-        .nav-link:hover {
-            color: white !important;
-            background-color: rgba(46, 204, 113, 0.12);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.15);
-        }
-        
-        .nav-link.active {
-            color: white !important;
-            background: rgba(46, 204, 113, 0.2);
-            border: 1px solid rgba(46, 204, 113, 0.4);
-            box-shadow: 0 5px 20px rgba(46, 204, 113, 0.25);
-        }
-        
-        .nav-link i {
-            font-size: 1.1rem;
-            margin-right: 8px;
-            color: var(--cropai-green);
-        }
-        
-        .nav-link.active i {
-            color: white;
-        }
-        
-        /* CTA Button */
-        .nav-cta {
-            background: linear-gradient(135deg, var(--cropai-green), var(--cropai-blue));
-            color: white !important;
-            border: none;
-            border-radius: 12px;
-            padding: 10px 24px !important;
-            font-weight: 700;
-            box-shadow: 0 5px 20px rgba(46, 204, 113, 0.3);
-            transition: all 0.3s ease;
-            margin-left: 10px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .nav-cta i {
-            color: white !important;
-            margin-right: 8px;
-            font-size: 1rem;
-        }
-        
-        .nav-cta:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(46, 204, 113, 0.4);
-            color: white !important;
-        }
-        
-        /* Mobile menu adjustments */
-        .navbar-toggler {
-            border: 1px solid rgba(46, 204, 113, 0.4);
-            padding: 0.4rem 0.7rem;
-            background: rgba(255, 255, 255, 0.1);
-        }
-        
-        .navbar-toggler:focus {
-            box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.25);
-        }
-        
-        .navbar-toggler-icon {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2846, 204, 113, 0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-        }
-        
-        /* Demo content styles */
-        .demo-content {
-            padding: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .demo-header {
-            text-align: center;
-            margin-bottom: 3rem;
-            padding-top: 2rem;
-        }
-        
-        .demo-header h1 {
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            font-weight: 800;
-            margin-bottom: 1rem;
-        }
-        
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
-        .feature-card {
-            background: white;
-            border-radius: 15px;
-            padding: 1.5rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            border: 1px solid #e2e8f0;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-        
-        .feature-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        /* Responsive adjustments */
-        @media (max-width: 992px) {
-            .nav-cta {
-                margin-left: 0;
-                margin-top: 10px;
-                justify-content: center;
-            }
-            
-            .nav-link {
-                margin: 5px 0;
-            }
-        }
-        
-        /* Animation for navbar */
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .premium-navbar {
-            animation: fadeInDown 0.5s ease-out;
-        }
-        
-        /* Floating AI assistant */
-        .ai-assistant {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--cropai-green), var(--cropai-blue));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            box-shadow: 0 5px 20px rgba(46, 204, 113, 0.4);
-            cursor: pointer;
-            z-index: 100;
-            transition: all 0.3s ease;
-        }
-        
-        .ai-assistant:hover {
-            transform: scale(1.1);
-            box-shadow: 0 8px 25px rgba(46, 204, 113, 0.5);
-        }
-    </style>
-</head>
-<body>
-    <!-- Simplified Premium Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-gradient premium-navbar shadow-sm sticky-top">
-        <div class="container">
-            <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="#">
-                <i class="bi bi-flower1 fs-3"></i> CropAI
-            </a>
-            
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto align-items-lg-center">
-                    <!-- Disease Diagnosis Option -->
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/disease-diagnosis/">
-                            <i class="bi bi-clipboard2-pulse me-1"></i>Disease Diagnosis
-                        </a>
-                    </li>
-                    
-                    <!-- Crop Recommendation Option -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="/crop-recommendation/">
-                            <i class="bi bi-seed me-1"></i>Crop Recommendation
-                        </a>
-                    </li>
-                    
-                    <!-- CTA Button -->
-                    <a class="nav-link nav-cta" href="#">
-                        <i class="bi bi-rocket-takeoff me-1"></i>Get Started
+<!-- Header with Navigation Only -->
+<nav class="navbar navbar-expand-lg navbar-dark premium-navbar sticky-top">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center gap-2" href="/">
+            <i class="bi bi-flower1"></i> CropAI
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+                <li class="nav-item">
+                    <a class="nav-link" href="/disease-diagnosis/">
+                        <i class="bi bi-clipboard2-pulse me-1"></i>Disease Diagnosis
                     </a>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    
-    <!-- Demo Content -->
-    <div class="demo-content">
-        <div class="demo-header">
-            <h1>CropAI Dashboard</h1>
-            <p class="lead text-muted">Simplified navigation with only two essential options for smart agriculture</p>
-        </div>
-        
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <i class="bi bi-check-circle-fill me-2"></i>
-            <strong>Navigation Simplified!</strong> Now featuring only Disease Diagnosis and Crop Recommendation options for focused user experience.
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        
-        <div class="feature-grid">
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="bi bi-clipboard2-pulse"></i>
-                </div>
-                <h4>Disease Diagnosis</h4>
-                <p>Upload images of your crops to identify diseases, pests, and nutrient deficiencies using advanced AI algorithms.</p>
-                <a href="/disease-diagnosis/" class="btn btn-sm btn-outline-success mt-2">Try Now</a>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="bi bi-seed"></i>
-                </div>
-                <h4>Crop Recommendation</h4>
-                <p>Get AI-powered crop suggestions based on your soil type, climate conditions, and historical data for optimal yield.</p>
-                <a href="/crop-recommendation/" class="btn btn-sm btn-outline-success mt-2">Try Now</a>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="bi bi-robot"></i>
-                </div>
-                <h4>AI-Powered Analysis</h4>
-                <p>Our advanced machine learning models analyze multiple parameters to provide accurate agricultural insights.</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="bi bi-speedometer2"></i>
-                </div>
-                <h4>Fast Results</h4>
-                <p>Get instant recommendations and diagnoses within seconds, helping you make timely farming decisions.</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="bi bi-shield-check"></i>
-                </div>
-                <h4>Data Security</h4>
-                <p>Your agricultural data is encrypted and stored securely. We prioritize your privacy and data protection.</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="bi bi-globe2"></i>
-                </div>
-                <h4>Multi-Language</h4>
-                <p>Available in multiple languages to serve farmers across different regions with localized content.</p>
-            </div>
+                </li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/market-insights/">
+                        <i class="bi bi-graph-up me-1"></i>Market Insights
+                    </a>
+                </li>
+
+               
+
+                
+                
+
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/login/" id="loginBtn">
+                        <i class="bi bi-box-arrow-in-right me-1"></i>Login
+                    </a>
+                </li>
+
+                <!-- User Profile Dropdown (visible when logged in) -->
+                <li class="nav-item dropdown d-none" id="userDropdownContainer">
+                    <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" 
+                       id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <div class="user-avatar me-2">
+                            <i class="bi bi-person-circle"></i>
+                        </div>
+                        <span id="userName">User</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                        <li><a class="dropdown-item" href="/dashboard/">Dashboard</a></li>
+                        <li><a class="dropdown-item" href="/profile/">Profile</a></li>
+                        <li><a class="dropdown-item" href="/settings/">Settings</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/logout/">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
         </div>
     </div>
-    
-    <!-- Floating AI Assistant -->
-    <div class="ai-assistant">
-        <i class="bi bi-robot"></i>
+</nav>
+
+<!-- Mobile Bottom Navigation (for mobile devices) -->
+<div class="mobile-bottom-nav d-lg-none fixed-bottom">
+    <div class="mobile-nav-container">
+        <a href="/disease-diagnosis/" class="mobile-nav-item">
+            <i class="bi bi-clipboard2-pulse"></i>
+            <span>Disease</span>
+        </a>
+        <a href="/crop-recommendation/" class="mobile-nav-item">
+            <i class="bi bi-seed"></i>
+            <span>Crop</span>
+        </a>
+        <a href="/" class="mobile-nav-item">
+            <i class="bi bi-house"></i>
+            <span>Home</span>
+        </a>
+        <a href="/weather-forecast/" class="mobile-nav-item">
+            <i class="bi bi-cloud-sun"></i>
+            <span>Weather</span>
+        </a>
+        <a href="/login/" class="mobile-nav-item">
+            <i class="bi bi-person"></i>
+            <span>Account</span>
+        </a>
     </div>
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Add interactive behavior
-        document.addEventListener('DOMContentLoaded', function() {
-            // AI assistant click
-            const aiAssistant = document.querySelector('.ai-assistant');
-            if (aiAssistant) {
-                aiAssistant.addEventListener('click', function() {
-                    alert('Hello! I am your CropAI assistant. I can help you with disease diagnosis or crop recommendations. Which service would you like to use?');
-                });
-            }
-            
-            // Navbar link active state simulation
-            const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    if (!this.classList.contains('nav-cta')) {
-                        navLinks.forEach(l => l.classList.remove('active'));
-                        this.classList.add('active');
-                    }
-                });
-            });
-            
-            // Get Started button
-            const getStartedBtn = document.querySelector('.nav-cta');
-            if (getStartedBtn) {
-                getStartedBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    alert('Welcome to CropAI! Please choose between Disease Diagnosis or Crop Recommendation to get started.');
-                });
+</div>
+
+<!-- Notification Bell (Optional) -->
+<div class="notification-bell">
+    <i class="bi bi-bell"></i>
+    <span class="notification-count">3</span>
+</div>
+
+<style>
+    :root {
+        --cropai-green: #2ecc71;
+        --cropai-blue: #3498db;
+        --gradient-primary: linear-gradient(135deg, #2ecc71, #3498db);
+        --gradient-nav: linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(26, 35, 47, 0.98));
+    }
+
+    /* Enhanced Navbar */
+    .premium-navbar {
+        background: var(--gradient-nav);
+        border-bottom: 2px solid rgba(46, 204, 113, 0.3);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        padding: 0.8rem 0;
+        transition: all 0.3s ease;
+    }
+
+    .premium-navbar.scrolled {
+        padding: 0.5rem 0;
+        background: rgba(15, 23, 42, 0.95);
+        backdrop-filter: blur(10px);
+    }
+
+    .navbar-brand {
+        font-size: 1.8rem;
+        font-weight: 800;
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        transition: all 0.3s ease;
+    }
+
+    .navbar-brand:hover {
+        transform: scale(1.05);
+    }
+
+    .nav-link {
+        color: #cbd5e1 !important;
+        font-weight: 600;
+        padding: 10px 18px !important;
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        position: relative;
+        margin: 0 3px;
+    }
+
+    .nav-link:hover {
+        color: #fff !important;
+        background: rgba(46, 204, 113, 0.15);
+        transform: translateY(-2px);
+    }
+
+    .nav-link.active {
+        background: rgba(46, 204, 113, 0.25);
+        color: #fff !important;
+        box-shadow: 0 4px 12px rgba(46, 204, 113, 0.2);
+    }
+
+    .nav-link.active::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 20px;
+        height: 3px;
+        background: var(--cropai-green);
+        border-radius: 2px;
+    }
+
+    /* CTA Button Enhancement */
+    .nav-cta {
+        background: var(--gradient-primary);
+        color: white !important;
+        font-weight: 700;
+        border-radius: 12px;
+        padding: 10px 22px !important;
+        border: none;
+        position: relative;
+        overflow: visible;
+        transition: all 0.3s ease;
+    }
+
+    .nav-cta:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(46, 204, 113, 0.3);
+        color: white !important;
+    }
+
+    .nav-cta::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: 0.5s;
+    }
+
+    .nav-cta:hover::before {
+        left: 100%;
+    }
+
+    /* Dropdown Enhancement */
+    .dropdown-menu {
+        background: rgba(15, 23, 42, 0.95);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(46, 204, 113, 0.2);
+        border-radius: 12px;
+        padding: 0.5rem;
+        margin-top: 10px;
+    }
+
+    .dropdown-item {
+        color: #cbd5e1;
+        padding: 0.75rem 1rem;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
+
+    .dropdown-item:hover {
+        background: rgba(46, 204, 113, 0.15);
+        color: white;
+        transform: translateX(5px);
+    }
+
+    .dropdown-divider {
+        border-color: rgba(46, 204, 113, 0.2);
+    }
+
+    /* User Avatar */
+    .user-avatar {
+        width: 30px;
+        height: 30px;
+        background: var(--gradient-primary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.2rem;
+    }
+
+    /* Mobile Bottom Navigation */
+    .mobile-bottom-nav {
+        display: none;
+        background: var(--gradient-nav);
+        border-top: 1px solid rgba(46, 204, 113, 0.3);
+        padding: 0.5rem 0;
+        box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .mobile-nav-container {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .mobile-nav-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #cbd5e1;
+        text-decoration: none;
+        font-size: 0.8rem;
+        padding: 0.5rem;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+    }
+
+    .mobile-nav-item i {
+        font-size: 1.2rem;
+        margin-bottom: 0.2rem;
+    }
+
+    .mobile-nav-item:hover,
+    .mobile-nav-item.active {
+        color: var(--cropai-green);
+        background: rgba(46, 204, 113, 0.1);
+    }
+
+    /* Notification Bell */
+    .notification-bell {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: var(--gradient-primary);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.3rem;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+        z-index: 999;
+        transition: all 0.3s ease;
+    }
+
+    .notification-bell:hover {
+        transform: scale(1.1) rotate(15deg);
+    }
+
+    .notification-count {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        background: #e74c3c;
+        color: white;
+        font-size: 0.7rem;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+        .nav-link {
+            padding: 8px 12px !important;
+            margin: 2px 0;
+        }
+
+        .mobile-bottom-nav {
+            display:contents;
+        }
+
+        .notification-bell {
+            top: 15px;
+            right: 15px;
+            width: 45px;
+            height: 45px;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .navbar-brand {
+            font-size: 1.5rem;
+        }
+
+        .nav-cta {
+            padding: 8px 16px !important;
+            font-size: 0.9rem;
+        }
+    }
+</style>
+
+<script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.premium-navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+
+    // Active link highlighting
+    document.addEventListener('DOMContentLoaded', function() {
+        const currentPath = window.location.pathname;
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        navLinks.forEach(link => {
+            if (link.getAttribute('href') === currentPath) {
+                link.classList.add('active');
             }
         });
-    </script>
-</body>
-</html>
+
+        // Simulate login state (replace with actual authentication logic)
+        const isLoggedIn = false; // Change to true to see user dropdown
+        const loginBtn = document.getElementById('loginBtn');
+        const userDropdownContainer = document.getElementById('userDropdownContainer');
+
+        if (isLoggedIn) {
+            loginBtn.parentElement.style.display = 'none';
+            userDropdownContainer.classList.remove('d-none');
+        }
+
+        // Notification bell click
+        document.querySelector('.notification-bell').addEventListener('click', function() {
+            alert('You have 3 new notifications:\n1. New crop recommendation ready\n2. Weather alert for your region\n3. Market prices updated');
+        });
+
+        // Mobile navigation active state
+        const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
+        mobileNavItems.forEach(item => {
+            if (item.getAttribute('href') === currentPath) {
+                item.classList.add('active');
+            }
+        });
+    });
+</script>

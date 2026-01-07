@@ -179,3 +179,4 @@ def header(request):
 
 def footer(request):
     return render(request, 'DX_APP/footer.html')
+
