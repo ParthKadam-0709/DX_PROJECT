@@ -1,0 +1,584 @@
+<!-- DX_APP/templates/DX_APP/case_studies.html -->
+{% extends 'DX_APP/base.html' %}
+
+{% block hero %}
+<section class="hero-section d-flex align-items-center justify-content-center text-center py-5 mb-4 premium-bg">
+    <div class="container position-relative">
+        <h1 class="display-4 fw-bold text-gradient mb-3 animate__animated animate__fadeInDown">
+            <i class="bi bi-journal-text me-3"></i>
+            {% if lang == 'en' %}Real Success Stories
+            {% elif lang == 'hi' %}वास्तविक सफलता की कहानियाँ
+            {% elif lang == 'mr' %}वास्तविक यशोगाथा
+            {% endif %}
+        </h1>
+        <p class="lead text-dark-50 mb-4 fs-5 animate__animated animate__fadeInUp animate__delay-1s">
+            {% if lang == 'en' %}Discover how farmers across India are transforming their agriculture with AI
+            {% elif lang == 'hi' %}जानें कैसे भारत भर के किसान एआई के साथ अपनी कृषि को बदल रहे हैं
+            {% elif lang == 'mr' %}भारतभरातील शेतकरी एआई सह त्यांची शेती कशी बदलत आहेत ते शोधा
+            {% endif %}
+        </p>
+    </div>
+</section>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-xxl-10">
+            <!-- Stats Section -->
+            <div class="row g-4 mb-5">
+                {% for stat in stats %}
+                <div class="col-md-3 col-sm-6">
+                    <div class="card border-0 shadow-sm text-center h-100 glass-card">
+                        <div class="card-body p-4">
+                            <div class="display-6 fw-bold text-gradient mb-2">{{ stat.value }}</div>
+                            <p class="text-muted mb-0">
+                                {% if lang == 'en' %}{{ stat.label }}
+                                {% elif lang == 'hi' %}{{ stat.label_hi }}
+                                {% elif lang == 'mr' %}{{ stat.label_mr }}
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- Category Filter -->
+            <div class="card shadow-lg border-0 mb-5" style="border-radius: 20px;">
+                <div class="card-body p-4">
+                    <h4 class="fw-bold text-gradient mb-4">
+                        <i class="bi bi-filter me-2"></i>
+                        {% if lang == 'en' %}Filter by Category
+                        {% elif lang == 'hi' %}श्रेणी के अनुसार फ़िल्टर करें
+                        {% elif lang == 'mr' %}वर्गानुसार गाळा
+                        {% endif %}
+                    </h4>
+                    <div class="d-flex flex-wrap gap-2" id="category-filter">
+                        {% for category in categories %}
+                        <button class="btn btn-outline-success category-btn {% if forloop.first %}active{% endif %}" 
+                                data-category="{{ category.id }}">
+                            {% if lang == 'en' %}{{ category.name }}
+                            {% elif lang == 'hi' %}{{ category.name_hi }}
+                            {% elif lang == 'mr' %}{{ category.name_mr }}
+                            {% endif %}
+                            <span class="badge bg-success ms-2">{{ category.count }}</span>
+                        </button>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Case Studies Grid -->
+            <div class="row g-4" id="case-studies-grid">
+                {% for case in case_studies %}
+                <div class="col-lg-4 col-md-6 case-study-item" data-category="{{ case.category }}">
+                    <div class="card h-100 shadow-lg border-0 hover-lift" style="border-radius: 20px; border-left: 5px solid var(--primary-{{ case.color }});">
+                        <div class="card-body p-4">
+                            <!-- Category Badge -->
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <span class="badge bg-{{ case.color }} bg-opacity-10 text-{{ case.color }} px-3 py-2">
+                                    <i class="bi bi-tag me-1"></i>
+                                    {% if lang == 'en' %}
+                                        {{ case.category|title }}
+                                    {% elif lang == 'hi' %}
+                                        {% if case.category == 'success' %}सफलता
+                                        {% elif case.category == 'prevention' %}निवारण
+                                        {% elif case.category == 'conservation' %}संरक्षण
+                                        {% elif case.category == 'organic' %}जैविक
+                                        {% elif case.category == 'optimization' %}अनुकूलन
+                                        {% elif case.category == 'innovation' %}नवाचार
+                                        {% endif %}
+                                    {% elif lang == 'mr' %}
+                                        {% if case.category == 'success' %}यश
+                                        {% elif case.category == 'prevention' %}प्रतिबंध
+                                        {% elif case.category == 'conservation' %}संवर्धन
+                                        {% elif case.category == 'organic' %}सेंद्रिय
+                                        {% elif case.category == 'optimization' %}ऑप्टिमायझेशन
+                                        {% elif case.category == 'innovation' %}नाविन्य
+                                        {% endif %}
+                                    {% endif %}
+                                </span>
+                                <span class="text-muted">{{ case.icon }}</span>
+                            </div>
+                            
+                            <!-- Title -->
+                            <h5 class="fw-bold mb-3">
+                                {% if lang == 'en' %}{{ case.title }}
+                                {% elif lang == 'hi' %}{{ case.title_hi }}
+                                {% elif lang == 'mr' %}{{ case.title_mr }}
+                                {% endif %}
+                            </h5>
+                            
+                            <!-- Location & Duration -->
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="bi bi-geo-alt text-muted me-2"></i>
+                                <small class="text-muted">
+                                    {% if lang == 'en' %}{{ case.location }}
+                                    {% elif lang == 'hi' %}{{ case.location_hi }}
+                                    {% elif lang == 'mr' %}{{ case.location_mr }}
+                                    {% endif %}
+                                    • 
+                                    {% if lang == 'en' %}{{ case.duration }}
+                                    {% elif lang == 'hi' %}{{ case.duration_hi }}
+                                    {% elif lang == 'mr' %}{{ case.duration_mr }}
+                                    {% endif %}
+                                </small>
+                            </div>
+                            
+                            <!-- Farmer Info -->
+                            <div class="d-flex align-items-center mb-4">
+                                <div class="flex-shrink-0">
+                                    <div class="bg-light rounded-circle d-flex align-items-center justify-content-center" 
+                                         style="width: 40px; height: 40px;">
+                                        <i class="bi bi-person text-{{ case.color }}"></i>
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1 ms-3">
+                                    <small class="text-muted">
+                                        {% if lang == 'en' %}Farmer
+                                        {% elif lang == 'hi' %}किसान
+                                        {% elif lang == 'mr' %}शेतकरी
+                                        {% endif %}
+                                    </small>
+                                    <p class="fw-semibold mb-0">{{ case.farmer }}</p>
+                                </div>
+                                <div class="text-end">
+                                    <small class="text-muted">
+                                        {% if lang == 'en' %}Crop
+                                        {% elif lang == 'hi' %}फसल
+                                        {% elif lang == 'mr' %}पीक
+                                        {% endif %}
+                                    </small>
+                                    <p class="fw-semibold mb-0">
+                                        {% if lang == 'en' %}{{ case.crop }}
+                                        {% elif lang == 'hi' %}{{ case.crop_hi }}
+                                        {% elif lang == 'mr' %}{{ case.crop_mr }}
+                                        {% endif %}
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- Challenge & Solution -->
+                            <div class="mb-4">
+                                <div class="mb-3">
+                                    <h6 class="fw-bold text-danger mb-2">
+                                        <i class="bi bi-exclamation-triangle me-2"></i>
+                                        {% if lang == 'en' %}Challenge
+                                        {% elif lang == 'hi' %}चुनौती
+                                        {% elif lang == 'mr' %}आव्हान
+                                        {% endif %}
+                                    </h6>
+                                    <p class="small text-muted mb-0">
+                                        {% if lang == 'en' %}{{ case.challenge }}
+                                        {% elif lang == 'hi' %}{{ case.challenge_hi }}
+                                        {% elif lang == 'mr' %}{{ case.challenge_mr }}
+                                        {% endif %}
+                                    </p>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <h6 class="fw-bold text-success mb-2">
+                                        <i class="bi bi-lightbulb me-2"></i>
+                                        {% if lang == 'en' %}Solution
+                                        {% elif lang == 'hi' %}समाधान
+                                        {% elif lang == 'mr' %}उपाय
+                                        {% endif %}
+                                    </h6>
+                                    <p class="small text-muted mb-0">
+                                        {% if lang == 'en' %}{{ case.solution }}
+                                        {% elif lang == 'hi' %}{{ case.solution_hi }}
+                                        {% elif lang == 'mr' %}{{ case.solution_mr }}
+                                        {% endif %}
+                                    </p>
+                                </div>
+                                
+                                <div>
+                                    <h6 class="fw-bold text-primary mb-2">
+                                        <i class="bi bi-graph-up-arrow me-2"></i>
+                                        {% if lang == 'en' %}Results
+                                        {% elif lang == 'hi' %}परिणाम
+                                        {% elif lang == 'mr' %}परिणाम
+                                        {% endif %}
+                                    </h6>
+                                    <p class="small text-muted mb-0">
+                                        {% if lang == 'en' %}{{ case.result }}
+                                        {% elif lang == 'hi' %}{{ case.result_hi }}
+                                        {% elif lang == 'mr' %}{{ case.result_mr }}
+                                        {% endif %}
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- View Details Button -->
+                            <div class="text-center">
+                                <button class="btn btn-outline-{{ case.color }} btn-sm w-100" 
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#caseModal{{ case.id }}">
+                                    <i class="bi bi-eye me-1"></i>
+                                    {% if lang == 'en' %}View Full Story
+                                    {% elif lang == 'hi' %}पूरी कहानी देखें
+                                    {% elif lang == 'mr' %}संपूर्ण कथा पहा
+                                    {% endif %}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Modal for each case study -->
+                <div class="modal fade" id="caseModal{{ case.id }}" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                        <div class="modal-content" style="border-radius: 20px;">
+                            <div class="modal-header border-0">
+                                <h5 class="modal-title fw-bold">
+                                    {% if lang == 'en' %}{{ case.title }}
+                                    {% elif lang == 'hi' %}{{ case.title_hi }}
+                                    {% elif lang == 'mr' %}{{ case.title_mr }}
+                                    {% endif %}
+                                </h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-4">
+                                            <h6 class="fw-bold text-muted mb-3">
+                                                <i class="bi bi-info-circle me-2"></i>
+                                                {% if lang == 'en' %}Case Details
+                                                {% elif lang == 'hi' %}केस विवरण
+                                                {% elif lang == 'mr' %}केस तपशील
+                                                {% endif %}
+                                            </h6>
+                                            <ul class="list-unstyled">
+                                                <li class="mb-2">
+                                                    <i class="bi bi-person text-primary me-2"></i>
+                                                    <strong>
+                                                        {% if lang == 'en' %}Farmer: 
+                                                        {% elif lang == 'hi' %}किसान: 
+                                                        {% elif lang == 'mr' %}शेतकरी: 
+                                                        {% endif %}
+                                                    </strong>
+                                                    {{ case.farmer }}
+                                                </li>
+                                                <li class="mb-2">
+                                                    <i class="bi bi-geo-alt text-primary me-2"></i>
+                                                    <strong>
+                                                        {% if lang == 'en' %}Location: 
+                                                        {% elif lang == 'hi' %}स्थान: 
+                                                        {% elif lang == 'mr' %}स्थान: 
+                                                        {% endif %}
+                                                    </strong>
+                                                    {% if lang == 'en' %}{{ case.location }}
+                                                    {% elif lang == 'hi' %}{{ case.location_hi }}
+                                                    {% elif lang == 'mr' %}{{ case.location_mr }}
+                                                    {% endif %}
+                                                </li>
+                                                <li class="mb-2">
+                                                    <i class="bi bi-calendar text-primary me-2"></i>
+                                                    <strong>
+                                                        {% if lang == 'en' %}Duration: 
+                                                        {% elif lang == 'hi' %}अवधि: 
+                                                        {% elif lang == 'mr' %}कालावधी: 
+                                                        {% endif %}
+                                                    </strong>
+                                                    {% if lang == 'en' %}{{ case.duration }}
+                                                    {% elif lang == 'hi' %}{{ case.duration_hi }}
+                                                    {% elif lang == 'mr' %}{{ case.duration_mr }}
+                                                    {% endif %}
+                                                </li>
+                                                <li class="mb-2">
+                                                    <i class="bi bi-{{ case.icon|slice:'1:' }} text-primary me-2"></i>
+                                                    <strong>
+                                                        {% if lang == 'en' %}Crop: 
+                                                        {% elif lang == 'hi' %}फसल: 
+                                                        {% elif lang == 'mr' %}पीक: 
+                                                        {% endif %}
+                                                    </strong>
+                                                    {% if lang == 'en' %}{{ case.crop }}
+                                                    {% elif lang == 'hi' %}{{ case.crop_hi }}
+                                                    {% elif lang == 'mr' %}{{ case.crop_mr }}
+                                                    {% endif %}
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-4">
+                                            <h6 class="fw-bold text-success mb-3">
+                                                <i class="bi bi-graph-up-arrow me-2"></i>
+                                                {% if lang == 'en' %}Key Results
+                                                {% elif lang == 'hi' %}मुख्य परिणाम
+                                                {% elif lang == 'mr' %}मुख्य परिणाम
+                                                {% endif %}
+                                            </h6>
+                                            <p class="text-muted">
+                                                {% if lang == 'en' %}{{ case.result }}
+                                                {% elif lang == 'hi' %}{{ case.result_hi }}
+                                                {% elif lang == 'mr' %}{{ case.result_mr }}
+                                                {% endif %}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-4">
+                                            <h6 class="fw-bold text-danger mb-3">
+                                                <i class="bi bi-exclamation-triangle me-2"></i>
+                                                {% if lang == 'en' %}Challenge
+                                                {% elif lang == 'hi' %}चुनौती
+                                                {% elif lang == 'mr' %}आव्हान
+                                                {% endif %}
+                                            </h6>
+                                            <p class="text-muted">
+                                                {% if lang == 'en' %}{{ case.challenge }}
+                                                {% elif lang == 'hi' %}{{ case.challenge_hi }}
+                                                {% elif lang == 'mr' %}{{ case.challenge_mr }}
+                                                {% endif %}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-4">
+                                            <h6 class="fw-bold text-primary mb-3">
+                                                <i class="bi bi-lightbulb me-2"></i>
+                                                {% if lang == 'en' %}AI Solution
+                                                {% elif lang == 'hi' %}एआई समाधान
+                                                {% elif lang == 'mr' %}एआई उपाय
+                                                {% endif %}
+                                            </h6>
+                                            <p class="text-muted">
+                                                {% if lang == 'en' %}{{ case.solution }}
+                                                {% elif lang == 'hi' %}{{ case.solution_hi }}
+                                                {% elif lang == 'mr' %}{{ case.solution_mr }}
+                                                {% endif %}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer border-0">
+                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                    {% if lang == 'en' %}Close
+                                    {% elif lang == 'hi' %}बंद करें
+                                    {% elif lang == 'mr' %}बंद करा
+                                    {% endif %}
+                                </button>
+                                <button type="button" class="btn btn-success">
+                                    <i class="bi bi-download me-1"></i>
+                                    {% if lang == 'en' %}Download PDF
+                                    {% elif lang == 'hi' %}PDF डाउनलोड करें
+                                    {% elif lang == 'mr' %}PDF डाउनलोड करा
+                                    {% endif %}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- Empty State -->
+            <div id="no-results" class="text-center py-5" style="display: none;">
+                <i class="bi bi-search display-1 text-muted mb-3"></i>
+                <h4 class="fw-bold text-muted mb-3">
+                    {% if lang == 'en' %}No case studies found
+                    {% elif lang == 'hi' %}कोई केस स्टडी नहीं मिली
+                    {% elif lang == 'mr' %}कोणतीही केस स्टडी सापडली नाही
+                    {% endif %}
+                </h4>
+                <p class="text-muted">
+                    {% if lang == 'en' %}Try selecting a different category
+                    {% elif lang == 'hi' %}एक अलग श्रेणी का चयन करने का प्रयास करें
+                    {% elif lang == 'mr' %}वेगळा वर्ग निवडण्याचा प्रयत्न करा
+                    {% endif %}
+                </p>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="text-center mt-5 pt-5">
+                <div class="glass-container p-5 mb-4">
+                    <h2 class="fw-bold text-gradient mb-3">
+                        {% if lang == 'en' %}Ready to Write Your Success Story?
+                        {% elif lang == 'hi' %}अपनी सफलता की कहानी लिखने के लिए तैयार हैं?
+                        {% elif lang == 'mr' %}तुमची यशोगाथा लिहिण्यासाठी तयार आहात?
+                        {% endif %}
+                    </h2>
+                    <p class="lead text-muted mb-4">
+                        {% if lang == 'en' %}Join thousands of successful farmers using CropAI
+                        {% elif lang == 'hi' %}क्रॉपएआई का उपयोग करने वाले हजारों सफल किसानों से जुड़ें
+                        {% elif lang == 'mr' %}क्रॉपएआई वापरणाऱ्या हजारो यशस्वी शेतकऱ्यांमध्ये सामील व्हा
+                        {% endif %}
+                    </p>
+                    <div class="d-flex flex-column flex-md-row justify-content-center gap-3">
+                        <a href="{% url 'register' %}{% if lang != 'en' %}?lang={{ lang }}{% endif %}" 
+                           class="btn btn-gradient btn-lg px-5">
+                            <i class="bi bi-person-plus me-2"></i>
+                            {% if lang == 'en' %}Get Started Free
+                            {% elif lang == 'hi' %}मुफ्त शुरू करें
+                            {% elif lang == 'mr' %}मोफत सुरू करा
+                            {% endif %}
+                        </a>
+                        <a href="{% url 'solutions' %}{% if lang != 'en' %}?lang={{ lang }}{% endif %}" 
+                           class="btn btn-outline-success btn-lg px-5">
+                            <i class="bi bi-play-circle me-2"></i>
+                            {% if lang == 'en' %}Watch Demo
+                            {% elif lang == 'hi' %}डेमो देखें
+                            {% elif lang == 'mr' %}डेमो पहा
+                            {% endif %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .case-study-item {
+        transition: all 0.3s ease;
+    }
+    
+    .case-study-item:hover {
+        transform: translateY(-10px);
+    }
+    
+    .hover-lift {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .hover-lift:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15) !important;
+    }
+    
+    .category-btn.active {
+        background-color: var(--primary-green) !important;
+        color: white !important;
+        border-color: var(--primary-green) !important;
+    }
+    
+    .modal-content {
+        border: none;
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+    }
+    
+    @media (max-width: 768px) {
+        #category-filter .btn {
+            flex: 1;
+            min-width: 140px;
+        }
+        
+        .modal-dialog {
+            margin: 10px;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Category filter functionality
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        const caseStudyItems = document.querySelectorAll('.case-study-item');
+        const noResults = document.getElementById('no-results');
+        
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                const selectedCategory = this.dataset.category;
+                
+                // Filter case studies
+                let visibleCount = 0;
+                
+                caseStudyItems.forEach(item => {
+                    if (selectedCategory === 'all' || item.dataset.category === selectedCategory) {
+                        item.style.display = 'block';
+                        visibleCount++;
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+                
+                // Show/hide no results message
+                if (visibleCount === 0) {
+                    noResults.style.display = 'block';
+                } else {
+                    noResults.style.display = 'none';
+                }
+                
+                // Animate items
+                anime({
+                    targets: '.case-study-item[style*="block"]',
+                    translateY: [20, 0],
+                    opacity: [0, 1],
+                    delay: anime.stagger(100),
+                    duration: 600,
+                    easing: 'easeOutExpo'
+                });
+            });
+        });
+        
+        // Search functionality (optional)
+        const searchInput = document.createElement('input');
+        searchInput.type = 'search';
+        searchInput.className = 'form-control mb-3';
+        searchInput.placeholder = 'Search case studies...';
+        
+        // You can add search functionality here if needed
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            
+            let visibleCount = 0;
+            
+            caseStudyItems.forEach(item => {
+                const title = item.querySelector('h5').textContent.toLowerCase();
+                const content = item.textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || content.includes(searchTerm)) {
+                    item.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+            
+            // Show/hide no results message
+            if (visibleCount === 0 && searchTerm !== '') {
+                noResults.style.display = 'block';
+            } else {
+                noResults.style.display = 'none';
+            }
+        });
+        
+        // Add search to filter card
+        const filterCard = document.querySelector('.card.shadow-lg.border-0.mb-5');
+        if (filterCard) {
+            filterCard.querySelector('.card-body').insertBefore(searchInput, filterCard.querySelector('#category-filter'));
+        }
+        
+        // Initialize animation on page load
+        anime({
+            targets: '.case-study-item',
+            translateY: [20, 0],
+            opacity: [0, 1],
+            delay: anime.stagger(100),
+            duration: 800,
+            easing: 'easeOutExpo'
+        });
+    });
+</script>
+{% endblock %}

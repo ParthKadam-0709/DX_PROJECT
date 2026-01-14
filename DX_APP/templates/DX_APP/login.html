@@ -1,0 +1,456 @@
+{% extends 'DX_APP/base.html' %}
+
+{% block hero %}
+<section class="hero-section d-flex align-items-center justify-content-center text-center py-5 mb-4 premium-bg" style="min-height: 30vh;">
+    <div class="container">
+        <h1 class="display-4 fw-bold text-gradient mb-3 animate__animated animate__fadeInDown">
+            <i class="bi bi-box-arrow-in-right me-3"></i>
+            {% if lang == 'en' %}Login
+            {% elif lang == 'hi' %}लॉगिन
+            {% elif lang == 'mr' %}लॉगिन
+            {% endif %}
+        </h1>
+        <p class="lead text-dark-50 mb-4 fs-5 animate__animated animate__fadeInUp animate__delay-1s">
+            {% if lang == 'en' %}Access your personalized farming dashboard
+            {% elif lang == 'hi' %}अपने व्यक्तिगत कृषि डैशबोर्ड तक पहुंचें
+            {% elif lang == 'mr' %}तुमच्या वैयक्तिक शेती डॅशबोर्डमध्ये प्रवेश करा
+            {% endif %}
+        </p>
+    </div>
+</section>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-xl-5">
+            <!-- Login Card -->
+            <div class="card shadow-lg border-0 premium-card glass-card animate__animated animate__fadeInUp mb-5">
+                <div class="card-body p-4 p-lg-5">
+                    <!-- Language Selector -->
+                    <div class="language-selector mb-4">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <h6 class="fw-bold mb-0">
+                                <i class="bi bi-translate me-2"></i>
+                                {% if lang == 'en' %}Select Language
+                                {% elif lang == 'hi' %}भाषा चुनें
+                                {% elif lang == 'mr' %}भाषा निवडा
+                                {% endif %}
+                            </h6>
+                            <div class="btn-group btn-group-sm" role="group">
+                                <a href="?lang=en" class="btn btn-outline-success {% if lang == 'en' %}active{% endif %}">EN</a>
+                                <a href="?lang=hi" class="btn btn-outline-success {% if lang == 'hi' %}active{% endif %}">हि</a>
+                                <a href="?lang=mr" class="btn btn-outline-success {% if lang == 'mr' %}active{% endif %}">मर</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Messages -->
+                    {% if messages %}
+                    <div class="messages mb-4">
+                        {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+
+                    <!-- Login Form -->
+                    <form method="post" class="needs-validation" novalidate>
+                        {% csrf_token %}
+                        
+                        <!-- Username Field -->
+                        <div class="form-floating mb-3">
+                            <input type="text" 
+                                   class="form-control {% if form.username.errors %}is-invalid{% endif %}" 
+                                   id="id_username" 
+                                   name="username" 
+                                   placeholder="Username" 
+                                   required
+                                   autofocus>
+                            <label for="id_username" class="fw-semibold">
+                                <i class="bi bi-person me-2"></i>
+                                {% if lang == 'en' %}Username or Email
+                                {% elif lang == 'hi' %}उपयोगकर्ता नाम या ईमेल
+                                {% elif lang == 'mr' %}वापरकर्तानाव किंवा ईमेल
+                                {% endif %}
+                                <span class="text-danger">*</span>
+                            </label>
+                            {% if form.username.errors %}
+                            <div class="invalid-feedback d-block small">
+                                {{ form.username.errors|striptags }}
+                            </div>
+                            {% endif %}
+                        </div>
+
+                        <!-- Password Field -->
+                        <div class="form-floating mb-4">
+                            <input type="password" 
+                                   class="form-control {% if form.password.errors %}is-invalid{% endif %}" 
+                                   id="id_password" 
+                                   name="password" 
+                                   placeholder="Password" 
+                                   required>
+                            <label for="id_password" class="fw-semibold">
+                                <i class="bi bi-lock me-2"></i>
+                                {% if lang == 'en' %}Password
+                                {% elif lang == 'hi' %}पासवर्ड
+                                {% elif lang == 'mr' %}पासवर्ड
+                                {% endif %}
+                                <span class="text-danger">*</span>
+                            </label>
+                            <div class="mt-2 text-end">
+                                <button type="button" class="btn btn-sm btn-outline-secondary" id="togglePassword">
+                                    <i class="bi bi-eye"></i>
+                                    {% if lang == 'en' %}Show
+                                    {% elif lang == 'hi' %}दिखाएं
+                                    {% elif lang == 'mr' %}दाखवा
+                                    {% endif %}
+                                </button>
+                            </div>
+                            {% if form.password.errors %}
+                            <div class="invalid-feedback d-block small">
+                                {{ form.password.errors|striptags }}
+                            </div>
+                            {% endif %}
+                        </div>
+
+                        <!-- Remember Me & Forgot Password -->
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="remember" id="remember">
+                                <label class="form-check-label small" for="remember">
+                                    {% if lang == 'en' %}Remember me
+                                    {% elif lang == 'hi' %}मुझे याद रखें
+                                    {% elif lang == 'mr' %}मला लक्षात ठेवा
+                                    {% endif %}
+                                </label>
+                            </div>
+                            <a href="{% url 'password_reset' %}" class="text-decoration-none small text-success">
+                                {% if lang == 'en' %}Forgot Password?
+                                {% elif lang == 'hi' %}पासवर्ड भूल गए?
+                                {% elif lang == 'mr' %}पासवर्ड विसरलात?
+                                {% endif %}
+                            </a>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="d-grid mb-4">
+                            <button type="submit" class="btn btn-lg btn-gradient fw-bold ripple position-relative overflow-hidden">
+                                <span class="d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-box-arrow-in-right me-2"></i>
+                                    {% if lang == 'en' %}Login
+                                    {% elif lang == 'hi' %}लॉगिन करें
+                                    {% elif lang == 'mr' %}लॉगिन करा
+                                    {% endif %}
+                                </span>
+                                <div class="ripple-effect"></div>
+                            </button>
+                        </div>
+
+                        <!-- Divider -->
+                        <div class="text-center position-relative my-4">
+                            <hr class="text-muted">
+                            <span class="position-absolute top-50 start-50 translate-middle bg-white px-3 text-muted small">
+                                {% if lang == 'en' %}OR
+                                {% elif lang == 'hi' %}या
+                                {% elif lang == 'mr' %}किंवा
+                                {% endif %}
+                            </span>
+                        </div>
+
+                        <!-- Social Login -->
+                        <div class="social-login mb-4">
+                            <div class="d-grid gap-2">
+                                <button type="button" class="btn btn-outline-primary">
+                                    <i class="bi bi-google me-2"></i>
+                                    {% if lang == 'en' %}Continue with Google
+                                    {% elif lang == 'hi' %}Google के साथ जारी रखें
+                                    {% elif lang == 'mr' %}Google सह पुढे जा
+                                    {% endif %}
+                                </button>
+                                <button type="button" class="btn btn-outline-dark">
+                                    <i class="bi bi-phone me-2"></i>
+                                    {% if lang == 'en' %}Continue with Mobile
+                                    {% elif lang == 'hi' %}मोबाइल के साथ जारी रखें
+                                    {% elif lang == 'mr' %}मोबाईल सह पुढे जा
+                                    {% endif %}
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Register Link -->
+                        <div class="text-center">
+                            <p class="text-muted mb-2">
+                                {% if lang == 'en' %}Don't have an account?
+                                {% elif lang == 'hi' %}खाता नहीं है?
+                                {% elif lang == 'mr' %}खाते नाही?
+                                {% endif %}
+                            </p>
+                            <a href="{% url 'register' %}" class="btn btn-outline-success">
+                                <i class="bi bi-person-plus me-2"></i>
+                                {% if lang == 'en' %}Create New Account
+                                {% elif lang == 'hi' %}नया खाता बनाएं
+                                {% elif lang == 'mr' %}नवीन खाते तयार करा
+                                {% endif %}
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Features -->
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <div class="text-center p-3 glass-card">
+                        <i class="bi bi-safe text-gradient fs-4 mb-2"></i>
+                        <h6 class="fw-bold small">
+                            {% if lang == 'en' %}Secure Login
+                            {% elif lang == 'hi' %}सुरक्षित लॉगिन
+                            {% elif lang == 'mr' %}सुरक्षित लॉगिन
+                            {% endif %}
+                        </h6>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center p-3 glass-card">
+                        <i class="bi bi-person-badge text-gradient fs-4 mb-2"></i>
+                        <h6 class="fw-bold small">
+                            {% if lang == 'en' %}Personalized
+                            {% elif lang == 'hi' %}व्यक्तिगत
+                            {% elif lang == 'mr' %}वैयक्तिकृत
+                            {% endif %}
+                        </h6>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center p-3 glass-card">
+                        <i class="bi bi-clock-history text-gradient fs-4 mb-2"></i>
+                        <h6 class="fw-bold small">
+                            {% if lang == 'en' %}History Saved
+                            {% elif lang == 'hi' %}इतिहास सहेजा गया
+                            {% elif lang == 'mr' %}इतिहास जतन केला
+                            {% endif %}
+                        </h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* FIX SCROLLING ISSUES */
+    html, body {
+        width: 100%;
+        height: auto;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    body {
+        font-family: 'Inter', sans-serif;
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+        color: #333;
+        height: auto;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .container {
+        flex: 1;
+        overflow: visible !important;
+    }
+
+    /* Login specific styles */
+    .social-login .btn {
+        transition: all 0.3s ease;
+    }
+    
+    .social-login .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .form-floating {
+        position: relative;
+    }
+    
+    /* Responsive fixes */
+    @media (max-width: 768px) {
+        .card-body {
+            padding: 1.5rem !important;
+        }
+        
+        .hero-section {
+            min-height: 40vh;
+            padding: 2rem 0;
+        }
+        
+        .display-4 {
+            font-size: 2.5rem;
+        }
+    }
+    
+    @media (max-width: 576px) {
+        .display-4 {
+            font-size: 2rem;
+        }
+        
+        .btn-lg {
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+        }
+        
+        .row.g-3 {
+            margin-top: 1rem;
+        }
+        
+        .glass-card {
+            padding: 1rem !important;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('Login Page Loaded');
+        
+        // ========== ENSURE SCROLLING ==========
+        function ensureScrollable() {
+            document.body.style.overflowY = 'auto';
+            document.documentElement.style.overflowY = 'auto';
+            document.body.style.height = 'auto';
+            document.documentElement.style.height = 'auto';
+        }
+        
+        // Run immediately and after page load
+        ensureScrollable();
+        setTimeout(ensureScrollable, 100);
+        window.addEventListener('load', ensureScrollable);
+        
+        // ========== TOGGLE PASSWORD VISIBILITY ==========
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('id_password');
+        
+        if (togglePassword && passwordInput) {
+            togglePassword.addEventListener('click', function() {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                
+                const icon = this.querySelector('i');
+                if (type === 'text') {
+                    icon.className = 'bi bi-eye-slash';
+                    {% if lang == 'en' %}
+                    this.innerHTML = '<i class="bi bi-eye-slash"></i> Hide';
+                    {% elif lang == 'hi' %}
+                    this.innerHTML = '<i class="bi bi-eye-slash"></i> छिपाएं';
+                    {% elif lang == 'mr' %}
+                    this.innerHTML = '<i class="bi bi-eye-slash"></i> लपवा';
+                    {% endif %}
+                } else {
+                    icon.className = 'bi bi-eye';
+                    {% if lang == 'en' %}
+                    this.innerHTML = '<i class="bi bi-eye"></i> Show';
+                    {% elif lang == 'hi' %}
+                    this.innerHTML = '<i class="bi bi-eye"></i> दिखाएं';
+                    {% elif lang == 'mr' %}
+                    this.innerHTML = '<i class="bi bi-eye"></i> दाखवा';
+                    {% endif %}
+                }
+            });
+        }
+        
+        // ========== FORM VALIDATION ==========
+        const form = document.querySelector('form.needs-validation');
+        if (form) {
+            form.addEventListener('submit', function(event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    
+                    // Scroll to first invalid field
+                    const invalidField = form.querySelector(':invalid');
+                    if (invalidField) {
+                        invalidField.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'center'
+                        });
+                        invalidField.focus();
+                    }
+                }
+                form.classList.add('was-validated');
+            });
+        }
+        
+        // ========== AUTO-FOCUS USERNAME FIELD ==========
+        const usernameField = document.getElementById('id_username');
+        if (usernameField) {
+            setTimeout(() => {
+                usernameField.focus();
+                ensureScrollable(); // Extra scroll check
+            }, 100);
+        }
+        
+        // ========== RIPPLE EFFECT ==========
+        const submitBtn = document.querySelector('.ripple');
+        if (submitBtn) {
+            submitBtn.addEventListener('click', function(e) {
+                const ripple = this.querySelector('.ripple-effect');
+                if (ripple) ripple.remove();
+                
+                const newRipple = document.createElement('div');
+                newRipple.className = 'ripple-effect';
+                
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                newRipple.style.width = size + 'px';
+                newRipple.style.height = size + 'px';
+                newRipple.style.left = e.clientX - rect.left - size/2 + 'px';
+                newRipple.style.top = e.clientY - rect.top - size/2 + 'px';
+                
+                this.appendChild(newRipple);
+                
+                setTimeout(() => {
+                    if (newRipple.parentNode === this) {
+                        this.removeChild(newRipple);
+                    }
+                }, 600);
+            });
+        }
+        
+        // ========== PREVENT SCROLL BLOCKING ==========
+        window.addEventListener('wheel', function(e) {
+            // Allow default scroll behavior
+        }, { passive: true });
+        
+        window.addEventListener('touchmove', function(e) {
+            // Allow default touch scroll behavior
+        }, { passive: true });
+        
+        window.addEventListener('keydown', function(e) {
+            // Allow keyboard scrolling (PageUp, PageDown, Arrow keys)
+            if ([33, 34, 35, 36, 38, 40].includes(e.keyCode)) {
+                return; // Allow default behavior
+            }
+        });
+        
+        // ========== RESIZE HANDLER ==========
+        window.addEventListener('resize', ensureScrollable);
+        
+        // ========== FORCE SCROLL CHECK EVERY SECOND ==========
+        setInterval(ensureScrollable, 1000);
+    });
+</script>
+{% endblock %}

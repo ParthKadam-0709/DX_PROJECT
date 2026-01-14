@@ -1,0 +1,94 @@
+{% extends 'DX_APP/base.html' %}
+
+{% block hero %}
+<section class="hero-section d-flex align-items-center justify-content-center text-center py-5 mb-4 premium-bg" style="min-height: 40vh;">
+    <div class="container">
+        <h1 class="display-4 fw-bold text-gradient mb-3">
+            <i class="bi bi-code-slash me-3"></i>
+            {% if lang == 'en' %}API Reference
+            {% elif lang == 'hi' %}API संदर्भ
+            {% elif lang == 'mr' %}API संदर्भ
+            {% endif %}
+        </h1>
+        <p class="lead text-dark-50 mb-4 fs-5">
+            {% if lang == 'en' %}Integrate CropAI capabilities into your applications
+            {% elif lang == 'hi' %}अपने अनुप्रयोगों में CropAI क्षमताओं को एकीकृत करें
+            {% elif lang == 'mr' %}तुमच्या अनुप्रयोगांमध्ये CropAI क्षमता समाकलित करा
+            {% endif %}
+        </p>
+    </div>
+</section>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card shadow-lg border-0 premium-card glass-card">
+                <div class="card-body p-5">
+                    <h3 class="fw-bold text-gradient mb-4">
+                        <i class="bi bi-cloud-arrow-up me-2"></i>
+                        {% if lang == 'en' %}REST API Endpoints
+                        {% elif lang == 'hi' %}REST API एंडपॉइंट
+                        {% elif lang == 'mr' %}REST API एंडपॉइंट
+                        {% endif %}
+                    </h3>
+                    
+                    <div class="card glass-card mb-4">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <span class="badge bg-success me-3">POST</span>
+                                <code class="fs-6">/api/v1/crop-recommendation</code>
+                            </div>
+                            <p class="text-muted mb-3">
+                                {% if lang == 'en' %}Get AI-based crop recommendations
+                                {% elif lang == 'hi' %}AI-आधारित फसल सिफारिशें प्राप्त करें
+                                {% elif lang == 'mr' %}AI-आधारित पीक शिफारसी मिळवा
+                                {% endif %}
+                            </p>
+                            <h6 class="fw-bold mb-2">
+                                {% if lang == 'en' %}Request Body:
+                                {% elif lang == 'hi' %}अनुरोध बॉडी:
+                                {% elif lang == 'mr' %}विनंती बॉडी:
+                                {% endif %}
+                            </h6>
+                            <pre class="bg-dark text-light p-3 rounded"><code>{
+  "N": 25,
+  "P": 45,
+  "K": 32,
+  "temperature": 28.5,
+  "humidity": 75.2,
+  "ph": 6.8,
+  "rainfall": 1200
+}</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="card glass-card mb-4">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <span class="badge bg-primary me-3">GET</span>
+                                <code class="fs-6">/api/v1/market-prices</code>
+                            </div>
+                            <p class="text-muted mb-3">
+                                {% if lang == 'en' %}Get current market prices for crops
+                                {% elif lang == 'hi' %}फसलों के लिए वर्तमान बाजार मूल्य प्राप्त करें
+                                {% elif lang == 'mr' %}पिकांसाठी सध्याच्या बाजारातील किंमती मिळवा
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-info">
+                        <i class="bi bi-key me-2"></i>
+                        {% if lang == 'en' %}API Key required for all endpoints. Contact support for access.
+                        {% elif lang == 'hi' %}सभी एंडपॉइंट के लिए API कुंजी आवश्यक है। पहुंच के लिए समर्थन से संपर्क करें।
+                        {% elif lang == 'mr' %}सर्व एंडपॉइंटसाठी API की आवश्यक आहे. प्रवेशासाठी समर्थनाशी संपर्क साधा.
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

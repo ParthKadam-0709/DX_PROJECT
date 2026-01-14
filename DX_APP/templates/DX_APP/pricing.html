@@ -1,0 +1,329 @@
+<!-- DX_APP/templates/DX_APP/pricing.html -->
+{% extends 'DX_APP/base.html' %}
+
+{% block hero %}
+<section class="hero-section d-flex align-items-center justify-content-center text-center py-5 mb-4 premium-bg">
+    <div class="container position-relative">
+        <h1 class="display-4 fw-bold text-gradient mb-3 animate__animated animate__fadeInDown">
+            <i class="bi bi-currency-rupee me-3"></i>
+            {% if lang == 'en' %}Simple, Transparent Pricing
+            {% elif lang == 'hi' %}सरल, पारदर्शी मूल्य निर्धारण
+            {% elif lang == 'mr' %}सोपे, पारदर्शी किंमत
+            {% endif %}
+        </h1>
+<p class="lead text-dark-50 mb-4 fs-5 animate__animated animate__fadeInUp animate__delay-1s">
+    {% if lang == 'en' %}
+        Choose the perfect plan for your farming needs. Start free, upgrade anytime.
+    {% elif lang == 'hi' %}
+        अपनी कृषि आवश्यकताओं के लिए सही योजना चुनें। मुफ्त शुरू करें, कभी भी अपग्रेड करें।
+    {% elif lang == 'mr' %}
+        तुमच्या शेती गरजांसाठी योग्य योजना निवडा. मोफत सुरू करा, कोणत्याही वेळी अपग्रेड करा.
+    {% endif %}
+</p>
+
+    </div>
+</section>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-xxl-10">
+            <!-- Currency Toggle -->
+            <div class="text-center mb-5">
+                <div class="btn-group btn-group-sm" role="group">
+                    <button type="button" class="btn btn-success active">₹ INR</button>
+                    <button type="button" class="btn btn-outline-success">$ USD</button>
+                    <button type="button" class="btn btn-outline-success">€ EUR</button>
+                </div>
+                <p class="text-muted small mt-2">
+                    {% if lang == 'en' %}All prices in Indian Rupees. Tax included where applicable.
+                    {% elif lang == 'hi' %}सभी कीमतें भारतीय रुपये में। जहां लागू हो वहां कर शामिल है।
+                    {% elif lang == 'mr' %}सर्व किंमती भारतीय रुपयांमध्ये. जिथे लागू असेल तिथे कर समाविष्ट आहे.
+                    {% endif %}
+                </p>
+            </div>
+
+            <!-- Pricing Cards -->
+            <div class="row g-4 mb-5">
+                {% for plan in pricing_plans %}
+                <div class="col-lg-4">
+                    <div class="card h-100 shadow-lg border-0 {% if plan.popular %}popular-plan border-success border-3{% endif %}"
+                         style="border-radius: 20px;">
+                        {% if plan.popular %}
+                        <div class="position-absolute top-0 start-50 translate-middle mt-3">
+                            <span class="badge bg-success px-3 py-2">
+                                <i class="bi bi-star-fill me-1"></i>
+                                {% if lang == 'en' %}Most Popular
+                                {% elif lang == 'hi' %}सबसे लोकप्रिय
+                                {% elif lang == 'mr' %}सर्वात लोकप्रिय
+                                {% endif %}
+                            </span>
+                        </div>
+                        {% endif %}
+                        
+                        <div class="card-body p-4">
+                            <div class="text-center mb-4">
+                                <h3 class="fw-bold mb-2">
+                                    {% if lang == 'en' %}{{ plan.name }}
+                                    {% elif lang == 'hi' %}{{ plan.name_hi }}
+                                    {% elif lang == 'mr' %}{{ plan.name_mr }}
+                                    {% endif %}
+                                </h3>
+                                <div class="d-flex align-items-baseline justify-content-center mb-3">
+                                    <span class="display-4 fw-bold text-gradient">
+                                        {{ plan.price }}
+                                    </span>
+                                    {% if plan.period %}
+                                    <span class="text-muted ms-2">
+                                        {% if lang == 'en' %}{{ plan.period }}
+                                        {% elif lang == 'hi' %}{{ plan.period_hi }}
+                                        {% elif lang == 'mr' %}{{ plan.period_mr }}
+                                        {% endif %}
+                                    </span>
+                                    {% endif %}
+                                </div>
+                                <p class="text-muted">
+                                    {% if lang == 'en' %}Perfect for {{ plan.name }}
+                                    {% elif lang == 'hi' %}{{ plan.name_hi }} के लिए आदर्श
+                                    {% elif lang == 'mr' %}{{ plan.name_mr }} साठी परिपूर्ण
+                                    {% endif %}
+                                </p>
+                            </div>
+                            
+                            <div class="features-list mb-4">
+                                <h6 class="fw-bold mb-3">
+                                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                    {% if lang == 'en' %}What's Included
+                                    {% elif lang == 'hi' %}क्या शामिल है
+                                    {% elif lang == 'mr' %}काय समाविष्ट आहे
+                                    {% endif %}
+                                </h6>
+                                <ul class="list-unstyled">
+                                    {% if lang == 'en' %}
+                                        {% for feature in plan.features %}
+                                        <li class="mb-2"><i class="bi bi-check text-success me-2"></i>{{ feature }}</li>
+                                        {% endfor %}
+                                    {% elif lang == 'hi' %}
+                                        {% for feature in plan.features_hi %}
+                                        <li class="mb-2"><i class="bi bi-check text-success me-2"></i>{{ feature }}</li>
+                                        {% endfor %}
+                                    {% elif lang == 'mr' %}
+                                        {% for feature in plan.features_mr %}
+                                        <li class="mb-2"><i class="bi bi-check text-success me-2"></i>{{ feature }}</li>
+                                        {% endfor %}
+                                    {% endif %}
+                                </ul>
+                            </div>
+                            
+                            <div class="text-center mt-auto">
+                                <a href="{% if plan.name == 'Free' %}{% url 'register' %}{% else %}#{% endif %}{% if lang != 'en' %}?lang={{ lang }}{% endif %}"
+                                   class="btn btn-{{ plan.color }} btn-lg w-100 fw-bold">
+                                    {% if lang == 'en' %}{{ plan.button_text }}
+                                    {% elif lang == 'hi' %}{{ plan.button_text_hi }}
+                                    {% elif lang == 'mr' %}{{ plan.button_text_mr }}
+                                    {% endif %}
+                                </a>
+                                {% if plan.name == 'Pro Farmer' %}
+                                <p class="text-muted small mt-2">
+                                    {% if lang == 'en' %}14-day free trial
+                                    {% elif lang == 'hi' %}14-दिन की मुफ्त ट्रायल
+                                    {% elif lang == 'mr' %}14-दिवस मोफत चाचणी
+                                    {% endif %}
+                                </p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- Feature Comparison -->
+            <div class="card shadow-lg border-0 mb-5" style="border-radius: 20px;">
+                <div class="card-header bg-transparent border-0 pt-4">
+                    <h3 class="fw-bold text-gradient text-center mb-4">
+                        <i class="bi bi-bar-chart me-2"></i>
+                        {% if lang == 'en' %}Feature Comparison
+                        {% elif lang == 'hi' %}विशेषता तुलना
+                        {% elif lang == 'mr' %}वैशिष्ट्य तुलना
+                        {% endif %}
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead class="bg-light">
+                                <tr>
+                                    <th class="fw-bold">
+                                        {% if lang == 'en' %}Features
+                                        {% elif lang == 'hi' %}विशेषताएं
+                                        {% elif lang == 'mr' %}वैशिष्ट्ये
+                                        {% endif %}
+                                    </th>
+                                    <th class="text-center">Free</th>
+                                    <th class="text-center text-success">Pro Farmer</th>
+                                    <th class="text-center text-primary">Enterprise</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for feature in features_comparison %}
+                                <tr>
+                                    <td class="fw-semibold">
+                                        {% if lang == 'en' %}{{ feature.feature }}
+                                        {% elif lang == 'hi' %}{{ feature.feature_hi }}
+                                        {% elif lang == 'mr' %}{{ feature.feature_mr }}
+                                        {% endif %}
+                                    </td>
+                                    <td class="text-center">{{ feature.free }}</td>
+                                    <td class="text-center text-success">{{ feature.pro }}</td>
+                                    <td class="text-center text-primary">{{ feature.enterprise }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="card shadow-lg border-0" style="border-radius: 20px;">
+                <div class="card-header bg-transparent border-0 pt-4">
+                    <h3 class="fw-bold text-gradient text-center mb-4">
+                        <i class="bi bi-question-circle me-2"></i>
+                        {% if lang == 'en' %}Frequently Asked Questions
+                        {% elif lang == 'hi' %}अक्सर पूछे जाने वाले प्रश्न
+                        {% elif lang == 'mr' %}नेहमी विचारले जाणारे प्रश्न
+                        {% endif %}
+                    </h3>
+                </div>
+                <div class="card-body p-4">
+                    <div class="accordion" id="faqAccordion">
+                        {% for faq in faqs %}
+                        <div class="accordion-item border-0 mb-3">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button {% if not forloop.first %}collapsed{% endif %}" 
+                                        type="button" data-bs-toggle="collapse" 
+                                        data-bs-target="#faq{{ forloop.counter }}">
+                                    <i class="bi bi-question-circle me-2 text-primary"></i>
+                                    {% if lang == 'en' %}{{ faq.question }}
+                                    {% elif lang == 'hi' %}{{ faq.question_hi }}
+                                    {% elif lang == 'mr' %}{{ faq.question_mr }}
+                                    {% endif %}
+                                </button>
+                            </h2>
+                            <div id="faq{{ forloop.counter }}" 
+                                 class="accordion-collapse collapse {% if forloop.first %}show{% endif %}" 
+                                 data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    {{ faq.answer }}
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    
+                    <!-- More Questions -->
+                    <div class="text-center mt-4 pt-3 border-top">
+                        <p class="text-muted mb-3">
+                            {% if lang == 'en' %}Still have questions?
+                            {% elif lang == 'hi' %}अभी भी प्रश्न हैं?
+                            {% elif lang == 'mr' %}अजूनही प्रश्न आहेत का?
+                            {% endif %}
+                        </p>
+                        <a href="{% url 'help_center' %}{% if lang != 'en' %}?lang={{ lang }}{% endif %}" 
+                           class="btn btn-outline-success me-2">
+                            <i class="bi bi-question-circle me-1"></i>
+                            {% if lang == 'en' %}Help Center
+                            {% elif lang == 'hi' %}सहायता केंद्र
+                            {% elif lang == 'mr' %}मदत केंद्र
+                            {% endif %}
+                        </a>
+                        <a href="mailto:sales@cropai.com" class="btn btn-success">
+                            <i class="bi bi-envelope me-1"></i>
+                            {% if lang == 'en' %}Contact Sales
+                            {% elif lang == 'hi' %}सेल्स से संपर्क करें
+                            {% elif lang == 'mr' %}विक्रीशी संपर्क साधा
+                            {% endif %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+<!-- CTA Section -->
+<div class="text-center mt-5 pt-5">
+    <div class="glass-container p-5 mb-4">
+        <h2 class="fw-bold text-gradient mb-3">
+            {% if lang == 'en' %}Ready to Transform Your Farming?
+            {% elif lang == 'hi' %}अपनी कृषि को बदलने के लिए तैयार हैं?
+            {% elif lang == 'mr' %}तुमची शेती बदलण्यासाठी तयार आहात?
+            {% endif %}
+        </h2>
+        <p class="lead text-muted mb-4">
+            {% if lang == 'en' %}Join 10,000+ farmers already using CropAI
+            {% elif lang == 'hi' %}10,000+ किसान पहले से ही क्रॉपएआई का उपयोग कर रहे हैं
+            {% elif lang == 'mr' %}10,000+ शेतकरी आधीपासून क्रॉपएआई वापरत आहेत
+            {% endif %}
+        </p>
+                    <div class="d-flex flex-column flex-md-row justify-content-center gap-3">
+                        <a href="{% url 'register' %}{% if lang != 'en' %}?lang={{ lang }}{% endif %}" 
+                           class="btn btn-gradient btn-lg px-5">
+                            <i class="bi bi-rocket-takeoff me-2"></i>
+                            {% if lang == 'en' %}Start Free Trial
+                            {% elif lang == 'hi' %}मुफ्त ट्रायल शुरू करें
+                            {% elif lang == 'mr' %}मोफत चाचणी सुरू करा
+                            {% endif %}
+                        </a>
+                        <a href="{% url 'solutions' %}{% if lang != 'en' %}?lang={{ lang }}{% endif %}" 
+                           class="btn btn-outline-success btn-lg px-5">
+                            <i class="bi bi-play-circle me-2"></i>
+                            {% if lang == 'en' %}View Demo
+                            {% elif lang == 'hi' %}डेमो देखें
+                            {% elif lang == 'mr' %}डेमो पहा
+                            {% endif %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .popular-plan {
+        transform: scale(1.05);
+        box-shadow: 0 20px 60px rgba(46, 204, 113, 0.2) !important;
+    }
+    
+    .features-list li {
+        padding: 8px 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    
+    .features-list li:last-child {
+        border-bottom: none;
+    }
+    
+    .accordion-button:not(.collapsed) {
+        background-color: rgba(46, 204, 113, 0.1);
+        color: var(--primary-dark);
+    }
+    
+    .accordion-button:focus {
+        box-shadow: 0 0 0 0.25rem rgba(46, 204, 113, 0.25);
+        border-color: var(--primary-green);
+    }
+    
+    @media (max-width: 768px) {
+        .popular-plan {
+            transform: scale(1);
+        }
+        
+        .display-4 {
+            font-size: 2.5rem;
+        }
+    }
+</style>
+{% endblock %}

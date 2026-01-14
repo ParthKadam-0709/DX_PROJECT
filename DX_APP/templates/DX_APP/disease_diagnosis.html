@@ -1,0 +1,500 @@
+<!-- DX_APP/templates/DX_APP/disease_diagnosis.html -->
+{% extends 'DX_APP/base.html' %}
+
+{% block hero %}
+<section class="hero-section d-flex align-items-center justify-content-center text-center py-5 mb-4 premium-bg">
+    <div class="container position-relative">
+        <h1 class="display-4 fw-bold text-gradient mb-3 animate__animated animate__fadeInDown">
+            <i class="bi bi-heart-pulse me-3"></i>
+            {% if lang == 'en' %}AI Disease Diagnosis
+            {% elif lang == 'hi' %}एआई रोग निदान
+            {% elif lang == 'mr' %}एआई रोग निदान
+            {% endif %}
+        </h1>
+        <p class="lead text-dark-50 mb-4 fs-5 animate__animated animate__fadeInUp animate__delay-1s">
+            {% if lang == 'en' %}Identify plant diseases instantly with AI-powered diagnosis and get treatment recommendations
+            {% elif lang == 'hi' %}एआई-संचालित निदान के साथ पौधों के रोगों की तुरंत पहचान करें और उपचार सिफारिशें प्राप्त करें
+            {% elif lang == 'mr' %}एआई-चालित निदानासह तत्काळ वनस्पती रोग ओळखा आणि उपचार शिफारसी मिळवा
+            {% endif %}
+        </p>
+    </div>
+</section>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-xxl-10">
+            <!-- Quick Disease Reference -->
+            <div class="card shadow-lg border-0 mb-5" style="border-radius: 20px;">
+                <div class="card-header bg-transparent border-0 pt-4">
+                    <h4 class="fw-bold text-gradient mb-4">
+                        <i class="bi bi-clipboard-check me-2"></i>
+                        {% if lang == 'en' %}Common Plant Diseases
+                        {% elif lang == 'hi' %}सामान्य पौध रोग
+                        {% elif lang == 'mr' %}सामान्य वनस्पती रोग
+                        {% endif %}
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <div class="row g-4">
+                        {% for disease in common_diseases %}
+                        <div class="col-md-3 col-sm-6">
+                            <div class="card border-0 h-100" style="border-left: 4px solid var(--primary-{{ disease.color }});">
+                                <div class="card-body p-4">
+                                    <div class="d-flex align-items-start mb-3">
+                                        <span class="display-6 me-3">{{ disease.icon }}</span>
+                                        <div>
+                                            <h6 class="fw-bold mb-1">{{ disease.name }}</h6>
+                                            <small class="text-muted">{{ disease.crop }}</small>
+                                        </div>
+                                    </div>
+                                    <p class="small text-muted mb-0">{{ disease.symptoms }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Diagnosis Form and Results -->
+            <div class="row g-4">
+                <!-- Left Column: Diagnosis Form -->
+                <div class="col-lg-6">
+                    <div class="card shadow-lg border-0 h-100" style="border-radius: 20px;">
+                        <div class="card-header bg-transparent border-0 pt-4">
+                            <h4 class="fw-bold text-gradient mb-4">
+                                <i class="bi bi-clipboard-data me-2"></i>
+                                {% if lang == 'en' %}Diagnose Your Plant
+                                {% elif lang == 'hi' %}अपने पौधे का निदान करें
+                                {% elif lang == 'mr' %}तुमच्या वनस्पतीचे निदान करा
+                                {% endif %}
+                            </h4>
+                        </div>
+                        <div class="card-body p-4">
+                            <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+                                {% csrf_token %}
+                                
+                                <div class="row g-3">
+                                    <!-- Crop Type -->
+                                    <div class="col-md-6">
+                                        <div class="form-floating mb-3">
+                                            {{ form.crop_type }}
+                                            <label for="id_crop_type">
+                                                {% if lang == 'en' %}Crop Type *
+                                                {% elif lang == 'hi' %}फसल प्रकार *
+                                                {% elif lang == 'mr' %}पीक प्रकार *
+                                                {% endif %}
+                                            </label>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Plant Part -->
+                                    <div class="col-md-6">
+                                        <div class="form-floating mb-3">
+                                            {{ form.plant_part }}
+                                            <label for="id_plant_part">
+                                                {% if lang == 'en' %}Affected Part *
+                                                {% elif lang == 'hi' %}प्रभावित भाग *
+                                                {% elif lang == 'mr' %}प्रभावित भाग *
+                                                {% endif %}
+                                            </label>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Severity -->
+                                    <div class="col-md-6">
+                                        <div class="form-floating mb-3">
+                                            {{ form.severity }}
+                                            <label for="id_severity">
+                                                {% if lang == 'en' %}Severity Level *
+                                                {% elif lang == 'hi' %}गंभीरता स्तर *
+                                                {% elif lang == 'mr' %}गंभीरता पातळी *
+                                                {% endif %}
+                                            </label>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Weather -->
+                                    <div class="col-md-6">
+                                        <div class="form-floating mb-3">
+                                            {{ form.weather_conditions }}
+                                            <label for="id_weather_conditions">
+                                                {% if lang == 'en' %}Weather Conditions
+                                                {% elif lang == 'hi' %}मौसम की स्थिति
+                                                {% elif lang == 'mr' %}हवामान परिस्थिती
+                                                {% endif %}
+                                            </label>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Symptoms -->
+                                    <div class="col-12">
+                                        <div class="form-floating mb-3">
+                                            {{ form.symptoms }}
+                                            <label for="id_symptoms">
+                                                {% if lang == 'en' %}Describe Symptoms *
+                                                {% elif lang == 'hi' %}लक्षण वर्णन करें *
+                                                {% elif lang == 'mr' %}लक्षणे वर्णन करा *
+                                                {% endif %}
+                                            </label>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Image Upload -->
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <label class="form-label fw-semibold">
+                                                <i class="bi bi-camera me-2"></i>
+                                                {% if lang == 'en' %}Upload Leaf/Plant Image (Optional)
+                                                {% elif lang == 'hi' %}पत्ता/पौधे की छवि अपलोड करें (वैकल्पिक)
+                                                {% elif lang == 'mr' %}पान/वनस्पती प्रतिमा अपलोड करा (पर्यायी)
+                                                {% endif %}
+                                            </label>
+                                            {{ form.leaf_image }}
+                                            <div class="form-text">
+                                                {% if lang == 'en' %}Upload a clear photo of the affected area for better accuracy
+                                                {% elif lang == 'hi' %}बेहतर सटीकता के लिए प्रभावित क्षेत्र की स्पष्ट तस्वीर अपलोड करें
+                                                {% elif lang == 'mr' %}चांगली अचूकतेसाठी प्रभावित क्षेत्राची स्पष्ट फोटो अपलोड करा
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Submit Button -->
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-gradient btn-lg w-100 fw-bold">
+                                            <i class="bi bi-search me-2"></i>
+                                            {% if lang == 'en' %}Diagnose Disease
+                                            {% elif lang == 'hi' %}रोग निदान करें
+                                            {% elif lang == 'mr' %}रोग निदान करा
+                                            {% endif %}
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Column: Results -->
+                <div class="col-lg-6">
+                    {% if diagnosis_result %}
+                    <!-- Diagnosis Result -->
+                    <div class="card shadow-lg border-0 mb-4" style="border-radius: 20px; border-left: 5px solid var(--primary-{% if diagnosis_result.confidence > 80 %}success{% elif diagnosis_result.confidence > 60 %}warning{% else %}danger{% endif %});">
+                        <div class="card-header bg-transparent border-0 pt-4">
+                            <h4 class="fw-bold text-gradient mb-4">
+                                <i class="bi bi-clipboard-check me-2"></i>
+                                {% if lang == 'en' %}Diagnosis Results
+                                {% elif lang == 'hi' %}निदान परिणाम
+                                {% elif lang == 'mr' %}निदान निकाल
+                                {% endif %}
+                            </h4>
+                        </div>
+                        <div class="card-body p-4">
+                            <!-- Disease Name & Confidence -->
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <div>
+                                    <h3 class="fw-bold mb-1">{{ diagnosis_result.disease }}</h3>
+                                    <small class="text-muted">
+                                        {% if lang == 'en' %}Identified Disease
+                                        {% elif lang == 'hi' %}पहचाना गया रोग
+                                        {% elif lang == 'mr' %}ओळखलेला रोग
+                                        {% endif %}
+                                    </small>
+                                </div>
+                                <div class="text-end">
+                                    <div class="display-6 fw-bold text-gradient">{{ diagnosis_result.confidence }}%</div>
+                                    <small class="text-muted">
+                                        {% if lang == 'en' %}Confidence Score
+                                        {% elif lang == 'hi' %}विश्वास स्कोर
+                                        {% elif lang == 'mr' %}विश्वास गुण
+                                        {% endif %}
+                                    </small>
+                                </div>
+                            </div>
+                            
+                            <!-- Description -->
+                            <div class="mb-4">
+                                <h6 class="fw-bold mb-2">
+                                    <i class="bi bi-info-circle me-2"></i>
+                                    {% if lang == 'en' %}Description
+                                    {% elif lang == 'hi' %}विवरण
+                                    {% elif lang == 'mr' %}वर्णन
+                                    {% endif %}
+                                </h6>
+                                <p class="text-muted">{{ diagnosis_result.description }}</p>
+                            </div>
+                            
+                            <!-- Causes -->
+                            <div class="mb-4">
+                                <h6 class="fw-bold mb-2">
+                                    <i class="bi bi-exclamation-triangle me-2 text-warning"></i>
+                                    {% if lang == 'en' %}Causes
+                                    {% elif lang == 'hi' %}कारण
+                                    {% elif lang == 'mr' %}कारणे
+                                    {% endif %}
+                                </h6>
+                                <p class="text-muted">{{ diagnosis_result.causes }}</p>
+                            </div>
+                            
+                            <!-- Treatment -->
+                            <div class="mb-4">
+                                <h6 class="fw-bold mb-2">
+                                    <i class="bi bi-prescription me-2 text-success"></i>
+                                    {% if lang == 'en' %}Recommended Treatment
+                                    {% elif lang == 'hi' %}सिफारिश उपचार
+                                    {% elif lang == 'mr' %}शिफारस केलेला उपचार
+                                    {% endif %}
+                                </h6>
+                                <p class="text-muted">{{ diagnosis_result.treatment }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Treatment Plan -->
+                    <div class="card shadow-lg border-0" style="border-radius: 20px;">
+                        <div class="card-header bg-transparent border-0 pt-4">
+                            <h4 class="fw-bold text-gradient mb-4">
+                                <i class="bi bi-calendar-check me-2"></i>
+                                {% if lang == 'en' %}Treatment Plan
+                                {% elif lang == 'hi' %}उपचार योजना
+                                {% elif lang == 'mr' %}उपचार योजना
+                                {% endif %}
+                            </h4>
+                        </div>
+                        <div class="card-body p-4">
+                            <!-- Immediate Actions -->
+                            <div class="mb-4">
+                                <h6 class="fw-bold text-danger mb-3">
+                                    <i class="bi bi-lightning-charge me-2"></i>
+                                    {% if lang == 'en' %}Immediate Actions (24 hours)
+                                    {% elif lang == 'hi' %}तत्काल कार्रवाई (24 घंटे)
+                                    {% elif lang == 'mr' %}तत्काळ कारवाई (24 तास)
+                                    {% endif %}
+                                </h6>
+                                <ul class="list-unstyled">
+                                    {% for action in treatment_plan.immediate %}
+                                    <li class="mb-2">
+                                        <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                        {{ action }}
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            
+                            <!-- Short Term -->
+                            <div class="mb-4">
+                                <h6 class="fw-bold text-warning mb-3">
+                                    <i class="bi bi-clock me-2"></i>
+                                    {% if lang == 'en' %}Short-term Care (1 week)
+                                    {% elif lang == 'hi' %}अल्पकालिक देखभाल (1 सप्ताह)
+                                    {% elif lang == 'mr' %}अल्पकालीन काळजी (1 आठवडा)
+                                    {% endif %}
+                                </h6>
+                                <ul class="list-unstyled">
+                                    {% for action in treatment_plan.short_term %}
+                                    <li class="mb-2">
+                                        <i class="bi bi-check-circle-fill text-info me-2"></i>
+                                        {{ action }}
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            
+                            <!-- Long Term -->
+                            <div>
+                                <h6 class="fw-bold text-success mb-3">
+                                    <i class="bi bi-calendar-range me-2"></i>
+                                    {% if lang == 'en' %}Long-term Prevention
+                                    {% elif lang == 'hi' %}दीर्घकालिक रोकथाम
+                                    {% elif lang == 'mr' %}दीर्घकालीन प्रतिबंध
+                                    {% endif %}
+                                </h6>
+                                <ul class="list-unstyled">
+                                    {% for action in treatment_plan.long_term %}
+                                    <li class="mb-2">
+                                        <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                        {{ action }}
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            
+                            <!-- Action Buttons -->
+                            <div class="d-flex gap-2 mt-4 pt-3 border-top">
+                                <button class="btn btn-outline-success flex-fill">
+                                    <i class="bi bi-printer me-2"></i>
+                                    {% if lang == 'en' %}Print Plan
+                                    {% elif lang == 'hi' %}योजना प्रिंट करें
+                                    {% elif lang == 'mr' %}योजना प्रिंट करा
+                                    {% endif %}
+                                </button>
+                                <button class="btn btn-success flex-fill">
+                                    <i class="bi bi-share me-2"></i>
+                                    {% if lang == 'en' %}Share with Expert
+                                    {% elif lang == 'hi' %}विशेषज्ञ के साथ साझा करें
+                                    {% elif lang == 'mr' %}तज्ञांसोबत शेअर करा
+                                    {% endif %}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    {% else %}
+                    <!-- Empty State -->
+                    <div class="card shadow-lg border-0 h-100" style="border-radius: 20px;">
+                        <div class="card-body d-flex flex-column align-items-center justify-content-center p-5 text-center">
+                            <i class="bi bi-clipboard-data display-1 text-muted mb-4"></i>
+                            <h4 class="fw-bold text-muted mb-3">
+                                {% if lang == 'en' %}No Diagnosis Yet
+                                {% elif lang == 'hi' %}अभी तक कोई निदान नहीं
+                                {% elif lang == 'mr' %}अद्याप कोणतेही निदान नाही
+                                {% endif %}
+                            </h4>
+                            <p class="text-muted mb-4">
+                                {% if lang == 'en' %}Fill out the diagnosis form to get AI-powered disease identification and treatment recommendations.
+                                {% elif lang == 'hi' %}एआई-संचालित रोग पहचान और उपचार सिफारिशें प्राप्त करने के लिए निदान फॉर्म भरें।
+                                {% elif lang == 'mr' %}एआई-चालित रोग ओळख आणि उपचार शिफारसी मिळविण्यासाठी निदान फॉर्म भरा.
+                                {% endif %}
+                            </p>
+                            <div class="alert alert-info bg-gradient-info border-0 text-white">
+                                <i class="bi bi-lightbulb me-2"></i>
+                                {% if lang == 'en' %}For best results, provide detailed symptoms and clear photos.
+                                {% elif lang == 'hi' %}सर्वोत्तम परिणामों के लिए, विस्तृत लक्षण और स्पष्ट तस्वीरें प्रदान करें।
+                                {% elif lang == 'mr' %}उत्तम निकालांसाठी, तपशीलवार लक्षणे आणि स्पष्ट फोटो द्या.
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <!-- Tips Section -->
+            <div class="card shadow-lg border-0 mt-5" style="border-radius: 20px;">
+                <div class="card-header bg-transparent border-0 pt-4">
+                    <h4 class="fw-bold text-gradient mb-4">
+                        <i class="bi bi-lightbulb me-2"></i>
+                        {% if lang == 'en' %}Disease Prevention Tips
+                        {% elif lang == 'hi' %}रोग रोकथाम युक्तियाँ
+                        {% elif lang == 'mr' %}रोग प्रतिबंध टिप्स
+                        {% endif %}
+                    </h4>
+                </div>
+                <div class="card-body p-4">
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="d-flex">
+                                <div class="flex-shrink-0">
+                                    <i class="bi bi-droplet text-primary fs-4"></i>
+                                </div>
+                                <div class="flex-grow-1 ms-3">
+                                    <h6 class="fw-bold mb-2">
+                                        {% if lang == 'en' %}Water Management
+                                        {% elif lang == 'hi' %}जल प्रबंधन
+                                        {% elif lang == 'mr' %}पाणी व्यवस्थापन
+                                        {% endif %}
+                                    </h6>
+                                    <p class="small text-muted mb-0">
+                                        {% if lang == 'en' %}Water plants in morning, avoid overhead watering
+                                        {% elif lang == 'hi' %}सुबह पौधों को पानी दें, ऊपर से पानी देने से बचें
+                                        {% elif lang == 'mr' %}सकाळी वनस्पतींना पाणी द्या, वरून पाणी देणे टाळा
+                                        {% endif %}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <div class="d-flex">
+                                <div class="flex-shrink-0">
+                                    <i class="bi bi-sun text-warning fs-4"></i>
+                                </div>
+                                <div class="flex-grow-1 ms-3">
+                                    <h6 class="fw-bold mb-2">
+                                        {% if lang == 'en' %}Proper Spacing
+                                        {% elif lang == 'hi' %}उचित दूरी
+                                        {% elif lang == 'mr' %}योग्य अंतर
+                                        {% endif %}
+                                    </h6>
+                                    <p class="small text-muted mb-0">
+                                        {% if lang == 'en' %}Ensure adequate spacing for air circulation
+                                        {% elif lang == 'hi' %}हवा के संचार के लिए पर्याप्त दूरी सुनिश्चित करें
+                                        {% elif lang == 'mr' %}हवा संचारासाठी पुरेसे अंतर सुनिश्चित करा
+                                        {% endif %}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <div class="d-flex">
+                                <div class="flex-shrink-0">
+                                    <i class="bi bi-shield-check text-success fs-4"></i>
+                                </div>
+                                <div class="flex-grow-1 ms-3">
+                                    <h6 class="fw-bold mb-2">
+                                        {% if lang == 'en' %}Regular Monitoring
+                                        {% elif lang == 'hi' %}नियमित निगरानी
+                                        {% elif lang == 'mr' %}नियमित देखरेख
+                                        {% endif %}
+                                    </h6>
+                                    <p class="small text-muted mb-0">
+                                        {% if lang == 'en' %}Check plants weekly for early signs
+                                        {% elif lang == 'hi' %}शुरुआती संकेतों के लिए साप्ताहिक पौधों की जांच करें
+                                        {% elif lang == 'mr' %}लवकर लक्षणांसाठी आठवड्यातून एकदा वनस्पती तपासा
+                                        {% endif %}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .form-control:focus, .form-select:focus {
+        border-color: var(--primary-green);
+        box-shadow: 0 0 0 0.25rem rgba(46, 204, 113, 0.25);
+    }
+    
+    /* Image upload styling */
+    input[type="file"] {
+        padding: 10px;
+        border: 2px dashed #dee2e6;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+    }
+    
+    input[type="file"]:hover {
+        border-color: var(--primary-green);
+        background-color: rgba(46, 204, 113, 0.05);
+    }
+    
+    /* Confidence badge */
+    .confidence-badge {
+        display: inline-block;
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-weight: bold;
+        font-size: 0.9rem;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .display-6 {
+            font-size: 2rem;
+        }
+        
+        .card-body {
+            padding: 1.5rem !important;
+        }
+    }
+</style>
+{% endblock %}

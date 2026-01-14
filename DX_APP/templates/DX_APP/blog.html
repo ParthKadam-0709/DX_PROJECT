@@ -1,0 +1,132 @@
+{% extends 'DX_APP/base.html' %}
+
+{% block hero %}
+<section class="hero-section d-flex align-items-center justify-content-center text-center py-5 mb-4 premium-bg" style="min-height: 40vh;">
+    <div class="container">
+        <h1 class="display-4 fw-bold text-gradient mb-3">
+            <i class="bi bi-newspaper me-3"></i>
+            {% if lang == 'en' %}Blog
+            {% elif lang == 'hi' %}ब्लॉग
+            {% elif lang == 'mr' %}ब्लॉग
+            {% endif %}
+        </h1>
+        <p class="lead text-dark-50 mb-4 fs-5">
+            {% if lang == 'en' %}Latest insights, updates, and stories from the world of AI farming
+            {% elif lang == 'hi' %}AI कृषि की दुनिया से नवीनतम अंतर्दृष्टि, अपडेट और कहानियाँ
+            {% elif lang == 'mr' %}AI शेतीच्या जगातील नवीनतम अंतर्दृष्टी, अपडेट्स आणि कथा
+            {% endif %}
+        </p>
+    </div>
+</section>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <!-- Blog Posts -->
+        <div class="col-lg-8">
+            <div class="row g-4">
+                <!-- Blog Post 1 -->
+                <div class="col-md-6">
+                    <div class="card shadow-sm border-0 glass-card h-100 hover-lift">
+                        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             class="card-img-top" alt="AI Farming">
+                        <div class="card-body">
+                            <span class="badge bg-success mb-2">AI</span>
+                            <h5 class="fw-bold mb-3">
+                                {% if lang == 'en' %}How AI is Transforming Indian Agriculture
+                                {% elif lang == 'hi' %}AI कैसे भारतीय कृषि को बदल रहा है
+                                {% elif lang == 'mr' %}AI कसे भारतीय कृषीचे रूपांतर करत आहे
+                                {% endif %}
+                            </h5>
+                            <p class="text-muted small mb-3">
+                                {% if lang == 'en' %}Discover how artificial intelligence is helping farmers increase yields and reduce costs.
+                                {% elif lang == 'hi' %}जानें कि कैसे कृत्रिम बुद्धिमत्ता किसानों को उपज बढ़ाने और लागत कम करने में मदद कर रही है।
+                                {% elif lang == 'mr' %}कृत्रिम बुद्धिमत्ता कशी शेतकऱ्यांना उत्पादन वाढवण्यात आणि खर्च कमी करण्यात मदत करते आहे ते शोधा.
+                                {% endif %}
+                            </p>
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-calendar me-2 text-muted"></i>
+                                <small class="text-muted">Jan 12, 2026</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Blog Post 2 -->
+                <div class="col-md-6">
+                    <div class="card shadow-sm border-0 glass-card h-100 hover-lift">
+                        <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             class="card-img-top" alt="Soil Health">
+                        <div class="card-body">
+                            <span class="badge bg-warning mb-2">Soil Science</span>
+                            <h5 class="fw-bold mb-3">
+                                {% if lang == 'en' %}Understanding Soil Health with AI Analysis
+                                {% elif lang == 'hi' %}AI विश्लेषण के साथ मिट्टी के स्वास्थ्य को समझना
+                                {% elif lang == 'mr' %}AI विश्लेषणासह मातीचे आरोग्य समजून घेणे
+                                {% endif %}
+                            </h5>
+                            <p class="text-muted small mb-3">
+                                {% if lang == 'en' %}Learn how our AI analyzes soil samples to provide actionable insights.
+                                {% elif lang == 'hi' %}जानें कि कैसे हमारा AI क्रियाशील अंतर्दृष्टि प्रदान करने के लिए मिट्टी के नमूनों का विश्लेषण करता है।
+                                {% elif lang == 'mr' %}आमचा AI क्रियाशील अंतर्दृष्टी प्रदान करण्यासाठी मातीच्या नमुन्यांचे विश्लेषण कसे करतो ते शिका.
+                                {% endif %}
+                            </p>
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-calendar me-2 text-muted"></i>
+                                <small class="text-muted">Jan 10, 2026</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="col-lg-4">
+            <div class="card shadow-sm border-0 glass-card mb-4">
+                <div class="card-body">
+                    <h6 class="fw-bold text-gradient mb-3">
+                        <i class="bi bi-tags me-2"></i>
+                        {% if lang == 'en' %}Categories
+                        {% elif lang == 'hi' %}श्रेणियाँ
+                        {% elif lang == 'mr' %}वर्ग
+                        {% endif %}
+                    </h6>
+                    <div class="d-flex flex-wrap gap-2">
+                        <span class="badge bg-success">AI Technology</span>
+                        <span class="badge bg-primary">Market Trends</span>
+                        <span class="badge bg-warning">Soil Health</span>
+                        <span class="badge bg-info">Crop Management</span>
+                        <span class="badge bg-purple">Success Stories</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card shadow-sm border-0 glass-card">
+                <div class="card-body">
+                    <h6 class="fw-bold text-gradient mb-3">
+                        <i class="bi bi-bell me-2"></i>
+                        {% if lang == 'en' %}Subscribe
+                        {% elif lang == 'hi' %}सदस्यता लें
+                        {% elif lang == 'mr' %}सदस्यता घ्या
+                        {% endif %}
+                    </h6>
+                    <p class="small text-muted mb-3">
+                        {% if lang == 'en' %}Get latest blog posts delivered to your inbox
+                        {% elif lang == 'hi' %}अपने इनबॉक्स में नवीनतम ब्लॉग पोस्ट प्राप्त करें
+                        {% elif lang == 'mr' %}तुमच्या इनबॉक्समध्ये नवीनतम ब्लॉग पोस्ट मिळवा
+                        {% endif %}
+                    </p>
+                    <div class="input-group">
+                        <input type="email" class="form-control" placeholder="Email">
+                        <button class="btn btn-success" type="button">
+                            <i class="bi bi-envelope"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

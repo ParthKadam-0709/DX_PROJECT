@@ -1,0 +1,401 @@
+<!-- DX_APP/templates/DX_APP/register.html -->
+{% extends 'DX_APP/base.html' %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-lg border-0" style="border-radius: 20px;">
+                <div class="card-header bg-gradient text-white text-center py-4" style="border-radius: 20px 20px 0 0;">
+                    <h2 class="fw-bold mb-2">
+                        <i class="bi bi-person-plus me-2"></i>
+                        {% if lang == 'en' %}Create Account
+                        {% elif lang == 'hi' %}खाता बनाएं
+                        {% elif lang == 'mr' %}खाते तयार करा
+                        {% endif %}
+                    </h2>
+                    <p class="mb-0">
+                        {% if lang == 'en' %}Join CropAI for smart farming solutions
+                        {% elif lang == 'hi' %}स्मार्ट फार्मिंग समाधानों के लिए क्रॉपएआई में शामिल हों
+                        {% elif lang == 'mr' %}स्मार्ट शेती उपायांसाठी क्रॉपएआई मध्ये सामील व्हा
+                        {% endif %}
+                    </p>
+                </div>
+                
+                <div class="card-body p-4 p-lg-5">
+                    {% if messages %}
+                    <div class="messages mb-4">
+                        {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    
+                    <form method="post" class="needs-validation" novalidate>
+                        {% csrf_token %}
+                        
+                        <div class="row g-3">
+                            <!-- Personal Information -->
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    {{ form.first_name }}
+                                    <label for="id_first_name">
+                                        {% if lang == 'en' %}First Name *
+                                        {% elif lang == 'hi' %}पहला नाम *
+                                        {% elif lang == 'mr' %}पहिले नाव *
+                                        {% endif %}
+                                    </label>
+                                    {% if form.first_name.errors %}
+                                    <div class="invalid-feedback d-block">
+                                        {{ form.first_name.errors|striptags }}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    {{ form.last_name }}
+                                    <label for="id_last_name">
+                                        {% if lang == 'en' %}Last Name *
+                                        {% elif lang == 'hi' %}अंतिम नाम *
+                                        {% elif lang == 'mr' %}आडनाव *
+                                        {% endif %}
+                                    </label>
+                                    {% if form.last_name.errors %}
+                                    <div class="invalid-feedback d-block">
+                                        {{ form.last_name.errors|striptags }}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    {{ form.email }}
+                                    <label for="id_email">
+                                        {% if lang == 'en' %}Email Address *
+                                        {% elif lang == 'hi' %}ईमेल पता *
+                                        {% elif lang == 'mr' %}ईमेल पत्ता *
+                                        {% endif %}
+                                    </label>
+                                    {% if form.email.errors %}
+                                    <div class="invalid-feedback d-block">
+                                        {{ form.email.errors|striptags }}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    {{ form.phone }}
+                                    <label for="id_phone">
+                                        {% if lang == 'en' %}Phone Number *
+                                        {% elif lang == 'hi' %}फोन नंबर *
+                                        {% elif lang == 'mr' %}फोन नंबर *
+                                        {% endif %}
+                                    </label>
+                                    {% if form.phone.errors %}
+                                    <div class="invalid-feedback d-block">
+                                        {{ form.phone.errors|striptags }}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            
+                            <!-- Username -->
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    {{ form.username }}
+                                    <label for="id_username">
+                                        {% if lang == 'en' %}Username *
+                                        {% elif lang == 'hi' %}उपयोगकर्ता नाम *
+                                        {% elif lang == 'mr' %}वापरकर्तानाव *
+                                        {% endif %}
+                                    </label>
+                                    <small class="text-muted">
+                                        {% if lang == 'en' %}Choose a unique username
+                                        {% elif lang == 'hi' %}एक अद्वितीय उपयोगकर्ता नाम चुनें
+                                        {% elif lang == 'mr' %}एक अद्वितीय वापरकर्तानाव निवडा
+                                        {% endif %}
+                                    </small>
+                                    {% if form.username.errors %}
+                                    <div class="invalid-feedback d-block">
+                                        {{ form.username.errors|striptags }}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            
+                            <!-- User Type -->
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    {{ form.user_type }}
+                                    <label for="id_user_type">
+                                        {% if lang == 'en' %}I am a *
+                                        {% elif lang == 'hi' %}मैं हूं *
+                                        {% elif lang == 'mr' %}मी आहे *
+                                        {% endif %}
+                                    </label>
+                                    {% if form.user_type.errors %}
+                                    <div class="invalid-feedback d-block">
+                                        {{ form.user_type.errors|striptags }}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            
+                            <!-- Location -->
+                            <div class="col-12">
+                                <div class="form-floating mb-3">
+                                    {{ form.location }}
+                                    <label for="id_location">
+                                        {% if lang == 'en' %}Location/City *
+                                        {% elif lang == 'hi' %}स्थान/शहर *
+                                        {% elif lang == 'mr' %}स्थान/शहर *
+                                        {% endif %}
+                                    </label>
+                                    {% if form.location.errors %}
+                                    <div class="invalid-feedback d-block">
+                                        {{ form.location.errors|striptags }}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            
+                            <!-- Passwords -->
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    {{ form.password1 }}
+                                    <label for="id_password1">
+                                        {% if lang == 'en' %}Password *
+                                        {% elif lang == 'hi' %}पासवर्ड *
+                                        {% elif lang == 'mr' %}पासवर्ड *
+                                        {% endif %}
+                                    </label>
+                                    <small class="text-muted">
+                                        {% if lang == 'en' %}At least 8 characters
+                                        {% elif lang == 'hi' %}कम से कम 8 अक्षर
+                                        {% elif lang == 'mr' %}किमान 8 अक्षरे
+                                        {% endif %}
+                                    </small>
+                                    {% if form.password1.errors %}
+                                    <div class="invalid-feedback d-block">
+                                        {{ form.password1.errors|striptags }}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    {{ form.password2 }}
+                                    <label for="id_password2">
+                                        {% if lang == 'en' %}Confirm Password *
+                                        {% elif lang == 'hi' %}पासवर्ड की पुष्टि करें *
+                                        {% elif lang == 'mr' %}पासवर्डची पुष्टी करा *
+                                        {% endif %}
+                                    </label>
+                                    {% if form.password2.errors %}
+                                    <div class="invalid-feedback d-block">
+                                        {{ form.password2.errors|striptags }}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            
+                            <!-- Terms -->
+                            <div class="col-12 mb-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="terms" required>
+                                    <label class="form-check-label" for="terms">
+                                        {% if lang == 'en' %}
+                                        I agree to the <a href="#" class="text-gradient">Terms of Service</a> and <a href="#" class="text-gradient">Privacy Policy</a>
+                                        {% elif lang == 'hi' %}
+                                        मैं <a href="#" class="text-gradient">सेवा की शर्तों</a> और <a href="#" class="text-gradient">गोपनीयता नीति</a> से सहमत हूं
+                                        {% elif lang == 'mr' %}
+                                        मी <a href="#" class="text-gradient">सेवा अटी</a> आणि <a href="#" class="text-gradient">गोपनीयता धोरण</a> शी सहमत आहे
+                                        {% endif %}
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <!-- Submit Button -->
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-gradient btn-lg w-100 fw-bold">
+                                    <i class="bi bi-person-plus me-2"></i>
+                                    {% if lang == 'en' %}Create Account
+                                    {% elif lang == 'hi' %}खाता बनाएं
+                                    {% elif lang == 'mr' %}खाते तयार करा
+                                    {% endif %}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    
+                    <!-- Login Link -->
+                    <div class="text-center mt-4 pt-4 border-top">
+                        <p class="text-muted mb-0">
+                            {% if lang == 'en' %}Already have an account?
+                            {% elif lang == 'hi' %}पहले से ही एक खाता है?
+                            {% elif lang == 'mr' %}आधीपासूनच खाते आहे?
+                            {% endif %}
+                            <a href="{% url 'login' %}{% if lang != 'en' %}?lang={{ lang }}{% endif %}" class="text-gradient fw-bold ms-2">
+                                {% if lang == 'en' %}Sign In
+                                {% elif lang == 'hi' %}साइन इन करें
+                                {% elif lang == 'mr' %}साइन इन करा
+                                {% endif %}
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Benefits Section -->
+            <div class="row mt-4">
+                <div class="col-md-4 mb-3">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body text-center p-4">
+                            <i class="bi bi-cpu text-gradient fs-1 mb-3"></i>
+                            <h6 class="fw-bold mb-3">
+                                {% if lang == 'en' %}AI-Powered Insights
+                                {% elif lang == 'hi' %}एआई-संचालित अंतर्दृष्टि
+                                {% elif lang == 'mr' %}एआई-चालित अंतर्दृष्टी
+                                {% endif %}
+                            </h6>
+                            <p class="text-muted small">
+                                {% if lang == 'en' %}Get smart crop recommendations
+                                {% elif lang == 'hi' %}स्मार्ट फसल सिफारिशें प्राप्त करें
+                                {% elif lang == 'mr' %}स्मार्ट पीक शिफारसी मिळवा
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-3">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body text-center p-4">
+                            <i class="bi bi-calendar-check text-gradient fs-1 mb-3"></i>
+                            <h6 class="fw-bold mb-3">
+                                {% if lang == 'en' %}Farm Planning
+                                {% elif lang == 'hi' %}फार्म योजना
+                                {% elif lang == 'mr' %}शेत नियोजन
+                                {% endif %}
+                            </h6>
+                            <p class="text-muted small">
+                                {% if lang == 'en' %}Weekly plans for optimal yield
+                                {% elif lang == 'hi' %}इष्टतम उपज के लिए साप्ताहिक योजना
+                                {% elif lang == 'mr' %}इष्टतम उत्पादनासाठी साप्ताहिक योजना
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-3">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body text-center p-4">
+                            <i class="bi bi-people text-gradient fs-1 mb-3"></i>
+                            <h6 class="fw-bold mb-3">
+                                {% if lang == 'en' %}Community
+                                {% elif lang == 'hi' %}समुदाय
+                                {% elif lang == 'mr' %}समुदाय
+                                {% endif %}
+                            </h6>
+                            <p class="text-muted small">
+                                {% if lang == 'en' %}Connect with farmers & experts
+                                {% elif lang == 'hi' %}किसानों और विशेषज्ञों से जुड़ें
+                                {% elif lang == 'mr' %}शेतकऱ्यांशी आणि तज्ञांशी जोडा
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Form validation
+        const form = document.querySelector('form');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                const termsCheckbox = document.getElementById('terms');
+                if (!termsCheckbox.checked) {
+                    e.preventDefault();
+                    alert('Please accept the terms and conditions');
+                    termsCheckbox.focus();
+                }
+            });
+        }
+        
+        // Password strength indicator (optional)
+        const password1 = document.getElementById('id_password1');
+        if (password1) {
+            password1.addEventListener('input', function() {
+                const password = this.value;
+                const strength = document.getElementById('password-strength');
+                
+                if (!strength) {
+                    // Create strength indicator
+                    const indicator = document.createElement('div');
+                    indicator.id = 'password-strength';
+                    indicator.className = 'mt-2';
+                    indicator.innerHTML = `
+                        <div class="progress" style="height: 5px;">
+                            <div class="progress-bar" role="progressbar" style="width: 0%"></div>
+                        </div>
+                        <small class="text-muted d-block mt-1"></small>
+                    `;
+                    this.parentNode.appendChild(indicator);
+                }
+                
+                const progressBar = document.querySelector('#password-strength .progress-bar');
+                const text = document.querySelector('#password-strength small');
+                
+                let strengthValue = 0;
+                let strengthText = '';
+                let color = '';
+                
+                if (password.length >= 8) strengthValue += 25;
+                if (/[A-Z]/.test(password)) strengthValue += 25;
+                if (/[0-9]/.test(password)) strengthValue += 25;
+                if (/[^A-Za-z0-9]/.test(password)) strengthValue += 25;
+                
+                if (strengthValue < 25) {
+                    strengthText = 'Very Weak';
+                    color = 'bg-danger';
+                } else if (strengthValue < 50) {
+                    strengthText = 'Weak';
+                    color = 'bg-warning';
+                } else if (strengthValue < 75) {
+                    strengthText = 'Fair';
+                    color = 'bg-info';
+                } else {
+                    strengthText = 'Strong';
+                    color = 'bg-success';
+                }
+                
+                progressBar.style.width = strengthValue + '%';
+                progressBar.className = `progress-bar ${color}`;
+                text.textContent = strengthText;
+            });
+        }
+        
+        // Auto-focus first field
+        setTimeout(() => {
+            const firstField = document.querySelector('input[type="text"], input[type="email"]');
+            if (firstField) firstField.focus();
+        }, 100);
+    });
+</script>
+{% endblock %}

@@ -116,3 +116,32 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+# ========== AUTHENTICATION SETTINGS ==========
+
+# URL configurations
+LOGIN_URL = 'login'  # URL name for your login view
+LOGIN_REDIRECT_URL = 'crop_recommendation'  # Where to redirect after successful login
+LOGOUT_REDIRECT_URL = 'login'  # Where to redirect after logout
+
+# Session settings
+SESSION_COOKIE_AGE = 1209600  # 2 weeks in seconds
+SESSION_SAVE_EVERY_REQUEST = True  # Extend session on every request
+SESSION_COOKIE_SECURE = False  # Set to True in production with HTTPS
+SESSION_COOKIE_HTTPONLY = True  # Prevent JavaScript access to session cookie
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False  # Keep session after browser closes
+
+# Messages framework
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
+    messages.DEBUG: 'secondary',
+    messages.INFO: 'info',
+    messages.SUCCESS: 'success',
+    messages.WARNING: 'warning',
+    messages.ERROR: 'danger',
+}
+
+# Default primary key field type
+# https://docs.djangoproject.com/en/6.0/ref/settings/#default-auto-field
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

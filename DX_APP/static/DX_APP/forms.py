@@ -8,3 +8,4 @@ class CropForm(forms.Form):
     humidity = forms.FloatField(label='Humidity (%)')
     ph = forms.FloatField(label='pH')
     rainfall = forms.FloatField(label='Rainfall (mm)')
+    

@@ -1,0 +1,38 @@
+{% extends 'DX_APP/base.html' %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10 text-center">
+            <h1 class="mb-4">
+                {% if lang == 'en' %}About Us
+                {% elif lang == 'hi' %}हमारे बारे में
+                {% elif lang == 'mr' %}आमच्याबद्दल
+                {% endif %}
+            </h1>
+
+            <p class="lead text-muted">
+                {% if lang == 'en' %}
+                We are an AI-powered crop recommendation platform designed to help farmers make better decisions using data and machine learning.
+                {% elif lang == 'hi' %}
+                हम एक एआई आधारित फसल सिफारिश प्लेटफॉर्म हैं जो किसानों को बेहतर निर्णय लेने में मदद करता है।
+                {% elif lang == 'mr' %}
+                आम्ही एआय आधारित पीक शिफारस प्रणाली आहोत जी शेतकऱ्यांना योग्य निर्णय घेण्यास मदत करते.
+                {% endif %}
+            </p>
+
+            <hr class="my-4">
+
+            <p>
+                {% if lang == 'en' %}
+                Our system analyzes soil nutrients, weather conditions, and environmental factors to recommend the most suitable crop.
+                {% elif lang == 'hi' %}
+                हमारा सिस्टम मिट्टी के पोषक तत्व, मौसम और पर्यावरणीय कारकों का विश्लेषण करता है।
+                {% elif lang == 'mr' %}
+                आमची प्रणाली मातीतील पोषक घटक, हवामान आणि पर्यावरणीय घटकांचे विश्लेषण करते.
+                {% endif %}
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

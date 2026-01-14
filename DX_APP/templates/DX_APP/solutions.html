@@ -1,0 +1,178 @@
+{% extends 'DX_APP/base.html' %}
+
+{% block hero %}
+<section class="hero-section d-flex align-items-center justify-content-center text-center py-5 mb-4 premium-bg animated-bg" style="min-height: 40vh;">
+    <div class="container">
+        <h1 class="display-4 fw-bold text-gradient mb-3 animate__animated animate__fadeInDown">
+            <i class="bi bi-gear me-3"></i>
+            {% if lang == 'en' %}Our Solutions
+            {% elif lang == 'hi' %}हमारे समाधान
+            {% elif lang == 'mr' %}आमचे उपाय
+            {% endif %}
+        </h1>
+        <p class="lead text-dark-50 mb-4 fs-5 animate__animated animate__fadeInUp animate__delay-1s">
+            {% if lang == 'en' %}Comprehensive AI solutions for modern farming challenges
+            {% elif lang == 'hi' %}आधुनिक कृषि चुनौतियों के लिए व्यापक AI समाधान
+            {% elif lang == 'mr' %}आधुनिक शेतीच्या आव्हानांसाठी संपूर्ण AI उपाय
+            {% endif %}
+        </p>
+    </div>
+</section>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <!-- Solutions Grid -->
+            <div class="row g-4">
+                <!-- Solution 1 -->
+                <div class="col-md-6">
+                    <div class="card shadow-lg border-0 premium-card glass-card h-100 hover-lift">
+                        <div class="card-body p-4">
+                            <div class="text-center mb-4">
+                                <i class="bi bi-flower3 text-gradient fs-1"></i>
+                            </div>
+                            <h4 class="fw-bold text-gradient mb-3">
+                                {% if lang == 'en' %}AI Crop Recommendation
+                                {% elif lang == 'hi' %}AI फसल सिफारिश
+                                {% elif lang == 'mr' %}AI पीक शिफारस
+                                {% endif %}
+                            </h4>
+                            <p class="text-muted mb-4">
+                                {% if lang == 'en' %}Get personalized crop suggestions based on soil conditions, weather patterns, and market demand using our advanced machine learning models.
+                                {% elif lang == 'hi' %}हमारे उन्नत मशीन लर्निंग मॉडल का उपयोग करके मिट्टी की स्थिति, मौसम के पैटर्न और बाजार की मांग के आधार पर व्यक्तिगत फसल सुझाव प्राप्त करें।
+                                {% elif lang == 'mr' %}आमच्या प्रगत मशीन लर्निंग मॉडेल्सचा वापर करून मातीच्या परिस्थिती, हवामानाचे नमुने आणि बाजारातील मागणीवर आधारित वैयक्तिकृत पीक सूचना मिळवा.
+                                {% endif %}
+                            </p>
+                            <ul class="text-muted">
+                                <li>{% if lang == 'en' %}95% prediction accuracy{% elif lang == 'hi' %}95% भविष्यवाणी सटीकता{% elif lang == 'mr' %}95% अंदाज अचूकता{% endif %}</li>
+                                <li>{% if lang == 'en' %}50+ crop varieties{% elif lang == 'hi' %}50+ फसल किस्में{% elif lang == 'mr' %}५०+ पीक प्रकार{% endif %}</li>
+                                <li>{% if lang == 'en' %}Real-time updates{% elif lang == 'hi' %}रियल-टाइम अपडेट{% elif lang == 'mr' %}रिअल-टाइम अपडेट्स{% endif %}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Solution 2 -->
+                <div class="col-md-6">
+                    <div class="card shadow-lg border-0 premium-card glass-card h-100 hover-lift">
+                        <div class="card-body p-4">
+                            <div class="text-center mb-4">
+                                <i class="bi bi-graph-up text-gradient fs-1"></i>
+                            </div>
+                            <h4 class="fw-bold text-gradient mb-3">
+                                {% if lang == 'en' %}Market Insights
+                                {% elif lang == 'hi' %}बाजार अंतर्दृष्टि
+                                {% elif lang == 'mr' %}बाजार अंतर्दृष्टी
+                                {% endif %}
+                            </h4>
+                            <p class="text-muted mb-4">
+                                {% if lang == 'en' %}Access real-time market prices, demand forecasts, and trend analysis to make informed selling decisions and maximize profits.
+                                {% elif lang == 'hi' %}सूचित बिक्री निर्णय लेने और लाभ को अधिकतम करने के लिए रियल-टाइम बाजार मूल्य, मांग पूर्वानुमान और ट्रेंड विश्लेषण तक पहुंचें।
+                                {% elif lang == 'mr' %}माहितीपूर्ण विक्री निर्णय घेण्यासाठी आणि नफा वाढवण्यासाठी रिअल-टाइम बाजार किंमती, मागणी अंदाज आणि कल विश्लेषण प्रवेश करा.
+                                {% endif %}
+                            </p>
+                            <ul class="text-muted">
+                                <li>{% if lang == 'en' %}Live price updates{% elif lang == 'hi' %}लाइव मूल्य अपडेट{% elif lang == 'mr' %}लाइव्ह किंमत अपडेट्स{% endif %}</li>
+                                <li>{% if lang == 'en' %}Demand forecasting{% elif lang == 'hi' %}मांग पूर्वानुमान{% elif lang == 'mr' %}मागणी अंदाज{% endif %}</li>
+                                <li>{% if lang == 'en' %}Price alerts{% elif lang == 'hi' %}मूल्य अलर्ट{% elif lang == 'mr' %}किंमत अलर्ट{% endif %}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Solution 3 -->
+                <div class="col-md-6">
+                    <div class="card shadow-lg border-0 premium-card glass-card h-100 hover-lift">
+                        <div class="card-body p-4">
+                            <div class="text-center mb-4">
+                                <i class="bi bi-calendar-week text-gradient fs-1"></i>
+                            </div>
+                            <h4 class="fw-bold text-gradient mb-3">
+                                {% if lang == 'en' %}Farming Planner
+                                {% elif lang == 'hi' %}कृषि योजनाकार
+                                {% elif lang == 'mr' %}शेती नियोजक
+                                {% endif %}
+                            </h4>
+                            <p class="text-muted mb-4">
+                                {% if lang == 'en' %}Get weekly and monthly farming schedules with task breakdowns, resource requirements, and best practices for optimal crop growth.
+                                {% elif lang == 'hi' %}इष्टतम फसल वृद्धि के लिए कार्य विभाजन, संसाधन आवश्यकताओं और सर्वोत्तम प्रथाओं के साथ साप्ताहिक और मासिक कृषि अनुसूचियां प्राप्त करें।
+                                {% elif lang == 'mr' %}इष्टतम पीक वाढीसाठी कार्य विभाजन, संसाधन आवश्यकता आणि सर्वोत्तम पद्धतींसह साप्ताहिक आणि मासिक शेती वेळापत्रके मिळवा.
+                                {% endif %}
+                            </p>
+                            <ul class="text-muted">
+                                <li>{% if lang == 'en' %}Weekly schedules{% elif lang == 'hi' %}साप्ताहिक अनुसूचियां{% elif lang == 'mr' %}साप्ताहिक वेळापत्रके{% endif %}</li>
+                                <li>{% if lang == 'en' %}Task reminders{% elif lang == 'hi' %}कार्य अनुस्मारक{% elif lang == 'mr' %}कार्य स्मरणपत्रे{% endif %}</li>
+                                <li>{% if lang == 'en' %}Resource tracking{% elif lang == 'hi' %}संसाधन ट्रैकिंग{% elif lang == 'mr' %}संसाधन ट्रॅकिंग{% endif %}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Solution 4 -->
+                <div class="col-md-6">
+                    <div class="card shadow-lg border-0 premium-card glass-card h-100 hover-lift">
+                        <div class="card-body p-4">
+                            <div class="text-center mb-4">
+                                <i class="bi bi-droplet text-gradient fs-1"></i>
+                            </div>
+                            <h4 class="fw-bold text-gradient mb-3">
+                                {% if lang == 'en' %}Smart Irrigation
+                                {% elif lang == 'hi' %}स्मार्ट सिंचाई
+                                {% elif lang == 'mr' %}स्मार्ट सिंचन
+                                {% endif %}
+                            </h4>
+                            <p class="text-muted mb-4">
+                                {% if lang == 'en' %}Optimize water usage with AI-powered irrigation recommendations based on weather forecasts, soil moisture, and crop requirements.
+                                {% elif lang == 'hi' %}मौसम पूर्वानुमान, मिट्टी की नमी और फसल की आवश्यकताओं के आधार पर AI-संचालित सिंचाई सिफारिशों के साथ पानी के उपयोग को अनुकूलित करें।
+                                {% elif lang == 'mr' %}हवामान अंदाज, मातीतील ओलावा आणि पीक गरजांवर आधारित AI-चालित सिंचन शिफारशींसह पाणी वापर ऑप्टिमाइझ करा.
+                                {% endif %}
+                            </p>
+                            <ul class="text-muted">
+                                <li>{% if lang == 'en' %}Water saving up to 40%{% elif lang == 'hi' %}40% तक पानी की बचत{% elif lang == 'mr' %}४०% पर्यंत पाणी बचत{% endif %}</li>
+                                <li>{% if lang == 'en' %}Weather integration{% elif lang == 'hi' %}मौसम एकीकरण{% elif lang == 'mr' %}हवामान एकत्रीकरण{% endif %}</li>
+                                <li>{% if lang == 'en' %}Automated scheduling{% elif lang == 'hi' %}स्वचालित शेड्यूलिंग{% elif lang == 'mr' %}स्वयंचलित वेळापत्रक{% endif %}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="text-center mt-5">
+                <div class="card glass-card">
+                    <div class="card-body p-5">
+                        <h3 class="fw-bold text-gradient mb-3">
+                            {% if lang == 'en' %}Ready to Transform Your Farming?
+                            {% elif lang == 'hi' %}अपनी कृषि को बदलने के लिए तैयार हैं?
+                            {% elif lang == 'mr' %}तुमच्या शेतीचे रूपांतर करण्यासाठी तयार आहात?
+                            {% endif %}
+                        </h3>
+                        <p class="lead mb-4">
+                            {% if lang == 'en' %}Join thousands of farmers who are already using CropAI to increase their yields and profits.
+                            {% elif lang == 'hi' %}हजारों किसानों में शामिल हों जो पहले से ही अपनी उपज और मुनाफा बढ़ाने के लिए CropAI का उपयोग कर रहे हैं।
+                            {% elif lang == 'mr' %}आधीच आपले उत्पादन आणि नफा वाढवण्यासाठी CropAI वापरणार्या हजारो शेतकऱ्यांमध्ये सामील व्हा.
+                            {% endif %}
+                        </p>
+                        <a href="{% url 'home' %}" class="btn btn-success btn-lg me-3">
+                            <i class="bi bi-play-circle me-2"></i>
+                            {% if lang == 'en' %}Get Started Free
+                            {% elif lang == 'hi' %}मुफ्त शुरू करें
+                            {% elif lang == 'mr' %}विनामूल्य सुरू करा
+                            {% endif %}
+                        </a>
+                        <a href="{% url 'pricing' %}" class="btn btn-outline-success btn-lg">
+                            <i class="bi bi-currency-rupee me-2"></i>
+                            {% if lang == 'en' %}View Pricing
+                            {% elif lang == 'hi' %}मूल्य निर्धारण देखें
+                            {% elif lang == 'mr' %}किंमत पहा
+                            {% endif %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,177 @@
+{% extends 'DX_APP/base.html' %}
+
+{% block hero %}
+<section class="hero-section d-flex align-items-center justify-content-center text-center py-5 mb-4 premium-bg" style="min-height: 40vh;">
+    <div class="container">
+        <h1 class="display-4 fw-bold text-gradient mb-3">
+            <i class="bi bi-question-circle me-3"></i>
+            {% if lang == 'en' %}Help Center
+            {% elif lang == 'hi' %}सहायता केंद्र
+            {% elif lang == 'mr' %}मदत केंद्र
+            {% endif %}
+        </h1>
+        <p class="lead text-dark-50 mb-4 fs-5">
+            {% if lang == 'en' %}Find answers, guides, and support for using CropAI
+            {% elif lang == 'hi' %}CropAI का उपयोग करने के लिए उत्तर, गाइड और समर्थन खोजें
+            {% elif lang == 'mr' %}CropAI वापरण्यासाठी उत्तरे, मार्गदर्शक आणि समर्थन शोधा
+            {% endif %}
+        </p>
+        
+        <!-- Search Bar -->
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="input-group input-group-lg shadow">
+                    <span class="input-group-text bg-white border-end-0">
+                        <i class="bi bi-search text-muted"></i>
+                    </span>
+                    <input type="search" class="form-control border-start-0" 
+                           placeholder="{% if lang == 'en' %}Search for help...{% elif lang == 'hi' %}सहायता के लिए खोजें...{% elif lang == 'mr' %}मदत शोधा...{% endif %}">
+                    <button class="btn btn-success" type="button">
+                        {% if lang == 'en' %}Search
+                        {% elif lang == 'hi' %}खोजें
+                        {% elif lang == 'mr' %}शोधा
+                        {% endif %}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <!-- Help Categories -->
+        <div class="col-lg-4 mb-4">
+            <div class="card shadow-sm border-0 glass-card h-100 hover-lift">
+                <div class="card-body text-center p-4">
+                    <div class="mb-3">
+                        <i class="bi bi-flower3 text-success fs-1"></i>
+                    </div>
+                    <h5 class="fw-bold mb-3">
+                        {% if lang == 'en' %}Crop Recommendation
+                        {% elif lang == 'hi' %}फसल सिफारिश
+                        {% elif lang == 'mr' %}पीक शिफारस
+                        {% endif %}
+                    </h5>
+                    <p class="text-muted small mb-4">
+                        {% if lang == 'en' %}Learn how to get the best crop suggestions for your field
+                        {% elif lang == 'hi' %}अपने खेत के लिए सर्वोत्तम फसल सुझाव कैसे प्राप्त करें, जानें
+                        {% elif lang == 'mr' %}तुमच्या शेतासाठी सर्वोत्तम पीक सूचना कशा मिळवायच्या ते शिका
+                        {% endif %}
+                    </p>
+                    <a href="#" class="btn btn-outline-success btn-sm">
+                        {% if lang == 'en' %}View Guides
+                        {% elif lang == 'hi' %}गाइड देखें
+                        {% elif lang == 'mr' %}मार्गदर्शक पहा
+                        {% endif %}
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 mb-4">
+            <div class="card shadow-sm border-0 glass-card h-100 hover-lift">
+                <div class="card-body text-center p-4">
+                    <div class="mb-3">
+                        <i class="bi bi-graph-up text-primary fs-1"></i>
+                    </div>
+                    <h5 class="fw-bold mb-3">
+                        {% if lang == 'en' %}Market Insights
+                        {% elif lang == 'hi' %}बाजार अंतर्दृष्टि
+                        {% elif lang == 'mr' %}बाजार अंतर्दृष्टी
+                        {% endif %}
+                    </h5>
+                    <p class="text-muted small mb-4">
+                        {% if lang == 'en' %}Understand market trends and price analysis features
+                        {% elif lang == 'hi' %}बाजार रुझान और मूल्य विश्लेषण सुविधाओं को समझें
+                        {% elif lang == 'mr' %}बाजार कल आणि किंमत विश्लेषण वैशिष्ट्ये समजून घ्या
+                        {% endif %}
+                    </p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">
+                        {% if lang == 'en' %}View Guides
+                        {% elif lang == 'hi' %}गाइड देखें
+                        {% elif lang == 'mr' %}मार्गदर्शक पहा
+                        {% endif %}
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 mb-4">
+            <div class="card shadow-sm border-0 glass-card h-100 hover-lift">
+                <div class="card-body text-center p-4">
+                    <div class="mb-3">
+                        <i class="bi bi-person-circle text-warning fs-1"></i>
+                    </div>
+                    <h5 class="fw-bold mb-3">
+                        {% if lang == 'en' %}Account & Settings
+                        {% elif lang == 'hi' %}खाता और सेटिंग
+                        {% elif lang == 'mr' %}खाते आणि सेटिंग्ज
+                        {% endif %}
+                    </h5>
+                    <p class="text-muted small mb-4">
+                        {% if lang == 'en' %}Manage your account, profile, and notification settings
+                        {% elif lang == 'hi' %}अपने खाते, प्रोफाइल और अधिसूचना सेटिंग प्रबंधित करें
+                        {% elif lang == 'mr' %}तुमचे खाते, प्रोफाइल आणि अधिसूचना सेटिंग्ज व्यवस्थापित करा
+                        {% endif %}
+                    </p>
+                    <a href="#" class="btn btn-outline-warning btn-sm">
+                        {% if lang == 'en' %}View Guides
+                        {% elif lang == 'hi' %}गाइड देखें
+                        {% elif lang == 'mr' %}मार्गदर्शक पहा
+                        {% endif %}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Support -->
+    <div class="row justify-content-center mt-5">
+        <div class="col-lg-8">
+            <div class="card shadow-lg border-0 premium-card glass-card">
+                <div class="card-body p-5 text-center">
+                    <i class="bi bi-headset text-gradient fs-1 mb-3"></i>
+                    <h3 class="fw-bold text-gradient mb-3">
+                        {% if lang == 'en' %}Need More Help?
+                        {% elif lang == 'hi' %}अधिक सहायता चाहिए?
+                        {% elif lang == 'mr' %}अधिक मदत हवी आहे?
+                        {% endif %}
+                    </h3>
+                    <p class="lead mb-4">
+                        {% if lang == 'en' %}Our support team is here to help you 24/7
+                        {% elif lang == 'hi' %}हमारी समर्थन टीम आपकी सहायता के लिए 24/7 यहाँ है
+                        {% elif lang == 'mr' %}आमची समर्थन संघ तुमच्या मदतीसाठी 24/7 इथे आहे
+                        {% endif %}
+                    </p>
+                    <div class="d-flex flex-wrap justify-content-center gap-3">
+                        <button class="btn btn-success btn-lg">
+                            <i class="bi bi-chat-left-text me-2"></i>
+                            {% if lang == 'en' %}Live Chat
+                            {% elif lang == 'hi' %}लाइव चैट
+                            {% elif lang == 'mr' %}लाइव्ह चॅट
+                            {% endif %}
+                        </button>
+                        <button class="btn btn-outline-success btn-lg">
+                            <i class="bi bi-envelope me-2"></i>
+                            {% if lang == 'en' %}Email Us
+                            {% elif lang == 'hi' %}हमें ईमेल करें
+                            {% elif lang == 'mr' %}आम्हाला ईमेल करा
+                            {% endif %}
+                        </button>
+                        <button class="btn btn-outline-primary btn-lg">
+                            <i class="bi bi-telephone me-2"></i>
+                            {% if lang == 'en' %}Call Support
+                            {% elif lang == 'hi' %}समर्थन को कॉल करें
+                            {% elif lang == 'mr' %}समर्थनाला कॉल करा
+                            {% endif %}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

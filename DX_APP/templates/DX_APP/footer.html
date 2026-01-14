@@ -291,30 +291,119 @@
                     </div>
                 </div>
                 
-                <!-- Quick Links Column -->
-                <div class="col-lg-2 col-md-6 mb-4">
-                    <h5 class="footer-heading">Quick Links</h5>
-                    <ul class="footer-links">
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Home</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> About Us</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Solutions</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Pricing</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Case Studies</a></li>
-                    </ul>
-                </div>
+               <!-- Quick Links Section -->
+<div class="col-lg-2 col-md-4 mb-4 mb-lg-0">
+    <h6 class="fw-bold mb-3">
+        {% if lang == 'en' %}Quick Links
+        {% elif lang == 'hi' %}त्वरित लिंक
+        {% elif lang == 'mr' %}त्वरित दुवे
+        {% endif %}
+    </h6>
+    <ul class="list-unstyled">
+        <li class="mb-2">
+            <a href="{% url 'home' %}" class="text-decoration-none text-light text-opacity-75 hover-glow">
+                <i class="bi bi-house me-2"></i>
+                {% if lang == 'en' %}Home
+                {% elif lang == 'hi' %}होम
+                {% elif lang == 'mr' %}होम
+                {% endif %}
+            </a>
+        </li>
+        <li class="mb-2">
+            <a href="{% url 'about' %}" class="text-decoration-none text-light text-opacity-75 hover-glow">
+                <i class="bi bi-info-circle me-2"></i>
+                {% if lang == 'en' %}About Us
+                {% elif lang == 'hi' %}हमारे बारे में
+                {% elif lang == 'mr' %}आमच्याबद्दल
+                {% endif %}
+            </a>
+        </li>
+        <li class="mb-2">
+            <a href="{% url 'solutions' %}" class="text-decoration-none text-light text-opacity-75 hover-glow">
+                <i class="bi bi-gear me-2"></i>
+                {% if lang == 'en' %}Solutions
+                {% elif lang == 'hi' %}समाधान
+                {% elif lang == 'mr' %}उपाय
+                {% endif %}
+            </a>
+        </li>
+        <li class="mb-2">
+            <a href="{% url 'pricing' %}" class="text-decoration-none text-light text-opacity-75 hover-glow">
+                <i class="bi bi-currency-rupee me-2"></i>
+                {% if lang == 'en' %}Pricing
+                {% elif lang == 'hi' %}मूल्य निर्धारण
+                {% elif lang == 'mr' %}किंमत
+                {% endif %}
+            </a>
+        </li>
+        <li class="mb-2">
+            <a href="{% url 'case_studies' %}" class="text-decoration-none text-light text-opacity-75 hover-glow">
+                <i class="bi bi-journal-text me-2"></i>
+                {% if lang == 'en' %}Case Studies
+                {% elif lang == 'hi' %}केस स्टडी
+                {% elif lang == 'mr' %}केस अभ्यास
+                {% endif %}
+            </a>
+        </li>
+    </ul>
+</div>
                 
-                <!-- Resources Column -->
-                <div class="col-lg-2 col-md-6 mb-4">
-                    <h5 class="footer-heading">Resources</h5>
-                    <ul class="footer-links">
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Documentation</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> API Reference</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Blog</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Help Center</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Community</a></li>
-                    </ul>
-                </div>
-                
+               <!-- Resources Section -->
+<div class="col-lg-2 col-md-4 mb-4">
+    <h6 class="fw-bold mb-3">
+        {% if lang == 'en' %}Resources
+        {% elif lang == 'hi' %}संसाधन
+        {% elif lang == 'mr' %}संसाधने
+        {% endif %}
+    </h6>
+    <ul class="list-unstyled">
+        <li class="mb-2">
+            <a href="{% url 'documentation' %}" class="text-decoration-none text-light text-opacity-75 hover-glow">
+                <i class="bi bi-file-text me-2"></i>
+                {% if lang == 'en' %}Documentation
+                {% elif lang == 'hi' %}प्रलेखन
+                {% elif lang == 'mr' %}दस्तऐवजीकरण
+                {% endif %}
+            </a>
+        </li>
+        <li class="mb-2">
+            <a href="{% url 'api_reference' %}" class="text-decoration-none text-light text-opacity-75 hover-glow">
+                <i class="bi bi-code-slash me-2"></i>
+                {% if lang == 'en' %}API Reference
+                {% elif lang == 'hi' %}API संदर्भ
+                {% elif lang == 'mr' %}API संदर्भ
+                {% endif %}
+            </a>
+        </li>
+        <li class="mb-2">
+            <a href="{% url 'blog' %}" class="text-decoration-none text-light text-opacity-75 hover-glow">
+                <i class="bi bi-newspaper me-2"></i>
+                {% if lang == 'en' %}Blog
+                {% elif lang == 'hi' %}ब्लॉग
+                {% elif lang == 'mr' %}ब्लॉग
+                {% endif %}
+            </a>
+        </li>
+        <li class="mb-2">
+            <a href="{% url 'help_center' %}" class="text-decoration-none text-light text-opacity-75 hover-glow">
+                <i class="bi bi-question-circle me-2"></i>
+                {% if lang == 'en' %}Help Center
+                {% elif lang == 'hi' %}सहायता केंद्र
+                {% elif lang == 'mr' %}मदत केंद्र
+                {% endif %}
+            </a>
+        </li>
+        <li class="mb-2">
+            <a href="{% url 'community' %}" class="text-decoration-none text-light text-opacity-75 hover-glow">
+                <i class="bi bi-people me-2"></i>
+                {% if lang == 'en' %}Community
+                {% elif lang == 'hi' %}समुदाय
+                {% elif lang == 'mr' %}समुदाय
+                {% endif %}
+            </a>
+        </li>
+    </ul>
+</div>
                 <!-- Newsletter Column -->
                 <div class="col-lg-4 col-md-6 mb-4">
                     <h5 class="footer-heading">Stay Updated</h5>
@@ -337,6 +426,7 @@
                     </div>
                 </div>
             </div>
+            
             
             <!-- Copyright Section -->
             <div class="copyright-section">

@@ -1,0 +1,277 @@
+{% extends 'DX_APP/base.html' %}
+
+{% block hero %}
+<section class="hero-section d-flex align-items-center justify-content-center text-center py-5 mb-4 premium-bg" style="min-height: 40vh;">
+    <div class="container">
+        <h1 class="display-4 fw-bold text-gradient mb-3">
+            <i class="bi bi-people me-3"></i>
+            {% if lang == 'en' %}Community
+            {% elif lang == 'hi' %}समुदाय
+            {% elif lang == 'mr' %}समुदाय
+            {% endif %}
+        </h1>
+        <p class="lead text-dark-50 mb-4 fs-5">
+            {% if lang == 'en' %}Connect with farmers, share experiences, and grow together
+            {% elif lang == 'hi' %}किसानों के साथ जुड़ें, अनुभव साझा करें, और एक साथ बढ़ें
+            {% elif lang == 'mr' %}शेतकऱ्यांशी जोडा, अनुभव सामायिक करा आणि एकत्र वाढा
+            {% endif %}
+        </p>
+    </div>
+</section>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <!-- Community Stats -->
+        <div class="col-12 mb-5">
+            <div class="row g-4 text-center">
+                <div class="col-md-3">
+                    <div class="p-4 glass-card rounded-3">
+                        <h2 class="fw-bold text-gradient mb-2">10K+</h2>
+                        <p class="text-muted mb-0">
+                            {% if lang == 'en' %}Active Members
+                            {% elif lang == 'hi' %}सक्रिय सदस्य
+                            {% elif lang == 'mr' %}सक्रिय सदस्य
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="p-4 glass-card rounded-3">
+                        <h2 class="fw-bold text-gradient mb-2">5K+</h2>
+                        <p class="text-muted mb-0">
+                            {% if lang == 'en' %}Discussions
+                            {% elif lang == 'hi' %}चर्चाएँ
+                            {% elif lang == 'mr' %}चर्चा
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="p-4 glass-card rounded-3">
+                        <h2 class="fw-bold text-gradient mb-2">50+</h2>
+                        <p class="text-muted mb-0">
+                            {% if lang == 'en' %}Experts
+                            {% elif lang == 'hi' %}विशेषज्ञ
+                            {% elif lang == 'mr' %}तज्ञ
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="p-4 glass-card rounded-3">
+                        <h2 class="fw-bold text-gradient mb-2">24/7</h2>
+                        <p class="text-muted mb-0">
+                            {% if lang == 'en' %}Active Support
+                            {% elif lang == 'hi' %}सक्रिय समर्थन
+                            {% elif lang == 'mr' %}सक्रिय समर्थन
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Community Features -->
+        <div class="col-lg-8">
+            <!-- Recent Discussions -->
+            <div class="card shadow-lg border-0 premium-card glass-card mb-4">
+                <div class="card-header bg-transparent border-0">
+                    <h4 class="fw-bold text-gradient mb-0">
+                        <i class="bi bi-chat-left-text me-2"></i>
+                        {% if lang == 'en' %}Recent Discussions
+                        {% elif lang == 'hi' %}हाल की चर्चाएँ
+                        {% elif lang == 'mr' %}अलीकडील चर्चा
+                        {% endif %}
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <div class="discussion-list">
+                        <div class="discussion-item p-3 border-bottom">
+                            <div class="d-flex align-items-start">
+                                <img src="https://ui-avatars.com/api/?name=Farmer+Raj&background=2ecc71&color=fff" 
+                                     class="rounded-circle me-3" width="40" height="40" alt="Avatar">
+                                <div class="flex-grow-1">
+                                    <h6 class="fw-bold mb-1">
+                                        {% if lang == 'en' %}Best crop for clay soil in Maharashtra?
+                                        {% elif lang == 'hi' %}महाराष्ट्र में चिकनी मिट्टी के लिए सबसे अच्छी फसल?
+                                        {% elif lang == 'mr' %}महाराष्ट्रातील चिकणमातीसाठी सर्वोत्तम पीक?
+                                        {% endif %}
+                                    </h6>
+                                    <p class="small text-muted mb-2">
+                                        {% if lang == 'en' %}Looking for crop suggestions for my 5-acre clay soil farm in Pune district.
+                                        {% elif lang == 'hi' %}पुणे जिले में अपने 5 एकड़ चिकनी मिट्टी के खेत के लिए फसल सुझाव ढूंढ रहा हूं।
+                                        {% elif lang == 'mr' %}पुणे जिल्ह्यातील माझ्या ५ एकर चिकणमातीच्या शेतासाठी पीक सूचना शोधत आहे.
+                                        {% endif %}
+                                    </p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <small class="text-muted">
+                                            <i class="bi bi-person me-1"></i>Farmer Raj • 
+                                            <i class="bi bi-clock me-1 ms-2"></i>2 hours ago
+                                        </small>
+                                        <span class="badge bg-success">15 Replies</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Add more discussion items -->
+                    </div>
+                    <a href="#" class="btn btn-outline-success w-100 mt-3">
+                        {% if lang == 'en' %}View All Discussions
+                        {% elif lang == 'hi' %}सभी चर्चाएँ देखें
+                        {% elif lang == 'mr' %}सर्व चर्चा पहा
+                        {% endif %}
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Community Sidebar -->
+        <div class="col-lg-4">
+            <!-- Join Community -->
+            <div class="card shadow-sm border-0 glass-card mb-4">
+                <div class="card-body text-center p-4">
+                    <i class="bi bi-people-fill text-gradient fs-1 mb-3"></i>
+                    <h5 class="fw-bold mb-3">
+                        {% if lang == 'en' %}Join Our Community
+                        {% elif lang == 'hi' %}हमारे समुदाय में शामिल हों
+                        {% elif lang == 'mr' %}आमच्या समुदायात सामील व्हा
+                        {% endif %}
+                    </h5>
+                    <p class="text-muted small mb-4">
+                        {% if lang == 'en' %}Connect with thousands of farmers and agricultural experts
+                        {% elif lang == 'hi' %}हजारों किसानों और कृषि विशेषज्ञों से जुड़ें
+                        {% elif lang == 'mr' %}हजारो शेतकऱ्यांशी आणि कृषी तज्ञांशी जोडा
+                        {% endif %}
+                    </p>
+                    <button class="btn btn-success w-100 mb-2">
+                        <i class="bi bi-whatsapp me-2"></i>
+                        {% if lang == 'en' %}WhatsApp Group
+                        {% elif lang == 'hi' %}WhatsApp ग्रुप
+                                        {% elif lang == 'mr' %}WhatsApp ग्रुप
+                                        {% endif %}
+                                    </button>
+                                    <button class="btn btn-primary w-100 mb-2">
+                                        <i class="bi bi-telegram me-2"></i>
+                                        {% if lang == 'en' %}Telegram Channel
+                                        {% elif lang == 'hi' %}Telegram चैनल
+                                        {% elif lang == 'mr' %}Telegram चॅनेल
+                                        {% endif %}
+                                    </button>
+                                    <button class="btn btn-dark w-100">
+                                        <i class="bi bi-facebook me-2"></i>
+                                        {% if lang == 'en' %}Facebook Group
+                                        {% elif lang == 'hi' %}Facebook ग्रुप
+                                        {% elif lang == 'mr' %}Facebook ग्रुप
+                                        {% endif %}
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Expert Corner -->
+                            <div class="card shadow-sm border-0 glass-card">
+                                <div class="card-body">
+                                    <h6 class="fw-bold text-gradient mb-3">
+                                        <i class="bi bi-award me-2"></i>
+                                        {% if lang == 'en' %}Expert Corner
+                                        {% elif lang == 'hi' %}विशेषज्ञ कोना
+                                        {% elif lang == 'mr' %}तज्ञ कोपरा
+                                        {% endif %}
+                                    </h6>
+                                    <div class="expert-list">
+                                        <div class="expert-item d-flex align-items-center mb-3 p-3 bg-light rounded-3">
+                                            <img src="https://ui-avatars.com/api/?name=Dr+Agri&background=3498db&color=fff" 
+                                                 class="rounded-circle me-3" width="45" height="45" alt="Expert">
+                                            <div>
+                                                <h6 class="fw-bold mb-1 small">Dr. Agriculture Expert</h6>
+                                                <small class="text-muted">
+                                                    {% if lang == 'en' %}Soil Scientist
+                                                    {% elif lang == 'hi' %}मिट्टी वैज्ञानिक
+                                                    {% elif lang == 'mr' %}माती शास्त्रज्ञ
+                                                    {% endif %}
+                                                </small>
+                                            </div>
+                                        </div>
+                                        <!-- Add more experts -->
+                                    </div>
+                                    <button class="btn btn-outline-success btn-sm w-100">
+                                        <i class="bi bi-chat-left-text me-1"></i>
+                                        {% if lang == 'en' %}Ask the Experts
+                                        {% elif lang == 'hi' %}विशेषज्ञों से पूछें
+                                        {% elif lang == 'mr' %}तज्ञांना विचारा
+                                        {% endif %}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Community Guidelines -->
+                    <div class="row mt-5">
+                        <div class="col-12">
+                            <div class="card shadow-sm border-0 glass-card">
+                                <div class="card-body">
+                                    <h5 class="fw-bold text-gradient mb-3">
+                                        <i class="bi bi-shield-check me-2"></i>
+                                        {% if lang == 'en' %}Community Guidelines
+                                        {% elif lang == 'hi' %}समुदाय दिशानिर्देश
+                                        {% elif lang == 'mr' %}समुदाय मार्गदर्शक तत्त्वे
+                                        {% endif %}
+                                    </h5>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <ul class="text-muted">
+                                                <li class="mb-2">
+                                                    {% if lang == 'en' %}Be respectful to all members
+                                                    {% elif lang == 'hi' %}सभी सदस्यों के प्रति सम्मानजनक रहें
+                                                    {% elif lang == 'mr' %}सर्व सदस्यांबरोबर आदरपूर्ण रहा
+                                                    {% endif %}
+                                                </li>
+                                                <li class="mb-2">
+                                                    {% if lang == 'en' %}Share knowledge and experiences
+                                                    {% elif lang == 'hi' %}ज्ञान और अनुभव साझा करें
+                                                    {% elif lang == 'mr' %}ज्ञान आणि अनुभव सामायिक करा
+                                                    {% endif %}
+                                                </li>
+                                                <li class="mb-2">
+                                                    {% if lang == 'en' %}No spam or self-promotion
+                                                    {% elif lang == 'hi' %}कोई स्पैम या स्व-प्रचार नहीं
+                                                    {% elif lang == 'mr' %}कोणताही स्पॅम किंवा स्व-प्रचार नाही
+                                                    {% endif %}
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <ul class="text-muted">
+                                                <li class="mb-2">
+                                                    {% if lang == 'en' %}Stay on topic - agriculture related
+                                                    {% elif lang == 'hi' %}विषय पर बने रहें - कृषि संबंधी
+                                                    {% elif lang == 'mr' %}विषयावर रहा - कृषी संबंधित
+                                                    {% endif %}
+                                                </li>
+                                                <li class="mb-2">
+                                                    {% if lang == 'en' %}Report inappropriate content
+                                                    {% elif lang == 'hi' %}अनुपयुक्त सामग्री की रिपोर्ट करें
+                                                    {% elif lang == 'mr' %}अनुपयुक्त सामग्रीचा अहवाल द्या
+                                                    {% endif %}
+                                                </li>
+                                                <li class="mb-2">
+                                                    {% if lang == 'en' %}Help fellow farmers
+                                                    {% elif lang == 'hi' %}साथी किसानों की मदद करें
+                                                    {% elif lang == 'mr' %}इतर शेतकऱ्यांना मदत करा
+                                                    {% endif %}
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

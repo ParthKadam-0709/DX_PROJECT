@@ -65,38 +65,42 @@
         }
         
         /* Base Styles */
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-            color: #1e293b;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            overflow-x: hidden;
-            position: relative;
-        }
-        
-        /* Animated Background */
-        .premium-bg {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .premium-bg::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(46, 204, 113, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(52, 152, 219, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(155, 89, 182, 0.05) 0%, transparent 50%);
-            z-index: -1;
-            animation: bgPulse 20s ease-in-out infinite alternate;
-        }
-        
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    color: #1e293b;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    /* ✅ ADD THESE */
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+ /* Animated Background */
+.premium-bg {
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.premium-bg::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(46, 204, 113, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(52, 152, 219, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(155, 89, 182, 0.05) 0%, transparent 50%);
+    z-index: -1;
+    pointer-events: none; /* ✅ CRITICAL */
+    animation: bgPulse 20s ease-in-out infinite alternate;
+}
+
         @keyframes bgPulse {
             0% {
                 opacity: 0.3;
@@ -295,11 +299,11 @@
         }
         
         /* Main Content */
-        .premium-main {
-            flex: 1;
-            position: relative;
-            z-index: 1;
-        }
+.premium-main {
+    flex: 1;
+    position: relative;
+}
+
         
         /* Glass Morphism Container */
         .glass-container {
