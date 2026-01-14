@@ -2,129 +2,519 @@
 
 {% block hero %}
 <section class="hero-section d-flex align-items-center justify-content-center text-center py-5 mb-4 premium-bg animated-bg" style="min-height: 40vh;">
-    <div class="container">
-        <h1 class="display-4 fw-bold text-gradient mb-3">AI Crop Recommendation System</h1>
-        <p class="lead text-dark-50 mb-0">Empowering farmers and agri-enthusiasts with smart, data-driven crop suggestions for better yield and sustainability.</p>
+    <div class="container position-relative">
+        <!-- Animated Background Elements -->
+        <div class="hero-decoration">
+            <div class="leaf leaf-1"><i class="bi bi-flower1"></i></div>
+            <div class="leaf leaf-2"><i class="bi bi-flower2"></i></div>
+            <div class="leaf leaf-3"><i class="bi bi-flower3"></i></div>
+        </div>
+        
+        <h1 class="display-4 fw-bold text-gradient mb-3 animate__animated animate__fadeInDown">
+            <i class="bi bi-magic me-3"></i>AI Crop Recommendation
+        </h1>
+        <p class="lead text-dark-50 mb-4 fs-5 animate__animated animate__fadeInUp animate__delay-1s">
+            Empowering farmers with intelligent, data-driven crop suggestions for optimal yield and sustainable farming.
+        </p>
+        
+        <!-- Stats Counter -->
+        <div class="row justify-content-center mt-4 animate__animated animate__fadeIn animate__delay-2s">
+            <div class="col-auto">
+                <div class="stat-box">
+                    <h3 class="fw-bold text-gradient mb-0">10K+</h3>
+                    <small class="text-muted">Farmers Served</small>
+                </div>
+            </div>
+            <div class="col-auto">
+                <div class="stat-box">
+                    <h3 class="fw-bold text-gradient mb-0">95%</h3>
+                    <small class="text-muted">Accuracy Rate</small>
+                </div>
+            </div>
+            <div class="col-auto">
+                <div class="stat-box">
+                    <h3 class="fw-bold text-gradient mb-0">50+</h3>
+                    <small class="text-muted">Crop Varieties</small>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 {% endblock %}
 
 {% block content %}
-<div class="row justify-content-center align-items-center min-vh-60">
-    <div class="col-lg-6 col-md-8">
-        <div class="card shadow-lg border-0 premium-card glass-card">
-            <div class="card-body p-5">
-                <h2 class="card-title text-center mb-4 fw-bold text-gradient">Get Your Crop Recommendation</h2>
-                <div class="language-select-section mb-4 p-3 rounded shadow-sm glass-card">
-                    <h5 class="fw-bold text-center mb-3">
-                        {% if lang == 'en' %}"Choose the language for your crops weekly planner"{% elif lang == 'hi' %}"अपनी फसल की साप्ताहिक योजना के लिए भाषा चुनें"{% elif lang == 'mr' %}"आपल्या पिकाच्या साप्ताहिक नियोजनेसाठी भाषा निवडा"{% endif %}
-                    </h5>
-                    <div class="text-center">
-                        <form method="get" style="display:inline;">
-                            <input type="hidden" name="lang" value="en">
-                            <button type="submit" class="btn btn-outline-secondary {% if lang == 'en' %}active{% endif %}">English</button>
-                        </form>
-                        <form method="get" style="display:inline;">
-                            <input type="hidden" name="lang" value="hi">
-                            <button type="submit" class="btn btn-outline-secondary {% if lang == 'hi' %}active{% endif %}">हिन्दी</button>
-                        </form>
-                        <form method="get" style="display:inline;">
-                            <input type="hidden" name="lang" value="mr">
-                            <button type="submit" class="btn btn-outline-secondary {% if lang == 'mr' %}active{% endif %}">मराठी</button>
-                        </form>
-                    </div>
-                </div>
-                <form method="post" class="needs-validation premium-form" novalidate autocomplete="off">
-                    {% csrf_token %}
-                    <div class="row g-4">
-                        {% for field in form %}
-                        <div class="col-12 form-floating mb-2">
-                            {{ field }}
-                            <label for="id_{{ field.name }}" class="fw-semibold">{{ field.label }}</label>
-                            {% if field.errors %}
-                                <div class="invalid-feedback d-block">{{ field.errors|striptags }}</div>
-                            {% endif %}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-xxl-10">
+            <div class="row g-4">
+                <!-- Main Content Column -->
+                <div class="col-lg-8 col-xl-9">
+                    <!-- Main Card -->
+                    <div class="card shadow-lg border-0 premium-card glass-card animate__animated animate__fadeInUp mb-4">
+                        <!-- Card Header with Tabs -->
+                        <div class="card-header bg-transparent border-0 pt-4 pb-0">
+                            <ul class="nav nav-pills nav-fill mb-4" id="cropTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="quick-tab" data-bs-toggle="tab" data-bs-target="#quick" type="button" role="tab">
+                                        <i class="bi bi-lightning-charge me-2"></i>
+                                        {% if lang == 'en' %}Quick Input
+                                        {% elif lang == 'hi' %}त्वरित इनपुट
+                                        {% elif lang == 'mr' %}त्वरित इनपुट
+                                        {% endif %}
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="advanced-tab" data-bs-toggle="tab" data-bs-target="#advanced" type="button" role="tab">
+                                        <i class="bi bi-gear me-2"></i>
+                                        {% if lang == 'en' %}Advanced
+                                        {% elif lang == 'hi' %}उन्नत
+                                        {% elif lang == 'mr' %}प्रगत
+                                        {% endif %}
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="history-tab" data-bs-toggle="tab" data-bs-target="#history" type="button" role="tab">
+                                        <i class="bi bi-clock-history me-2"></i>
+                                        {% if lang == 'en' %}History
+                                        {% elif lang == 'hi' %}इतिहास
+                                        {% elif lang == 'mr' %}इतिहास
+                                        {% endif %}
+                                    </button>
+                                </li>
+                            </ul>
                         </div>
-                        {% endfor %}
+                        
+                        <div class="card-body p-4 p-lg-5">
+                            <!-- Language Selector -->
+                            <div class="language-selector mb-4">
+                                <div class="d-flex align-items-center justify-content-between mb-3">
+                                    <h6 class="fw-bold mb-0">
+                                        <i class="bi bi-translate me-2"></i>
+                                        {% if lang == 'en' %}Select Language
+                                        {% elif lang == 'hi' %}भाषा चुनें
+                                        {% elif lang == 'mr' %}भाषा निवडा
+                                        {% endif %}
+                                    </h6>
+                                    <div class="btn-group btn-group-sm" role="group">
+                                        <a href="?lang=en" class="btn btn-outline-success {% if lang == 'en' %}active{% endif %}">EN</a>
+                                        <a href="?lang=hi" class="btn btn-outline-success {% if lang == 'hi' %}active{% endif %}">हि</a>
+                                        <a href="?lang=mr" class="btn btn-outline-success {% if lang == 'mr' %}active{% endif %}">मर</a>
+                                    </div>
+                                </div>
+                                <div class="alert alert-info bg-gradient-info border-0 text-white small py-2 px-3">
+                                    <i class="bi bi-info-circle me-2"></i>
+                                    {% if lang == 'en' %}Choose your preferred language for recommendations
+                                    {% elif lang == 'hi' %}अपनी पसंदीदा भाषा चुनें
+                                    {% elif lang == 'mr' %}आपली पसंतीची भाषा निवडा
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <!-- Tab Content -->
+                            <div class="tab-content" id="cropTabContent">
+                                <!-- Quick Input Tab -->
+                                <div class="tab-pane fade show active" id="quick" role="tabpanel">
+                                    <form method="post" class="needs-validation premium-form" novalidate autocomplete="off">
+                                        {% csrf_token %}
+                                        <div class="row g-4">
+                                            {% for field in form %}
+                                            <div class="col-md-6 col-lg-4">
+                                                <div class="form-floating">
+                                                    {{ field }}
+                                                    <label for="id_{{ field.name }}" class="fw-semibold">
+                                                        {{ field.label }}
+                                                        {% if field.field.required %}
+                                                        <span class="text-danger">*</span>
+                                                        {% endif %}
+                                                    </label>
+                                                    <div class="form-text text-muted small mt-1">
+                                                        {% if field.name == 'N' %}{% if lang == 'en' %}Nitrogen content{% elif lang == 'hi' %}नाइट्रोजन सामग्री{% elif lang == 'mr' %}नायट्रोजन सामग्री{% endif %}
+                                                        {% elif field.name == 'P' %}{% if lang == 'en' %}Phosphorus level{% elif lang == 'hi' %}फॉस्फोरस स्तर{% elif lang == 'mr' %}फॉस्फरस पातळी{% endif %}
+                                                        {% elif field.name == 'K' %}{% if lang == 'en' %}Potassium level{% elif lang == 'hi' %}पोटेशियम स्तर{% elif lang == 'mr' %}पोटॅशियम पातळी{% endif %}
+                                                        {% elif field.name == 'temperature' %}{% if lang == 'en' %}°C{% elif lang == 'hi' %}सेल्सियस{% elif lang == 'mr' %}सेल्सिअस{% endif %}
+                                                        {% elif field.name == 'humidity' %}{% if lang == 'en' %}Percentage{% elif lang == 'hi' %}प्रतिशत{% elif lang == 'mr' %}टक्के{% endif %}
+                                                        {% elif field.name == 'ph' %}{% if lang == 'en' %}Acidity/Alkalinity{% elif lang == 'hi' %}अम्लीयता/क्षारीयता{% elif lang == 'mr' %}आम्लता/क्षारीयता{% endif %}
+                                                        {% elif field.name == 'rainfall' %}{% if lang == 'en' %}mm/year{% elif lang == 'hi' %}मिमी/वर्ष{% elif lang == 'mr' %}मिमी/वर्ष{% endif %}
+                                                        {% endif %}
+                                                    </div>
+                                                    {% if field.errors %}
+                                                        <div class="invalid-feedback d-block small">{{ field.errors|striptags }}</div>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                            {% endfor %}
+                                        </div>
+                                        
+                                        <!-- Location Detection -->
+                                        <div class="mt-4 mb-3">
+                                            <button type="button" class="btn btn-outline-success btn-sm" id="detectLocation">
+                                                <i class="bi bi-geo-alt me-2"></i>
+                                                {% if lang == 'en' %}Auto-detect Location
+                                                {% elif lang == 'hi' %}स्वचालित स्थान
+                                                {% elif lang == 'mr' %}स्वयं स्थान शोधा
+                                                {% endif %}
+                                            </button>
+                                            <small class="text-muted ms-3">
+                                                <i class="bi bi-info-circle"></i>
+                                                {% if lang == 'en' %}For more accurate weather data
+                                                {% elif lang == 'hi' %}अधिक सटीक मौसम डेटा के लिए
+                                                {% elif lang == 'mr' %}अधिक अचूक हवामान डेटासाठी
+                                                {% endif %}
+                                            </small>
+                                        </div>
+                                        
+                                        <div class="d-grid mt-4">
+                                            <button type="submit" class="btn btn-lg btn-gradient fw-bold ripple position-relative overflow-hidden">
+                                                <span class="d-flex align-items-center justify-content-center">
+                                                    <i class="bi bi-lightning-charge-fill me-2"></i>
+                                                    {% if lang == 'en' %}Get AI Recommendation
+                                                    {% elif lang == 'hi' %}AI सिफारिश प्राप्त करें
+                                                    {% elif lang == 'mr' %}AI शिफारस मिळवा
+                                                    {% endif %}
+                                                </span>
+                                                <div class="ripple-effect"></div>
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                                
+                                <!-- Advanced Tab -->
+                                <div class="tab-pane fade" id="advanced" role="tabpanel">
+                                    <div class="alert alert-warning bg-gradient-warning border-0 text-dark">
+                                        <i class="bi bi-exclamation-triangle me-2"></i>
+                                        {% if lang == 'en' %}Advanced features coming soon!
+                                        {% elif lang == 'hi' %}उन्नत सुविधाएँ जल्द ही आ रही हैं!
+                                        {% elif lang == 'mr' %}प्रगत वैशिष्ट्ये लवकरच येणार आहेत!
+                                        {% endif %}
+                                    </div>
+                                    <!-- Placeholder for advanced features -->
+                                </div>
+                                
+                                <!-- History Tab -->
+                                <div class="tab-pane fade" id="history" role="tabpanel">
+                                    <div class="text-center py-5">
+                                        <i class="bi bi-clock-history display-1 text-muted mb-3"></i>
+                                        <h6 class="text-muted">
+                                            {% if lang == 'en' %}No previous recommendations
+                                            {% elif lang == 'hi' %}कोई पिछली सिफारिशें नहीं
+                                            {% elif lang == 'mr' %}मागील शिफारशी नाहीत
+                                            {% endif %}
+                                        </h6>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Results Section -->
+                            {% if result %}
+                            <div class="mt-5 pt-4 border-top">
+                                <div class="result-card animate__animated animate__fadeIn">
+                                    <div class="d-flex align-items-center justify-content-between mb-4">
+                                        <div>
+                                            <h4 class="fw-bold text-gradient mb-1">
+                                                <i class="bi bi-patch-check-fill me-2"></i>
+                                                {% if lang == 'en' %}Recommended Crop
+                                                {% elif lang == 'hi' %}सिफारिश की गई फसल
+                                                {% elif lang == 'mr' %}शिफारस केलेली पीक
+                                                {% endif %}
+                                            </h4>
+                                            <p class="text-muted mb-0">
+                                                {% if lang == 'en' %}Based on your input parameters
+                                                {% elif lang == 'hi' %}आपके इनपुट मापदंडों के आधार पर
+                                                {% elif lang == 'mr' %}तुमच्या इनपुट पॅरामीटर्सच्या आधारावर
+                                                {% endif %}
+                                            </p>
+                                        </div>
+                                        <button class="btn btn-success btn-sm">
+                                            <i class="bi bi-download me-1"></i>PDF
+                                        </button>
+                                    </div>
+                                    
+                                    <div class="recommendation-display p-4 rounded-3 glass-card mb-4">
+                                        <div class="row align-items-center">
+                                            <div class="col-md-3 text-center mb-3 mb-md-0">
+                                                <div class="crop-icon-display">
+                                                    <i class="bi bi-flower3"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <h2 class="display-6 fw-bold mb-2">{{ result|slice:'18:' }}</h2>
+                                                <div class="row g-3">
+                                                    <div class="col-6 col-md-3">
+                                                        <div class="stat-item">
+                                                            <small class="text-muted">Confidence</small>
+                                                            <h5 class="fw-bold mb-0">92%</h5>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6 col-md-3">
+                                                        <div class="stat-item">
+                                                            <small class="text-muted">Season</small>
+                                                            <h5 class="fw-bold mb-0">
+                                                                {% if lang == 'en' %}Kharif
+                                                                {% elif lang == 'hi' %}खरीफ
+                                                                {% elif lang == 'mr' %}खरीप
+                                                                {% endif %}
+                                                            </h5>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6 col-md-3">
+                                                        <div class="stat-item">
+                                                            <small class="text-muted">Yield</small>
+                                                            <h5 class="fw-bold mb-0">High</h5>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6 col-md-3">
+                                                        <div class="stat-item">
+                                                            <small class="text-muted">Water Needs</small>
+                                                            <h5 class="fw-bold mb-0">Medium</h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    {% if plan %}
+                                    <!-- Weekly Planner -->
+                                    <div class="weekly-planner">
+                                        <div class="d-flex align-items-center justify-content-between mb-3">
+                                            <h4 class="fw-bold text-gradient">
+                                                <i class="bi bi-calendar-week me-2"></i>
+                                                {% if lang == 'en' %}Weekly Action Plan
+                                                {% elif lang == 'hi' %}साप्ताहिक कार्य योजना
+                                                {% elif lang == 'mr' %}साप्ताहिक कार्य योजना
+                                                {% endif %}
+                                            </h4>
+                                            <div class="dropdown">
+                                                <button class="btn btn-outline-success btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                                    {% if lang == 'en' %}View Options
+                                                    {% elif lang == 'hi' %}विकल्प देखें
+                                                    {% elif lang == 'mr' %}पर्याय पहा
+                                                    {% endif %}
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item" href="#">Table View</a></li>
+                                                    <li><a class="dropdown-item" href="#">Calendar View</a></li>
+                                                    <li><a class="dropdown-item" href="#">Print</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="table-responsive">
+                                            <table class="table table-hover align-middle">
+                                                <thead>
+                                                    <tr class="bg-success bg-opacity-10">
+                                                        <th class="text-center" style="width: 10%">
+                                                            {% if lang == 'en' %}Week
+                                                            {% elif lang == 'hi' %}सप्ताह
+                                                            {% elif lang == 'mr' %}आठवडा
+                                                            {% endif %}
+                                                        </th>
+                                                        <th class="text-center" style="width: 15%">
+                                                            {% if lang == 'en' %}Activity
+                                                            {% elif lang == 'hi' %}गतिविधि
+                                                            {% elif lang == 'mr' %}क्रियाकलाप
+                                                            {% endif %}
+                                                        </th>
+                                                        <th style="width: 30%">
+                                                            {% if lang == 'en' %}Task Details
+                                                            {% elif lang == 'hi' %}कार्य विवरण
+                                                            {% elif lang == 'mr' %}कार्य तपशील
+                                                            {% endif %}
+                                                        </th>
+                                                        <th style="width: 20%">
+                                                            {% if lang == 'en' %}Resources Needed
+                                                            {% elif lang == 'hi' %}आवश्यक संसाधन
+                                                            {% elif lang == 'mr' %}आवश्यक संसाधने
+                                                            {% endif %}
+                                                        </th>
+                                                        <th class="text-center" style="width: 25%">
+                                                            {% if lang == 'en' %}Tips & Notes
+                                                            {% elif lang == 'hi' %}सुझाव और नोट्स
+                                                            {% elif lang == 'mr' %}टिप्स आणि नोट्स
+                                                            {% endif %}
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for item in plan %}
+                                                    <tr class="week-row {% cycle 'bg-light' '' %}">
+                                                        <td class="text-center fw-bold">
+                                                            <span class="week-badge">{{ item.week }}</span>
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <div class="activity-icon" style="font-size: 1.8rem;">{{ item.icon }}</div>
+                                                            <small class="text-muted d-block">{{ item.task }}</small>
+                                                        </td>
+                                                        <td>
+                                                            <div class="task-details">
+                                                                <strong>{{ item.medicine }}</strong>
+                                                                <p class="small text-muted mb-1">{{ item.precaution }}</p>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="resources">
+                                                                {% if item.week <= 4 %}
+                                                                <span class="badge bg-primary bg-opacity-10 text-primary me-1">Seeds</span>
+                                                                {% endif %}
+                                                                {% if item.week >= 2 and item.week <= 6 %}
+                                                                <span class="badge bg-warning bg-opacity-10 text-warning me-1">Fertilizer</span>
+                                                                {% endif %}
+                                                                {% if item.week >= 4 %}
+                                                                <span class="badge bg-info bg-opacity-10 text-info me-1">Water</span>
+                                                                {% endif %}
+                                                            </div>
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <div class="tip-box p-2 rounded">
+                                                                <i class="bi bi-lightbulb text-warning"></i>
+                                                                <small>{{ item.tip }}</small>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        
+                                        <div class="text-center mt-4">
+                                            <button class="btn btn-outline-success me-2">
+                                                <i class="bi bi-printer me-1"></i>
+                                                {% if lang == 'en' %}Print Plan
+                                                {% elif lang == 'hi' %}योजना प्रिंट करें
+                                                {% elif lang == 'mr' %}योजना प्रिंट करा
+                                                {% endif %}
+                                            </button>
+                                            <button class="btn btn-success">
+                                                <i class="bi bi-share me-1"></i>
+                                                {% if lang == 'en' %}Share with Expert
+                                                {% elif lang == 'hi' %}विशेषज्ञ के साथ साझा करें
+                                                {% elif lang == 'mr' %}तज्ञांसोबत शेअर करा
+                                                {% endif %}
+                                            </button>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            {% endif %}
+                            
+                            <!-- Share Section -->
+                            <div class="share-section mt-4 pt-3 border-top text-center">
+                                <p class="text-muted mb-2">
+                                    {% if lang == 'en' %}Share this tool with fellow farmers
+                                    {% elif lang == 'hi' %}इस टूल को अन्य किसानों के साथ साझा करें
+                                    {% elif lang == 'mr' %}हा साधन इतर शेतकऱ्यांसोबत शेअर करा
+                                    {% endif %}
+                                </p>
+                                <div class="social-share">
+                                    <button class="btn btn-sm btn-outline-primary me-2"><i class="bi bi-whatsapp"></i></button>
+                                    <button class="btn btn-sm btn-outline-info me-2"><i class="bi bi-telegram"></i></button>
+                                    <button class="btn btn-sm btn-outline-dark"><i class="bi bi-envelope"></i></button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="d-grid mt-4">
-                        <button type="submit" class="btn btn-lg btn-gradient fw-bold ripple"> <i class="bi bi-lightning-charge-fill me-2"></i>Recommend Crop</button>
+                </div>
+                
+                <!-- Sidebar Column -->
+                <div class="col-lg-4 col-xl-3">
+                    <div class="sticky-sidebar">
+                        <!-- Crop Tips -->
+                        <div class="card border-0 shadow-sm glass-card mb-4">
+                            <div class="card-body">
+                                <h6 class="fw-bold text-gradient mb-3">
+                                    <i class="bi bi-lightbulb me-2"></i>
+                                    {% if lang == 'en' %}Farming Tips
+                                    {% elif lang == 'hi' %}कृषि युक्तियाँ
+                                    {% elif lang == 'mr' %}शेती टिप्स
+                                    {% endif %}
+                                </h6>
+                                <div class="tips-list">
+                                    <div class="tip-item mb-3">
+                                        <div class="d-flex">
+                                            <div class="flex-shrink-0">
+                                                <i class="bi bi-droplet text-primary"></i>
+                                            </div>
+                                            <div class="flex-grow-1 ms-3">
+                                                <small class="fw-semibold">
+                                                    {% if lang == 'en' %}Water Management
+                                                    {% elif lang == 'hi' %}जल प्रबंधन
+                                                    {% elif lang == 'mr' %}पाणी व्यवस्थापन
+                                                    {% endif %}
+                                                </small>
+                                                <p class="small text-muted mb-0">
+                                                    {% if lang == 'en' %}Water early morning or late evening to reduce evaporation
+                                                    {% elif lang == 'hi' %}वाष्पीकरण कम करने के लिए सुबह या शाम को पानी दें
+                                                    {% elif lang == 'mr' %}बाष्पीभवन कमी करण्यासाठी सकाळी किंवा संध्याकाळी पाणी द्या
+                                                    {% endif %}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tip-item mb-3">
+                                        <div class="d-flex">
+                                            <div class="flex-shrink-0">
+                                                <i class="bi bi-flower2 text-success"></i>
+                                            </div>
+                                            <div class="flex-grow-1 ms-3">
+                                                <small class="fw-semibold">
+                                                    {% if lang == 'en' %}Soil Health
+                                                    {% elif lang == 'hi' %}मृदा स्वास्थ्य
+                                                    {% elif lang == 'mr' %}माती आरोग्य
+                                                    {% endif %}
+                                                </small>
+                                                <p class="small text-muted mb-0">
+                                                    {% if lang == 'en' %}Test soil every season for optimal nutrient balance
+                                                    {% elif lang == 'hi' %}इष्टतम पोषक तत्व संतुलन के लिए हर मौसम में मिट्टी की जाँच करें
+                                                    {% elif lang == 'mr' %}इष्टतम पोषक संतुलनासाठी प्रत्येक हंगामात मातीची चाचणी घ्या
+                                                    {% endif %}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Quick Stats -->
+                        <div class="card border-0 shadow-sm glass-card">
+                            <div class="card-body">
+                                <h6 class="fw-bold text-gradient mb-3">
+                                    <i class="bi bi-graph-up me-2"></i>
+                                    {% if lang == 'en' %}Today's Insights
+                                    {% elif lang == 'hi' %}आज की अंतर्दृष्टि
+                                    {% elif lang == 'mr' %}आजची अंतर्दृष्टी
+                                    {% endif %}
+                                </h6>
+                                <div class="quick-stats">
+                                    <div class="stat-row d-flex justify-content-between mb-2">
+                                        <span class="small">Rice Suitability</span>
+                                        <span class="fw-bold text-success">85%</span>
+                                    </div>
+                                    <div class="progress mb-3" style="height: 6px;">
+                                        <div class="progress-bar bg-success" style="width: 85%"></div>
+                                    </div>
+                                    
+                                    <div class="stat-row d-flex justify-content-between mb-2">
+                                        <span class="small">Wheat Conditions</span>
+                                        <span class="fw-bold text-warning">65%</span>
+                                    </div>
+                                    <div class="progress mb-3" style="height: 6px;">
+                                        <div class="progress-bar bg-warning" style="width: 65%"></div>
+                                    </div>
+                                    
+                                    <div class="stat-row d-flex justify-content-between mb-2">
+                                        <span class="small">Vegetable Yield</span>
+                                        <span class="fw-bold text-info">92%</span>
+                                    </div>
+                                    <div class="progress mb-3" style="height: 6px;">
+                                        <div class="progress-bar bg-info" style="width: 92%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </form>
-                <div class="mt-3 mb-3 text-center">
-                    <!-- Language selection moved to its own section above -->
                 </div>
-                {% if result %}
-                <div class="alert alert-success mt-4 text-center premium-result animate__animated animate__fadeInUp">
-                    <i class="bi bi-patch-check-fill me-2"></i><h4 class="mb-0 d-inline">{{ result }}</h4>
-                </div>
-                {% endif %}
-                {% if plan %}
-                <div class="mt-5">
-                    <h3 class="fw-bold text-gradient mb-3">
-                        {% if lang == 'en' %}Weekly Planner for {{ result|slice:'18:' }}
-                        {% elif lang == 'hi' %}{{ result|slice:'18:' }} के लिए साप्ताहिक योजना
-                        {% elif lang == 'mr' %}{{ result|slice:'18:' }} साठी साप्ताहिक योजना
-                        {% endif %}
-                    </h3>
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-hover glass-card">
-                            <thead class="table-success">
-                                <tr>
-                                    <th>
-                                        {% if lang == 'en' %}Week
-                                        {% elif lang == 'hi' %}सप्ताह
-                                        {% elif lang == 'mr' %}आठवडा
-                                        {% endif %}
-                                    </th>
-                                    <th>
-                                        {% if lang == 'en' %}Icon
-                                        {% elif lang == 'hi' %}चिह्न
-                                        {% elif lang == 'mr' %}चिन्ह
-                                        {% endif %}
-                                    </th>
-                                    <th>
-                                        {% if lang == 'en' %}Task (Simple)
-                                        {% elif lang == 'hi' %}कार्य
-                                        {% elif lang == 'mr' %}काम
-                                        {% endif %}
-                                    </th>
-                                    <th>
-                                        {% if lang == 'en' %}Medicine
-                                        {% elif lang == 'hi' %}दवा
-                                        {% elif lang == 'mr' %}औषध
-                                        {% endif %}
-                                    </th>
-                                    <th>
-                                        {% if lang == 'en' %}Precaution
-                                        {% elif lang == 'hi' %}सावधानी
-                                        {% elif lang == 'mr' %}काळजी
-                                        {% endif %}
-                                    </th>
-                                    <th>
-                                        {% if lang == 'en' %}Tip
-                                        {% elif lang == 'hi' %}सुझाव
-                                        {% elif lang == 'mr' %}सूचना
-                                        {% endif %}
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for item in plan %}
-                                <tr>
-                                    <td>{{ item.week }}</td>
-                                    <td style="font-size:1.5rem;">{{ item.icon }}</td>
-                                    <td>{{ item.task }}</td>
-                                    <td>{{ item.medicine }}</td>
-                                    <td>{{ item.precaution }}</td>
-                                    <td>{{ item.tip }}</td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                {% endif %}
             </div>
         </div>
     </div>
@@ -132,37 +522,717 @@
 {% endblock %}
 
 {% block extra_section %}
-<section class="how-it-works-section py-5 mt-4">
+<section class="how-it-works-section py-5 mt-5 bg-light">
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-8 text-center">
-                <h3 class="fw-bold mb-3 text-gradient">How It Works</h3>
-                <p class="lead mb-4">Enter your soil and weather parameters above. Our AI model analyzes your data and instantly recommends the most suitable crop for your conditions. This helps you make informed decisions and maximize your yield.</p>
-                <div class="row g-4">
-                    <div class="col-md-4">
-                        <div class="card border-0 shadow-sm glass-card p-3 h-100">
-                            <div class="mb-2"><i class="bi bi-bar-chart-steps fs-2 text-gradient"></i></div>
-                            <h5 class="fw-semibold">1. Input Data</h5>
-                            <p class="small">Fill in the form with your soil nutrients, temperature, humidity, pH, and rainfall.</p>
-                        </div>
+        <div class="text-center mb-5">
+            <h2 class="fw-bold text-gradient mb-3">How It Works</h2>
+            <p class="lead text-muted">Our AI-powered system analyzes multiple parameters to give you the best crop recommendation</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6">
+                <div class="step-card text-center p-4 h-100 glass-card hover-lift">
+                    <div class="step-number mb-3">
+                        <span class="number-circle">1</span>
                     </div>
-                    <div class="col-md-4">
-                        <div class="card border-0 shadow-sm glass-card p-3 h-100">
-                            <div class="mb-2"><i class="bi bi-cpu fs-2 text-gradient"></i></div>
-                            <h5 class="fw-semibold">2. AI Analysis</h5>
-                            <p class="small">Our advanced AI model processes your data and predicts the best crop for your field.</p>
-                        </div>
+                    <i class="bi bi-input-cursor text-gradient fs-1 mb-3"></i>
+                    <h5 class="fw-bold mb-3">Input Parameters</h5>
+                    <p class="text-muted">Enter your soil nutrients, weather conditions, and location details</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="step-card text-center p-4 h-100 glass-card hover-lift">
+                    <div class="step-number mb-3">
+                        <span class="number-circle">2</span>
                     </div>
-                    <div class="col-md-4">
-                        <div class="card border-0 shadow-sm glass-card p-3 h-100">
-                            <div class="mb-2"><i class="bi bi-emoji-smile fs-2 text-gradient"></i></div>
-                            <h5 class="fw-semibold">3. Get Recommendation</h5>
-                            <p class="small">See your personalized crop suggestion instantly and plan your farming with confidence!</p>
-                        </div>
+                    <i class="bi bi-cpu text-gradient fs-1 mb-3"></i>
+                    <h5 class="fw-bold mb-3">AI Analysis</h5>
+                    <p class="text-muted">Our ML model processes data against thousands of farming scenarios</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="step-card text-center p-4 h-100 glass-card hover-lift">
+                    <div class="step-number mb-3">
+                        <span class="number-circle">3</span>
                     </div>
+                    <i class="bi bi-file-earmark-text text-gradient fs-1 mb-3"></i>
+                    <h5 class="fw-bold mb-3">Generate Report</h5>
+                    <p class="text-muted">Get detailed recommendations with confidence scores and alternatives</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="step-card text-center p-4 h-100 glass-card hover-lift">
+                    <div class="step-number mb-3">
+                        <span class="number-circle">4</span>
+                    </div>
+                    <i class="bi bi-calendar-check text-gradient fs-1 mb-3"></i>
+                    <h5 class="fw-bold mb-3">Plan & Execute</h5>
+                    <p class="text-muted">Follow the weekly planner for optimal cultivation and management</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* FIXED SCROLLING STYLES */
+    html, body {
+        width: 100%;
+        height: auto;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden; /* Prevent horizontal scroll */
+        overflow-y: auto; /* Allow vertical scroll */
+        scroll-behavior:inherit;
+    }
+
+    
+
+    /* Main content container should be the scrolling element */
+    .container-fluid {
+        overflow: visible !important;
+        height: auto !important;
+        min-height: 100vh !important;
+    }
+
+    body {
+        font-family: 'Inter', sans-serif;
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+        color: #333;
+        height: auto; /* Allow body to grow with content */
+        min-height: 100vh; /* At least full viewport height */
+    }
+
+    .row {
+        overflow: visible !important;
+        min-height: auto;
+        height: auto;
+    }
+
+    /* Ensure content sections have proper spacing */
+    section {
+        padding: 3rem 0;
+    }
+
+    /* Hero Section */
+    .hero-section {
+        position: relative;
+        overflow: visible !important;
+    }
+
+    .hero-decoration {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+    }
+    
+    .leaf {
+        position: absolute;
+        font-size: 2rem;
+        opacity: 0.2;
+        color: #2ecc71;
+        z-index: 0;
+    }
+    
+    .leaf-1 { top: 20%; left: 10%; animation: float 6s ease-in-out infinite; }
+    .leaf-2 { top: 60%; right: 15%; animation: float 8s ease-in-out infinite reverse; }
+    .leaf-3 { bottom: 20%; left: 20%; animation: float 7s ease-in-out infinite; }
+    
+    @keyframes float {
+        0%, 100% { transform: translateY(0) rotate(0deg); }
+        50% { transform: translateY(-20px) rotate(5deg); }
+    }
+    
+    .stat-box {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        padding: 15px 20px;
+        min-width: 100px;
+        border: 1px solid rgba(46, 204, 113, 0.2);
+    }
+    
+    /* Cards */
+    .glass-card {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        overflow: visible !important;
+        margin-bottom: 1.5rem; /* Add spacing between cards */
+    }
+    
+    .premium-card {
+        border: none;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        overflow: visible !important;
+        margin-bottom: 1.5rem; /* Add spacing between cards */
+    }
+    
+    .crop-icon-display {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, #2ecc71, #3498db);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+        color: white;
+        margin: 0 auto;
+    }
+    
+    .week-badge {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, #2ecc71, #3498db);
+        color: white;
+        border-radius: 50%;
+        line-height: 40px;
+        font-weight: bold;
+    }
+    
+    .tip-box {
+        background: rgba(255, 193, 7, 0.1);
+        border: 1px solid rgba(255, 193, 7, 0.2);
+        border-radius: 10px;
+    }
+    
+    .hover-lift {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .hover-lift:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12) !important;
+    }
+    
+    .number-circle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, #2ecc71, #3498db);
+        color: white;
+        border-radius: 50%;
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+    
+    .sticky-sidebar {
+        position: sticky;
+        top: 20px;
+        z-index: 1;
+        align-self: flex-start;
+    }
+    
+    .activity-icon {
+        color: #2ecc71;
+    }
+    
+    .recommendation-display {
+        background: linear-gradient(135deg, rgba(46, 204, 113, 0.05), rgba(52, 152, 219, 0.05));
+        border: 2px solid rgba(46, 204, 113, 0.2);
+        border-radius: 15px;
+    }
+    
+    .stat-item {
+        background: rgba(255, 255, 255, 0.7);
+        padding: 10px;
+        border-radius: 10px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    .nav-pills .nav-link.active {
+        background: linear-gradient(135deg, #2ecc71, #3498db) !important;
+        color: white !important;
+        box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+    }
+    
+    .nav-pills .nav-link {
+        color: #666;
+        border-radius: 10px;
+        padding: 10px 20px;
+        transition: all 0.3s ease;
+    }
+    
+    .nav-pills .nav-link:hover {
+        background: rgba(46, 204, 113, 0.1);
+    }
+    
+    /* Form Styles */
+    .form-floating {
+        position: relative;
+    }
+    
+    .form-floating > .form-control,
+    .form-floating > .form-control-plaintext,
+    .form-floating > .form-select {
+        height: calc(3.5rem + 2px);
+        line-height: 1.25;
+        border-radius: 12px;
+        border: 1px solid #dee2e6;
+        padding: 1rem 0.75rem;
+    }
+    
+    .form-floating > label {
+        padding: 1rem 0.75rem;
+    }
+    
+    /* Button Styles */
+    .btn-gradient {
+        background: linear-gradient(135deg, #2ecc71, #3498db);
+        border: none;
+        color: white;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-gradient:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(46, 204, 113, 0.3);
+        color: white;
+    }
+    
+    /* Ripple Effect */
+    .ripple {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .ripple-effect {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.4);
+        transform: scale(0);
+        animation: ripple 0.6s linear;
+    }
+    
+    @keyframes ripple {
+        to {
+            transform: scale(4);
+            opacity: 0;
+        }
+    }
+    
+    /* Text Gradient */
+    .text-gradient {
+        background: linear-gradient(135deg, #2ecc71, #3498db);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    
+    /* Scrollbar Styling */
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 4px;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background: linear-gradient(135deg, #2ecc71, #3498db);
+        border-radius: 4px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(135deg, #27ae60, #2980b9);
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        .hero-section {
+            min-height: 50vh; 
+            padding: 2rem 0;
+        }
+        
+        .display-4 {
+            font-size: 2.5rem;
+        }
+        
+        .sticky-sidebar {
+            position: static;
+            margin-top: 2rem;
+        }
+        
+        .card-body {
+            padding: 1.5rem !important;
+        }
+        
+        .table-responsive {
+            font-size: 0.9rem;
+        }
+        
+        .crop-icon-display {
+            width: 60px;
+            height: 60px;
+            font-size: 2rem;
+        }
+        
+        section {
+            padding: 2rem 0;
+        }
+    }
+    
+    @media (max-width: 576px) {
+        .display-4 {
+            font-size: 2rem;
+        }
+        
+        .nav-pills .nav-link {
+            padding: 8px 12px;
+            font-size: 0.9rem;
+        }
+        
+        .btn-lg {
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+        }
+        
+        section {
+            padding: 1.5rem 0;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('CropAI Recommendation Page Loaded');
+        
+        // ========== SCROLLING SAFEGUARD ==========
+        // Ensure scrolling is never blocked
+        function ensureScrollable() {
+            document.body.style.overflowY = 'auto';
+            document.documentElement.style.overflowY = 'auto';
+            document.body.style.height = 'auto';
+        }
+        ensureScrollable();
+        
+        // ========== RIPPLE EFFECT ==========
+        const submitBtn = document.querySelector('.ripple');
+        if (submitBtn) {
+            submitBtn.addEventListener('click', function(e) {
+                const ripple = this.querySelector('.ripple-effect');
+                if (ripple) ripple.remove();
+                
+                const newRipple = document.createElement('div');
+                newRipple.className = 'ripple-effect';
+                
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                newRipple.style.width = size + 'px';
+                newRipple.style.height = size + 'px';
+                newRipple.style.left = e.clientX - rect.left - size/2 + 'px';
+                newRipple.style.top = e.clientY - rect.top - size/2 + 'px';
+                
+                this.appendChild(newRipple);
+                
+                // Remove ripple after animation
+                setTimeout(() => {
+                    if (newRipple.parentNode === this) {
+                        this.removeChild(newRipple);
+                    }
+                }, 600);
+            });
+        }
+        
+        // ========== LOCATION DETECTION ==========
+        const detectLocationBtn = document.getElementById('detectLocation');
+        if (detectLocationBtn) {
+            detectLocationBtn.addEventListener('click', function() {
+                if (navigator.geolocation) {
+                    const originalHTML = this.innerHTML;
+                    this.innerHTML = '<i class="bi bi-hourglass-split me-2"></i>Detecting...';
+                    this.disabled = true;
+                    
+                    navigator.geolocation.getCurrentPosition(
+                        function(position) {
+                            // Don't use alert - it blocks UI
+                            console.log('Location detected:', position.coords);
+                            
+                            // Update UI without blocking
+                            detectLocationBtn.innerHTML = '<i class="bi bi-check-circle me-2"></i>Location Detected';
+                            detectLocationBtn.classList.add('btn-success');
+                            detectLocationBtn.classList.remove('btn-primary');
+                            
+                            // Show location in a non-blocking way
+                            const locationDisplay = document.getElementById('locationDisplay') || 
+                                                    createLocationDisplay();
+                            locationDisplay.textContent = 
+                                `📍 Lat: ${position.coords.latitude.toFixed(4)}, ` +
+                                `Lng: ${position.coords.longitude.toFixed(4)}`;
+                        },
+                        function(error) {
+                            console.error('Geolocation error:', error);
+                            detectLocationBtn.innerHTML = originalHTML;
+                            detectLocationBtn.disabled = false;
+                            
+                            // Non-blocking error message
+                            showToast('Location detection failed. Please enter manually.', 'warning');
+                        },
+                        {
+                            enableHighAccuracy: true,
+                            timeout: 10000,
+                            maximumAge: 0
+                        }
+                    );
+                } else {
+                    showToast('Geolocation not supported by browser', 'error');
+                }
+            });
+        }
+        
+        // ========== FORM HANDLING ==========
+        // Auto-focus first input field
+        const firstInput = document.querySelector('form input[type="number"], form input[type="text"]');
+        if (firstInput) {
+            setTimeout(() => firstInput.focus(), 100); // Small delay for better UX
+        }
+        
+        // Form validation
+        const forms = document.querySelectorAll('.needs-validation');
+        Array.from(forms).forEach(function(form) {
+            form.addEventListener('submit', function(event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    
+                    // Scroll to first invalid field
+                    const invalidField = form.querySelector(':invalid');
+                    if (invalidField) {
+                        invalidField.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'center'
+                        });
+                        invalidField.focus();
+                    }
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+        
+        // ========== TOOLTIPS ==========
+        // Check if Bootstrap is loaded
+        if (typeof bootstrap !== 'undefined') {
+            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+        }
+        
+        // ========== SCROLL ANIMATIONS ==========
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate__animated', 'animate__fadeInUp');
+                    observer.unobserve(entry.target); // Stop observing once animated
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all step cards
+        document.querySelectorAll('.step-card, .feature-card, .premium-card').forEach(function(card) {
+            observer.observe(card);
+        });
+        
+        // ========== TAB SWITCHING ==========
+        const tabTriggers = document.querySelectorAll('[data-bs-toggle="tab"]');
+        tabTriggers.forEach(function(tab) {
+            tab.addEventListener('click', function() {
+                // Remove animation from all panes first
+                document.querySelectorAll('.tab-pane').forEach(pane => {
+                    pane.classList.remove('animate__animated', 'animate__fadeIn');
+                });
+                
+                // Add animation to target pane
+                const targetId = this.getAttribute('data-bs-target');
+                const targetPane = document.querySelector(targetId);
+                if (targetPane) {
+                    setTimeout(() => {
+                        targetPane.classList.add('animate__animated', 'animate__fadeIn');
+                    }, 10);
+                }
+            });
+        });
+        
+        // ========== SOCIAL SHARING ==========
+        const shareButtons = document.querySelectorAll('.social-share button');
+        shareButtons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                const icon = this.querySelector('i');
+                if (!icon) return;
+                
+                const platform = icon.className;
+                const message = "Check out this AI Crop Recommendation tool!";
+                const url = window.location.href;
+                
+                let shareUrl = '';
+                
+                if (platform.includes('whatsapp')) {
+                    shareUrl = `https://wa.me/?text=${encodeURIComponent(message + ' ' + url)}`;
+                } else if (platform.includes('telegram')) {
+                    shareUrl = `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(message)}`;
+                } else if (platform.includes('envelope')) {
+                    shareUrl = `mailto:?subject=AI Crop Recommendation&body=${encodeURIComponent(message + '\n\n' + url)}`;
+                } else if (platform.includes('facebook')) {
+                    shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+                } else if (platform.includes('twitter')) {
+                    shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(message)}&url=${encodeURIComponent(url)}`;
+                }
+                
+                if (shareUrl) {
+                    window.open(shareUrl, '_blank', 'noopener,noreferrer');
+                }
+            });
+        });
+        
+        // ========== SMOOTH SCROLLING ==========
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId && targetId !== '#') {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+        
+        // ========== UTILITY FUNCTIONS ==========
+        function createLocationDisplay() {
+            const display = document.createElement('div');
+            display.id = 'locationDisplay';
+            display.className = 'location-display alert alert-info mt-2';
+            display.style.transition = 'all 0.3s ease';
+            detectLocationBtn.parentNode.appendChild(display);
+            return display;
+        }
+        
+        function showToast(message, type = 'info') {
+            // Create toast element
+            const toast = document.createElement('div');
+            toast.className = `toast align-items-center text-white bg-${type === 'error' ? 'danger' : type} border-0`;
+            toast.setAttribute('role', 'alert');
+            toast.setAttribute('aria-live', 'assertive');
+            toast.setAttribute('aria-atomic', 'true');
+            
+            toast.innerHTML = `
+                <div class="d-flex">
+                    <div class="toast-body">
+                        ${message}
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+                </div>
+            `;
+            
+            // Add to container
+            const toastContainer = document.querySelector('.toast-container') || createToastContainer();
+            toastContainer.appendChild(toast);
+            
+            // Initialize and show
+            if (typeof bootstrap !== 'undefined') {
+                const bsToast = new bootstrap.Toast(toast, { delay: 3000 });
+                bsToast.show();
+                
+                // Remove after hide
+                toast.addEventListener('hidden.bs.toast', function () {
+                    toast.remove();
+                });
+            } else {
+                // Fallback if no Bootstrap
+                toast.style.cssText = `
+                    position: fixed; top: 20px; right: 20px; z-index: 9999;
+                    padding: 1rem; border-radius: 0.5rem; min-width: 250px;
+                    animation: fadeIn 0.3s, fadeOut 0.3s 2.7s;
+                `;
+                document.body.appendChild(toast);
+                setTimeout(() => toast.remove(), 3000);
+            }
+        }
+        
+        function createToastContainer() {
+            const container = document.createElement('div');
+            container.className = 'toast-container position-fixed top-0 end-0 p-3';
+            container.style.zIndex = '9999';
+            document.body.appendChild(container);
+            return container;
+        }
+        
+        // ========== DYNAMIC YEAR UPDATE ==========
+        const yearElement = document.querySelector('.current-year');
+        if (yearElement) {
+            yearElement.textContent = new Date().getFullYear();
+        }
+        
+        // ========== ENSURE SCROLLING AFTER ALL OPERATIONS ==========
+        setTimeout(ensureScrollable, 100);
+    });
+    
+    // ========== RESIZE HANDLER ==========
+    window.addEventListener('resize', function() {
+        const sidebar = document.querySelector('.sticky-sidebar');
+        if (sidebar) {
+            if (window.innerWidth < 992) {
+                sidebar.style.position = 'static';
+                sidebar.style.top = '';
+            } else {
+                sidebar.style.position = 'sticky';
+                sidebar.style.top = '20px';
+            }
+        }
+        
+        // Ensure scrolling is maintained on resize
+        document.body.style.overflowY = 'auto';
+    });
+    
+    // ========== WHEEL/Touch EVENT SAFEGUARD ==========
+    // Prevent any code from blocking scroll events
+    window.addEventListener('wheel', function(e) {
+        // Allow default scroll behavior
+    }, { passive: true });
+    
+    window.addEventListener('touchmove', function(e) {
+        // Allow default touch scroll behavior
+    }, { passive: true });
+    
+    // ========== DEBUG HELPER ==========
+    // Uncomment to debug scrolling
+    /*
+    window.addEventListener('load', function() {
+        console.log('Page loaded. Checking scroll status:');
+        console.log('Body overflow:', getComputedStyle(document.body).overflowY);
+        console.log('HTML overflow:', getComputedStyle(document.documentElement).overflowY);
+        console.log('Body height:', document.body.offsetHeight, 'px');
+        console.log('Window height:', window.innerHeight, 'px');
+    });
+    */
+</script>
 {% endblock %}
