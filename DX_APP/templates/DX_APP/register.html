@@ -41,7 +41,7 @@
                             <!-- Personal Information -->
                             <div class="col-md-6">
                                 <div class="form-floating mb-3">
-                                    {{ form.first_name }}
+                                    {{ form.first_name|add_class:"form-control" }}
                                     <label for="id_first_name">
                                         {% if lang == 'en' %}First Name *
                                         {% elif lang == 'hi' %}पहला नाम *
@@ -58,7 +58,7 @@
                             
                             <div class="col-md-6">
                                 <div class="form-floating mb-3">
-                                    {{ form.last_name }}
+                                    {{ form.last_name|add_class:"form-control" }}
                                     <label for="id_last_name">
                                         {% if lang == 'en' %}Last Name *
                                         {% elif lang == 'hi' %}अंतिम नाम *
@@ -75,7 +75,7 @@
                             
                             <div class="col-md-6">
                                 <div class="form-floating mb-3">
-                                    {{ form.email }}
+                                    {{ form.email|add_class:"form-control" }}
                                     <label for="id_email">
                                         {% if lang == 'en' %}Email Address *
                                         {% elif lang == 'hi' %}ईमेल पता *
@@ -92,7 +92,7 @@
                             
                             <div class="col-md-6">
                                 <div class="form-floating mb-3">
-                                    {{ form.phone }}
+                                    {{ form.phone|add_class:"form-control" }}
                                     <label for="id_phone">
                                         {% if lang == 'en' %}Phone Number *
                                         {% elif lang == 'hi' %}फोन नंबर *
@@ -110,7 +110,7 @@
                             <!-- Username -->
                             <div class="col-md-6">
                                 <div class="form-floating mb-3">
-                                    {{ form.username }}
+                                    {{ form.username|add_class:"form-control" }}
                                     <label for="id_username">
                                         {% if lang == 'en' %}Username *
                                         {% elif lang == 'hi' %}उपयोगकर्ता नाम *
@@ -134,7 +134,7 @@
                             <!-- User Type -->
                             <div class="col-md-6">
                                 <div class="form-floating mb-3">
-                                    {{ form.user_type }}
+                                    {{ form.user_type|add_class:"form-select" }}
                                     <label for="id_user_type">
                                         {% if lang == 'en' %}I am a *
                                         {% elif lang == 'hi' %}मैं हूं *
@@ -152,7 +152,7 @@
                             <!-- Location -->
                             <div class="col-12">
                                 <div class="form-floating mb-3">
-                                    {{ form.location }}
+                                    {{ form.location|add_class:"form-control" }}
                                     <label for="id_location">
                                         {% if lang == 'en' %}Location/City *
                                         {% elif lang == 'hi' %}स्थान/शहर *
@@ -170,7 +170,7 @@
                             <!-- Passwords -->
                             <div class="col-md-6">
                                 <div class="form-floating mb-3">
-                                    {{ form.password1 }}
+                                    {{ form.password1|add_class:"form-control" }}
                                     <label for="id_password1">
                                         {% if lang == 'en' %}Password *
                                         {% elif lang == 'hi' %}पासवर्ड *
@@ -193,7 +193,7 @@
                             
                             <div class="col-md-6">
                                 <div class="form-floating mb-3">
-                                    {{ form.password2 }}
+                                    {{ form.password2|add_class:"form-control" }}
                                     <label for="id_password2">
                                         {% if lang == 'en' %}Confirm Password *
                                         {% elif lang == 'hi' %}पासवर्ड की पुष्टि करें *
