@@ -1,10 +1,34 @@
 import tensorflow as tf
+import pandas as pd
+import os
+
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
+from tensorflow.keras.applications import MobileNetV2
 from tensorflow.keras import layers, models
 
+# -------------------------------
+# Paths
+# -------------------------------
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+csv_path = os.path.join(BASE_DIR, "dataset.csv")
+
+# -------------------------------
+# Load CSV
+# -------------------------------
+df = pd.read_csv("C:\\Users\\parth\\Downloads\\plant dataset kaggle.zip")
+
+print("Dataset Loaded")
+print(df.head())
+
+# -------------------------------
+# Parameters
+# -------------------------------
 img_size = (224,224)
 batch_size = 32
 
+# -------------------------------
+# Data Augmentation
+# -------------------------------
 train_datagen = ImageDataGenerator(
     rescale=1./255,
     rotation_range=20,
@@ -16,25 +40,34 @@ train_datagen = ImageDataGenerator(
     validation_split=0.2
 )
 
-train = train_datagen.flow_from_directory(
-    "ml/dataset",
+# -------------------------------
+# Load Images from CSV
+# -------------------------------
+train = train_datagen.flow_from_dataframe(
+    dataframe=df,
+    x_col="image_path",
+    y_col="label",
     target_size=img_size,
     batch_size=batch_size,
-    class_mode='categorical',
-    subset='training'
+    class_mode="categorical",
+    subset="training"
 )
 
-val = train_datagen.flow_from_directory(
-    "ml/dataset",
+val = train_datagen.flow_from_dataframe(
+    dataframe=df,
+    x_col="image_path",
+    y_col="label",
     target_size=img_size,
     batch_size=batch_size,
-    class_mode='categorical',
-    subset='validation'
+    class_mode="categorical",
+    subset="validation"
 )
 
-from tensorflow.keras.applications import MobileNetV2
-from tensorflow.keras import layers, models
+print("Classes:", train.class_indices)
 
+# -------------------------------
+# MobileNetV2 Model
+# -------------------------------
 base_model = MobileNetV2(
     weights='imagenet',
     include_top=False,
@@ -51,51 +84,41 @@ model = models.Sequential([
     layers.Dense(train.num_classes, activation='softmax')
 ])
 
-
+# -------------------------------
+# Compile
+# -------------------------------
 model.compile(
     optimizer='adam',
     loss='categorical_crossentropy',
     metrics=['accuracy']
 )
 
-# Initial training
-model.fit(train, validation_data=val, epochs=25)
+# -------------------------------
+# Training
+# -------------------------------
+print("Starting training...")
+model.fit(train, validation_data=val, epochs=20)
 
-# Fine-tuning: Unfreeze some layers of the base model
+# -------------------------------
+# Fine Tuning
+# -------------------------------
 base_model.trainable = True
+
 for layer in base_model.layers[:-20]:
     layer.trainable = False
 
-# Recompile with lower learning rate
-model.compile(optimizer=tf.keras.optimizers.Adam(1e-5), loss='categorical_crossentropy', metrics=['accuracy'])
+model.compile(
+    optimizer=tf.keras.optimizers.Adam(1e-5),
+    loss='categorical_crossentropy',
+    metrics=['accuracy']
+)
 
-# Fine-tune
-model.fit(train, validation_data=val, epochs=25)
+print("Fine tuning...")
+model.fit(train, validation_data=val, epochs=10)
 
+# -------------------------------
+# Save Model
+# -------------------------------
 model.save("cnn_model.h5")
 
-print("Model saved")
-
-# Prediction on a given image
-import numpy as np
-from tensorflow.keras.preprocessing import image
-
-# Load the trained model
-model = tf.keras.models.load_model("cnn_model.h5")
-
-# Provide the path to the image you want to predict
-img_path = "path/to/your/image.jpg"  # Replace with actual image path
-
-img = image.load_img(img_path, target_size=(224, 224))
-img_array = image.img_to_array(img)
-img_array = np.expand_dims(img_array, axis=0)
-img_array /= 255.
-
-predictions = model.predict(img_array)
-class_names = list(train.class_indices.keys())
-predicted_class = class_names[np.argmax(predictions[0])]
-confidence = np.max(predictions[0])
-
-print(f"Predicted class: {predicted_class}")
-print(f"Confidence: {confidence:.4f}")
-print(f"All probabilities: {predictions[0]}")
+print("Model saved successfully")

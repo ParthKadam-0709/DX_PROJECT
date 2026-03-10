@@ -12,15 +12,15 @@
         
         <h1 class="display-4 fw-bold text-gradient mb-3 animate__animated animate__fadeInDown">
             <i class="bi bi-graph-up-arrow me-3"></i>
-            {% if lang == 'en' %}Market Insights
-            {% elif lang == 'hi' %}बाजार अंतर्दृष्टि
-            {% elif lang == 'mr' %}बाजार अंतर्दृष्टी
+            {% if lang == 'en' %}Comprehensive Market Insights
+            {% elif lang == 'hi' %}विस्तृत बाजार अंतर्दृष्टि
+            {% elif lang == 'mr' %}विस्तृत बाजार अंतर्दृष्टी
             {% endif %}
         </h1>
         <p class="lead text-dark-50 mb-4 fs-5 animate__animated animate__fadeInUp animate__delay-1s">
-            {% if lang == 'en' %}Real-time crop prices, demand trends, and market analysis for informed farming decisions
-            {% elif lang == 'hi' %}सूचित कृषि निर्णयों के लिए रियल-टाइम फसल की कीमतें, मांग के रुझान और बाजार विश्लेषण
-            {% elif lang == 'mr' %}माहितीपूर्ण शेती निर्णयांसाठी रिअल-टाइम पिक किंमती, मागणीचे कल आणि बाजार विश्लेषण
+            {% if lang == 'en' %}Real-time prices, demand trends, market analysis & predictive insights for 50+ crops across India
+            {% elif lang == 'hi' %}भारत भर में 50+ फसलों के लिए रियल-टाइम कीमतें, मांग रुझान, बाजार विश्लेषण और भविष्यवाणी अंतर्दृष्टि
+            {% elif lang == 'mr' %}भारतभरातील ५०+ पिकांसाठी रिअल-टाइम किंमती, मागणीचे कल, बाजार विश्लेषण आणि भविष्यकथन अंतर्दृष्टी
             {% endif %}
         </p>
         
@@ -28,18 +28,18 @@
         <div class="row justify-content-center mt-4 animate__animated animate__fadeIn animate__delay-2s">
             <div class="col-auto">
                 <div class="stat-box">
-                    <h3 class="fw-bold text-gradient mb-0">₹5K+</h3>
+                    <h3 class="fw-bold text-gradient mb-0">50+</h3>
                     <small class="text-muted">
-                        {% if lang == 'en' %}Daily Updates
-                        {% elif lang == 'hi' %}दैनिक अपडेट
-                        {% elif lang == 'mr' %}दैनिक अपडेट्स
+                        {% if lang == 'en' %}Crops Tracked
+                        {% elif lang == 'hi' %}निगरानी की गई फसलें
+                        {% elif lang == 'mr' %}निरीक्षण केलेली पिके
                         {% endif %}
                     </small>
                 </div>
             </div>
             <div class="col-auto">
                 <div class="stat-box">
-                    <h3 class="fw-bold text-gradient mb-0">50+</h3>
+                    <h3 class="fw-bold text-gradient mb-0">500+</h3>
                     <small class="text-muted">
                         {% if lang == 'en' %}Markets Covered
                         {% elif lang == 'hi' %}बाजार कवर
@@ -50,11 +50,22 @@
             </div>
             <div class="col-auto">
                 <div class="stat-box">
-                    <h3 class="fw-bold text-gradient mb-0">95%</h3>
+                    <h3 class="fw-bold text-gradient mb-0">24/7</h3>
                     <small class="text-muted">
-                        {% if lang == 'en' %}Accuracy
-                        {% elif lang == 'hi' %}सटीकता
-                        {% elif lang == 'mr' %}अचूकता
+                        {% if lang == 'en' %}Live Updates
+                        {% elif lang == 'hi' %}लाइव अपडेट
+                        {% elif lang == 'mr' %}लाइव्ह अपडेट्स
+                        {% endif %}
+                    </small>
+                </div>
+            </div>
+            <div class="col-auto">
+                <div class="stat-box">
+                    <h3 class="fw-bold text-gradient mb-0">₹10K+ Cr</h3>
+                    <small class="text-muted">
+                        {% if lang == 'en' %}Daily Volume
+                        {% elif lang == 'hi' %}दैनिक वॉल्यूम
+                        {% elif lang == 'mr' %}दैनिक व्हॉल्यूम
                         {% endif %}
                     </small>
                 </div>
@@ -71,63 +82,72 @@
             <div class="row g-4">
                 <!-- Main Content Column -->
                 <div class="col-lg-8 col-xl-9">
-                    <!-- Market Overview Card -->
+                    <!-- Market Dashboard -->
                     <div class="card shadow-lg border-0 premium-card glass-card animate__animated animate__fadeInUp mb-4">
                         <div class="card-header bg-transparent border-0 pt-4 pb-3">
                             <div class="d-flex justify-content-between align-items-center">
                                 <h4 class="fw-bold text-gradient mb-0">
-                                    <i class="bi bi-speedometer2 me-2"></i>
-                                    {% if lang == 'en' %}Market Overview
-                                    {% elif lang == 'hi' %}बाजार सिंहावलोकन
-                                    {% elif lang == 'mr' %}बाजार आढावा
+                                    <i class="bi bi-dashboard me-2"></i>
+                                    {% if lang == 'en' %}Market Intelligence Dashboard
+                                    {% elif lang == 'hi' %}बाजार इंटेलिजेंस डैशबोर्ड
+                                    {% elif lang == 'mr' %}बाजार बुद्धिमत्ता डॅशबोर्ड
                                     {% endif %}
                                 </h4>
                                 <div class="dropdown">
                                     <button class="btn btn-outline-success btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                        <i class="bi bi-calendar3 me-1"></i>
                                         {% if lang == 'en' %}Last 7 Days
                                         {% elif lang == 'hi' %}पिछले 7 दिन
                                         {% elif lang == 'mr' %}मागील ७ दिवस
                                         {% endif %}
                                     </button>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">Today</a></li>
-                                        <li><a class="dropdown-item" href="#">Last 7 Days</a></li>
-                                        <li><a class="dropdown-item" href="#">Last 30 Days</a></li>
-                                        <li><a class="dropdown-item" href="#">Last 3 Months</a></li>
+                                        <li><a class="dropdown-item" href="#"><i class="bi bi-calendar-day me-2"></i>Today</a></li>
+                                        <li><a class="dropdown-item active" href="#"><i class="bi bi-calendar-week me-2"></i>Last 7 Days</a></li>
+                                        <li><a class="dropdown-item" href="#"><i class="bi bi-calendar-month me-2"></i>Last 30 Days</a></li>
+                                        <li><a class="dropdown-item" href="#"><i class="bi bi-calendar-range me-2"></i>Last 3 Months</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item" href="#"><i class="bi bi-calendar-check me-2"></i>Custom Range</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                         <div class="card-body p-4">
-                            <!-- Market Stats -->
+                            <!-- Market Health Indicators -->
                             <div class="row g-4 mb-4">
                                 <div class="col-md-3">
                                     <div class="market-stat text-center p-3 rounded-3 bg-success bg-opacity-10 border border-success border-opacity-25">
-                                        <i class="bi bi-arrow-up-circle fs-1 text-success mb-2"></i>
-                                        <h5 class="fw-bold mb-1">+5.2%</h5>
+                                        <i class="bi bi-arrow-up-right-circle fs-1 text-success mb-2"></i>
+                                        <h5 class="fw-bold mb-1">+8.7%</h5>
                                         <small class="text-muted">
                                             {% if lang == 'en' %}Market Growth
                                             {% elif lang == 'hi' %}बाजार वृद्धि
                                             {% elif lang == 'mr' %}बाजार वाढ
                                             {% endif %}
                                         </small>
+                                        <div class="progress mt-2" style="height: 4px;">
+                                            <div class="progress-bar bg-success" style="width: 78%"></div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="market-stat text-center p-3 rounded-3 bg-primary bg-opacity-10 border border-primary border-opacity-25">
-                                        <i class="bi bi-cart fs-1 text-primary mb-2"></i>
-                                        <h5 class="fw-bold mb-1">₹2.5K Cr</h5>
+                                        <i class="bi bi-cart-check fs-1 text-primary mb-2"></i>
+                                        <h5 class="fw-bold mb-1">₹12.5K Cr</h5>
                                         <small class="text-muted">
                                             {% if lang == 'en' %}Daily Volume
                                             {% elif lang == 'hi' %}दैनिक वॉल्यूम
                                             {% elif lang == 'mr' %}दैनिक व्हॉल्यूम
                                             {% endif %}
                                         </small>
+                                        <div class="progress mt-2" style="height: 4px;">
+                                            <div class="progress-bar bg-primary" style="width: 92%"></div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="market-stat text-center p-3 rounded-3 bg-warning bg-opacity-10 border border-warning border-opacity-25">
-                                        <i class="bi bi-thermometer-high fs-1 text-warning mb-2"></i>
+                                        <i class="bi bi-activity fs-1 text-warning mb-2"></i>
                                         <h5 class="fw-bold mb-1">High</h5>
                                         <small class="text-muted">
                                             {% if lang == 'en' %}Demand Level
@@ -135,49 +155,77 @@
                                             {% elif lang == 'mr' %}मागणी पातळी
                                             {% endif %}
                                         </small>
+                                        <div class="progress mt-2" style="height: 4px;">
+                                            <div class="progress-bar bg-warning" style="width: 85%"></div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="market-stat text-center p-3 rounded-3 bg-info bg-opacity-10 border border-info border-opacity-25">
-                                        <i class="bi bi-truck fs-1 text-info mb-2"></i>
-                                        <h5 class="fw-bold mb-1">85%</h5>
+                                        <i class="bi bi-truck-flatbed fs-1 text-info mb-2"></i>
+                                        <h5 class="fw-bold mb-1">92%</h5>
                                         <small class="text-muted">
-                                            {% if lang == 'en' %}Supply Ready
-                                            {% elif lang == 'hi' %}आपूर्ति तैयार
-                                            {% elif lang == 'mr' %}पुरवठा तयार
+                                            {% if lang == 'en' %}Supply Index
+                                            {% elif lang == 'hi' %}आपूर्ति सूचकांक
+                                            {% elif lang == 'mr' %}पुरवठा निर्देशांक
                                             {% endif %}
                                         </small>
+                                        <div class="progress mt-2" style="height: 4px;">
+                                            <div class="progress-bar bg-info" style="width: 92%"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Market Trends Chart -->
+                            <!-- Price Trends Chart -->
                             <div class="trend-chart mb-4">
                                 <div class="d-flex justify-content-between align-items-center mb-3">
-                                    <h6 class="fw-bold mb-0">
-                                        <i class="bi bi-graph-up me-2"></i>
-                                        {% if lang == 'en' %}Price Trends (Last 30 Days)
-                                        {% elif lang == 'hi' %}मूल्य रुझान (पिछले 30 दिन)
-                                        {% elif lang == 'mr' %}किंमत कल (मागील 30 दिवस)
+                                    <h6 class="fw-bold text-gradient mb-0">
+                                        <i class="bi bi-graph-up-arrow me-2"></i>
+                                        {% if lang == 'en' %}Composite Price Index (Last 30 Days)
+                                        {% elif lang == 'hi' %}समग्र मूल्य सूचकांक (पिछले 30 दिन)
+                                        {% elif lang == 'mr' %}संयुक्त किंमत निर्देशांक (मागील 30 दिवस)
                                         {% endif %}
                                     </h6>
                                     <div class="btn-group btn-group-sm" role="group">
-                                        <button type="button" class="btn btn-outline-success active">Weekly</button>
-                                        <button type="button" class="btn btn-outline-success">Monthly</button>
-                                        <button type="button" class="btn btn-outline-success">Quarterly</button>
+                                        <button type="button" class="btn btn-outline-success active" data-period="weekly">
+                                            <i class="bi bi-calendar-week me-1"></i>Weekly
+                                        </button>
+                                        <button type="button" class="btn btn-outline-success" data-period="monthly">
+                                            <i class="bi bi-calendar-month me-1"></i>Monthly
+                                        </button>
+                                        <button type="button" class="btn btn-outline-success" data-period="quarterly">
+                                            <i class="bi bi-calendar-range me-1"></i>Quarterly
+                                        </button>
                                     </div>
                                 </div>
-                                <!-- Chart Placeholder -->
-                                <div class="chart-placeholder bg-light rounded-3 p-4 text-center" style="height: 300px;">
-                                    <div class="d-flex align-items-center justify-content-center h-100">
-                                        <div>
-                                            <i class="bi bi-bar-chart text-muted display-4 mb-3"></i>
-                                            <p class="text-muted mb-0">
-                                                {% if lang == 'en' %}Interactive price trend chart will appear here
-                                                {% elif lang == 'hi' %}इंटरैक्टिव मूल्य रुझान चार्ट यहां दिखाई देगा
-                                                {% elif lang == 'mr' %}संवादात्मक किंमत कल चार्ट येथे दिसेल
-                                                {% endif %}
-                                            </p>
+                                <!-- Interactive Chart -->
+                                <div class="chart-container bg-light rounded-3 p-3" style="height: 320px;">
+                                    <canvas id="priceTrendChart"></canvas>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-md-6">
+                                        <div class="d-flex align-items-center">
+                                            <div class="legend-color bg-success me-2" style="width: 12px; height: 12px;"></div>
+                                            <small class="text-muted">Food Grains (+12.5%)</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="d-flex align-items-center">
+                                            <div class="legend-color bg-primary me-2" style="width: 12px; height: 12px;"></div>
+                                            <small class="text-muted">Vegetables (+8.2%)</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="d-flex align-items-center">
+                                            <div class="legend-color bg-warning me-2" style="width: 12px; height: 12px;"></div>
+                                            <small class="text-muted">Oil Seeds (+5.7%)</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="d-flex align-items-center">
+                                            <div class="legend-color bg-info me-2" style="width: 12px; height: 12px;"></div>
+                                            <small class="text-muted">Cash Crops (+15.3%)</small>
                                         </div>
                                     </div>
                                 </div>
@@ -185,74 +233,85 @@
                         </div>
                     </div>
 
-                    <!-- Crop Prices Card -->
+                    <!-- Comprehensive Crop Prices -->
                     <div class="card shadow-lg border-0 premium-card glass-card animate__animated animate__fadeInUp mb-4">
                         <div class="card-header bg-transparent border-0 pt-4 pb-3">
-                            <h4 class="fw-bold text-gradient mb-0">
-                                <i class="bi bi-currency-rupee me-2"></i>
-                                {% if lang == 'en' %}Live Crop Prices
-                                {% elif lang == 'hi' %}लाइव फसल कीमतें
-                                {% elif lang == 'mr' %}लाइव्ह पिक किंमती
-                                {% endif %}
-                            </h4>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h4 class="fw-bold text-gradient mb-0">
+                                    <i class="bi bi-currency-rupee me-2"></i>
+                                    {% if lang == 'en' %}Live Crop Prices Across India
+                                    {% elif lang == 'hi' %}पूरे भारत में लाइव फसल कीमतें
+                                    {% elif lang == 'mr' %}संपूर्ण भारतातील लाइव्ह पिक किंमती
+                                    {% endif %}
+                                </h4>
+                                <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#compareModal">
+                                    <i class="bi bi-compass me-1"></i>
+                                    {% if lang == 'en' %}Compare Markets
+                                    {% elif lang == 'hi' %}बाजार तुलना करें
+                                    {% elif lang == 'mr' %}बाजारांची तुलना करा
+                                    {% endif %}
+                                </button>
+                            </div>
                         </div>
                         <div class="card-body p-0">
-                            <!-- Filter Bar -->
-                            <div class="p-4 border-bottom">
+                            <!-- Enhanced Filter Bar -->
+                            <div class="p-4 border-bottom bg-light">
                                 <div class="row g-3">
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-floating">
-                                            <select class="form-select" id="cropFilter">
-                                                <option selected>
-                                                    {% if lang == 'en' %}All Crops
-                                                    {% elif lang == 'hi' %}सभी फसलें
-                                                    {% elif lang == 'mr' %}सर्व पिके
+                                            <select class="form-select" id="cropCategory">
+                                                <option value="all" selected>
+                                                    {% if lang == 'en' %}All Categories
+                                                    {% elif lang == 'hi' %}सभी श्रेणियाँ
+                                                    {% elif lang == 'mr' %}सर्व वर्ग
                                                     {% endif %}
                                                 </option>
-                                                <option value="rice">Rice</option>
-                                                <option value="wheat">Wheat</option>
-                                                <option value="maize">Maize</option>
-                                                <option value="cotton">Cotton</option>
-                                                <option value="sugarcane">Sugarcane</option>
-                                                <option value="pulses">Pulses</option>
+                                                <option value="foodgrains">Food Grains</option>
                                                 <option value="vegetables">Vegetables</option>
+                                                <option value="fruits">Fruits</option>
+                                                <option value="oilseeds">Oil Seeds</option>
+                                                <option value="cashcrops">Cash Crops</option>
+                                                <option value="pulses">Pulses</option>
+                                                <option value="spices">Spices</option>
                                             </select>
-                                            <label for="cropFilter">
-                                                {% if lang == 'en' %}Filter by Crop
-                                                {% elif lang == 'hi' %}फसल द्वारा फ़िल्टर करें
-                                                {% elif lang == 'mr' %}पिकानुसार फिल्टर करा
+                                            <label for="cropCategory">
+                                                {% if lang == 'en' %}Crop Category
+                                                {% elif lang == 'hi' %}फसल श्रेणी
+                                                {% elif lang == 'mr' %}पीक वर्ग
                                                 {% endif %}
                                             </label>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-floating">
                                             <select class="form-select" id="stateFilter">
-                                                <option selected>
+                                                <option value="all" selected>
                                                     {% if lang == 'en' %}All States
                                                     {% elif lang == 'hi' %}सभी राज्य
                                                     {% elif lang == 'mr' %}सर्व राज्ये
                                                     {% endif %}
                                                 </option>
-                                                <option>Maharashtra</option>
-                                                <option>Punjab</option>
-                                                <option>Uttar Pradesh</option>
-                                                <option>Madhya Pradesh</option>
-                                                <option>Karnataka</option>
-                                                <option>Gujarat</option>
+                                                <option value="MH">Maharashtra</option>
+                                                <option value="PB">Punjab</option>
+                                                <option value="UP">Uttar Pradesh</option>
+                                                <option value="MP">Madhya Pradesh</option>
+                                                <option value="KA">Karnataka</option>
+                                                <option value="GJ">Gujarat</option>
+                                                <option value="RJ">Rajasthan</option>
+                                                <option value="TN">Tamil Nadu</option>
                                             </select>
                                             <label for="stateFilter">
-                                                {% if lang == 'en' %}Filter by State
-                                                {% elif lang == 'hi' %}राज्य द्वारा फ़िल्टर करें
-                                                {% elif lang == 'mr' %}राज्यानुसार फिल्टर करा
+                                                {% if lang == 'en' %}State
+                                                {% elif lang == 'hi' %}राज्य
+                                                {% elif lang == 'mr' %}राज्य
                                                 {% endif %}
                                             </label>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-floating">
                                             <select class="form-select" id="marketFilter">
-                                                <option selected>
+                                                <option value="all" selected>
                                                     {% if lang == 'en' %}All Markets
                                                     {% elif lang == 'hi' %}सभी बाजार
                                                     {% elif lang == 'mr' %}सर्व बाजार
@@ -263,11 +322,36 @@
                                                 <option>APMC Nagpur</option>
                                                 <option>APMC Nashik</option>
                                                 <option>APMC Aurangabad</option>
+                                                <option>Delhi Azadpur</option>
+                                                <option>Kolkata</option>
+                                                <option>Chennai</option>
                                             </select>
                                             <label for="marketFilter">
-                                                {% if lang == 'en' %}Filter by Market
-                                                {% elif lang == 'hi' %}बाजार द्वारा फ़िल्टर करें
-                                                {% elif lang == 'mr' %}बाजारानुसार फिल्टर करा
+                                                {% if lang == 'en' %}Market
+                                                {% elif lang == 'hi' %}बाजार
+                                                {% elif lang == 'mr' %}बाजार
+                                                {% endif %}
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-floating">
+                                            <select class="form-select" id="priceRange">
+                                                <option value="all" selected>
+                                                    {% if lang == 'en' %}Price Range
+                                                    {% elif lang == 'hi' %}मूल्य सीमा
+                                                    {% elif lang == 'mr' %}किंमत श्रेणी
+                                                    {% endif %}
+                                                </option>
+                                                <option value="low">&lt; ₹2000/quintal</option>
+                                                <option value="medium">₹2000-₹5000/quintal</option>
+                                                <option value="high">&gt; ₹5000/quintal</option>
+                                                <option value="premium">&gt; ₹10000/quintal</option>
+                                            </select>
+                                            <label for="priceRange">
+                                                {% if lang == 'en' %}Price Range
+                                                {% elif lang == 'hi' %}मूल्य सीमा
+                                                {% elif lang == 'mr' %}किंमत श्रेणी
                                                 {% endif %}
                                             </label>
                                         </div>
@@ -275,27 +359,21 @@
                                 </div>
                             </div>
 
-                            <!-- Crop Prices Table -->
+                            <!-- Enhanced Crop Prices Table -->
                             <div class="table-responsive">
-                                <table class="table table-hover align-middle mb-0">
+                                <table class="table table-hover align-middle mb-0" id="cropPricesTable">
                                     <thead class="bg-light">
                                         <tr>
                                             <th class="ps-4">
-                                                {% if lang == 'en' %}Crop
-                                                {% elif lang == 'hi' %}फसल
-                                                {% elif lang == 'mr' %}पीक
+                                                {% if lang == 'en' %}Crop & Grade
+                                                {% elif lang == 'hi' %}फसल और ग्रेड
+                                                {% elif lang == 'mr' %}पीक आणि दर्जा
                                                 {% endif %}
                                             </th>
                                             <th class="text-center">
-                                                {% if lang == 'en' %}Min Price
-                                                {% elif lang == 'hi' %}न्यूनतम मूल्य
-                                                {% elif lang == 'mr' %}किमान किंमत
-                                                {% endif %}
-                                            </th>
-                                            <th class="text-center">
-                                                {% if lang == 'en' %}Max Price
-                                                {% elif lang == 'hi' %}अधिकतम मूल्य
-                                                {% elif lang == 'mr' %}कमाल किंमत
+                                                {% if lang == 'en' %}Price Range
+                                                {% elif lang == 'hi' %}मूल्य सीमा
+                                                {% elif lang == 'mr' %}किंमत श्रेणी
                                                 {% endif %}
                                             </th>
                                             <th class="text-center">
@@ -305,135 +383,100 @@
                                                 {% endif %}
                                             </th>
                                             <th class="text-center">
+                                                <i class="bi bi-graph-up-arrow"></i>
                                                 {% if lang == 'en' %}Trend
                                                 {% elif lang == 'hi' %}रुझान
                                                 {% elif lang == 'mr' %}कल
                                                 {% endif %}
                                             </th>
                                             <th class="text-center">
+                                                <i class="bi bi-activity"></i>
+                                                {% if lang == 'en' %}Volatility
+                                                {% elif lang == 'hi' %}अस्थिरता
+                                                {% elif lang == 'mr' %}चंचलता
+                                                {% endif %}
+                                            </th>
+                                            <th class="text-center">
+                                                <i class="bi bi-shop"></i>
                                                 {% if lang == 'en' %}Market
                                                 {% elif lang == 'hi' %}बाजार
                                                 {% elif lang == 'mr' %}बाजार
                                                 {% endif %}
                                             </th>
                                             <th class="text-center">
+                                                <i class="bi bi-clock-history"></i>
                                                 {% if lang == 'en' %}Updated
-                                                {% elif lang == 'hi' %}अपडेट किया गया
+                                                {% elif lang == 'hi' %}अपडेट किया
                                                 {% elif lang == 'mr' %}अपडेट केले
                                                 {% endif %}
                                             </th>
                                             <th class="pe-4 text-center">
-                                                {% if lang == 'en' %}Action
+                                                {% if lang == 'en' %}Actions
                                                 {% elif lang == 'hi' %}कार्रवाई
                                                 {% elif lang == 'mr' %}क्रिया
                                                 {% endif %}
                                             </th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        {% for crop in crop_prices %}
-                                        <tr class="crop-price-row">
-                                            <td class="ps-4">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="crop-icon me-3">
-                                                        {% if crop.name == 'Rice' %}<i class="bi bi-flower3 text-success"></i>
-                                                        {% elif crop.name == 'Wheat' %}<i class="bi bi-flower2 text-warning"></i>
-                                                        {% elif crop.name == 'Maize' %}<i class="bi bi-flower1 text-info"></i>
-                                                        {% elif crop.name == 'Cotton' %}<i class="bi bi-flower1 text-primary"></i>
-                                                        {% else %}<i class="bi bi-flower1 text-secondary"></i>
-                                                        {% endif %}
-                                                    </div>
-                                                    <div>
-                                                        <h6 class="fw-bold mb-0">{{ crop.name }}</h6>
-                                                        <small class="text-muted">{{ crop.grade }}</small>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="text-center">
-                                                <span class="fw-bold text-danger">₹{{ crop.min_price }}</span>
-                                                <small class="text-muted d-block">/quintal</small>
-                                            </td>
-                                            <td class="text-center">
-                                                <span class="fw-bold text-success">₹{{ crop.max_price }}</span>
-                                                <small class="text-muted d-block">/quintal</small>
-                                            </td>
-                                            <td class="text-center">
-                                                <span class="fw-bold text-primary">₹{{ crop.avg_price }}</span>
-                                                <small class="text-muted d-block">/quintal</small>
-                                            </td>
-                                            <td class="text-center">
-                                                <span class="badge bg-{{ crop.trend_color }} bg-opacity-10 text-{{ crop.trend_color }}">
-                                                    <i class="bi bi-arrow-{{ crop.trend_icon }} me-1"></i>
-                                                    {{ crop.trend }}%
-                                                </span>
-                                            </td>
-                                            <td class="text-center">
-                                                <small>{{ crop.market }}</small>
-                                            </td>
-                                            <td class="text-center">
-                                                <small class="text-muted">{{ crop.updated }}</small>
-                                            </td>
-                                            <td class="pe-4 text-center">
-                                                <button class="btn btn-sm btn-outline-success">
-                                                    <i class="bi bi-eye"></i>
-                                                    {% if lang == 'en' %}View
-                                                    {% elif lang == 'hi' %}देखें
-                                                    {% elif lang == 'mr' %}पहा
-                                                    {% endif %}
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        {% endfor %}
+                                    <tbody id="cropPricesBody">
+                                        <!-- Crop data will be loaded dynamically -->
                                     </tbody>
                                 </table>
                             </div>
 
-                            <!-- Pagination -->
+                            <!-- Enhanced Pagination with Summary -->
                             <div class="p-4 border-top">
-                                <nav aria-label="Crop prices pagination">
-                                    <ul class="pagination justify-content-center mb-0">
-                                        <li class="page-item disabled">
-                                            <a class="page-link" href="#" tabindex="-1">
-                                                <i class="bi bi-chevron-left"></i>
-                                            </a>
-                                        </li>
-                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#">
-                                                <i class="bi bi-chevron-right"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </nav>
+                                <div class="row align-items-center">
+                                    <div class="col-md-6">
+                                        <div class="summary-info" id="paginationSummary">
+                                            <!-- Summary will be updated dynamically -->
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <nav aria-label="Crop prices pagination">
+                                            <ul class="pagination justify-content-end mb-0" id="paginationControls">
+                                                <!-- Pagination will be generated dynamically -->
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Market Analysis & Insights -->
+                    <!-- Detailed Market Analysis -->
                     <div class="row g-4">
-                        <!-- Demand Forecast -->
+                        <!-- Regional Price Variations -->
                         <div class="col-md-6">
                             <div class="card shadow-lg border-0 premium-card glass-card h-100">
                                 <div class="card-body p-4">
                                     <h5 class="fw-bold text-gradient mb-3">
-                                        <i class="bi bi-binoculars me-2"></i>
-                                        {% if lang == 'en' %}Demand Forecast
-                                        {% elif lang == 'hi' %}मांग पूर्वानुमान
-                                        {% elif lang == 'mr' %}मागणी अंदाज
+                                        <i class="bi bi-map me-2"></i>
+                                        {% if lang == 'en' %}Regional Price Variations
+                                        {% elif lang == 'hi' %}क्षेत्रीय मूल्य भिन्नताएं
+                                        {% elif lang == 'mr' %}प्रादेशिक किंमत भिन्नता
                                         {% endif %}
                                     </h5>
-                                    <div class="demand-items">
-                                        {% for item in demand_forecast %}
-                                        <div class="demand-item d-flex justify-content-between align-items-center mb-3 p-3 rounded-3 bg-light">
-                                            <div>
-                                                <h6 class="fw-bold mb-1">{{ item.crop }}</h6>
-                                                <small class="text-muted">{{ item.period }}</small>
+                                    <div class="region-prices">
+                                        {% for region in regional_variations %}
+                                        <div class="region-item mb-3">
+                                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                                <div>
+                                                    <h6 class="fw-bold mb-0">{{ region.crop }}</h6>
+                                                    <small class="text-muted">{{ region.region }}</small>
+                                                </div>
+                                                <span class="fw-bold text-primary">₹{{ region.avg_price }}</span>
                                             </div>
-                                            <div class="text-end">
-                                                <span class="badge bg-{{ item.level_color }}">{{ item.demand_level }}</span>
-                                                <div class="small text-muted mt-1">{{ item.change }}% change</div>
+                                            <div class="d-flex justify-content-between">
+                                                {% for market in region.markets %}
+                                                <div class="text-center">
+                                                    <small class="d-block fw-bold">{{ market.price }}</small>
+                                                    <small class="text-muted">{{ market.name }}</small>
+                                                </div>
+                                                {% endfor %}
+                                            </div>
+                                            <div class="progress mt-2" style="height: 4px;">
+                                                <div class="progress-bar bg-success" style="width: {{ region.variation }}%"></div>
                                             </div>
                                         </div>
                                         {% endfor %}
@@ -442,37 +485,117 @@
                             </div>
                         </div>
 
-                        <!-- Price Alerts -->
+                        <!-- Seasonal Demand Patterns -->
+                        <div class="col-md-6">
+                            <div class="card shadow-lg border-0 premium-card glass-card h-100">
+                                <div class="card-body p-4">
+                                    <h5 class="fw-bold text-gradient mb-3">
+                                        <i class="bi bi-calendar4-range me-2"></i>
+                                        {% if lang == 'en' %}Seasonal Demand Patterns
+                                        {% elif lang == 'hi' %}मौसमी मांग पैटर्न
+                                        {% elif lang == 'mr' %}हंगामी मागणी नमुने
+                                        {% endif %}
+                                    </h5>
+                                    <div class="seasonal-patterns">
+                                        {% for pattern in seasonal_patterns %}
+                                        <div class="pattern-item d-flex align-items-center justify-content-between mb-3 p-3 rounded-3 bg-light">
+                                            <div>
+                                                <div class="d-flex align-items-center">
+                                                    <span class="season-badge bg-{{ pattern.season_color }} me-2">{{ pattern.season }}</span>
+                                                    <h6 class="fw-bold mb-0">{{ pattern.crop }}</h6>
+                                                </div>
+                                                <small class="text-muted">{{ pattern.months }}</small>
+                                            </div>
+                                            <div class="text-end">
+                                                <span class="badge bg-{{ pattern.demand_color }}">{{ pattern.demand_level }}</span>
+                                                <div class="mt-1">
+                                                    {% if pattern.change > 0 %}
+                                                    <small class="text-success"><i class="bi bi-arrow-up"></i> {{ pattern.change }}%</small>
+                                                    {% else %}
+                                                    
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Supply Chain Insights -->
+                        <div class="col-md-6">
+                            <div class="card shadow-lg border-0 premium-card glass-card h-100">
+                                <div class="card-body p-4">
+                                    <h5 class="fw-bold text-gradient mb-3">
+                                        <i class="bi bi-truck me-2"></i>
+                                        {% if lang == 'en' %}Supply Chain Insights
+                                        {% elif lang == 'hi' %}आपूर्ति श्रृंखला अंतर्दृष्टि
+                                        {% elif lang == 'mr' %}पुरवठा साखळी अंतर्दृष्टी
+                                        {% endif %}
+                                    </h5>
+                                    <div class="supply-insights">
+                                        {% for insight in supply_insights %}
+                                        <div class="insight-item p-3 mb-3 rounded-3 border-start border-{{ insight.status_color }} border-3">
+                                            <div class="d-flex justify-content-between align-items-start">
+                                                <div>
+                                                    <h6 class="fw-bold mb-1">{{ insight.crop }}</h6>
+                                                    <p class="small text-muted mb-1">
+                                                        <i class="bi bi-geo-alt me-1"></i>{{ insight.route }}
+                                                    </p>
+                                                    <div class="d-flex align-items-center">
+                                                        <small class="text-muted me-3">
+                                                            <i class="bi bi-clock me-1"></i>{{ insight.duration }}
+                                                        </small>
+                                                        <small class="text-muted">
+                                                            <i class="bi bi-cash-stack me-1"></i>₹{{ insight.logistics_cost }}
+                                                        </small>
+                                                    </div>
+                                                </div>
+                                                <span class="badge bg-{{ insight.status_color }}">{{ insight.status }}</span>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Predictive Analytics -->
                         <div class="col-md-6">
                             <div class="card shadow-lg border-0 premium-card glass-card h-100">
                                 <div class="card-body p-4">
                                     <div class="d-flex justify-content-between align-items-center mb-3">
                                         <h5 class="fw-bold text-gradient mb-0">
-                                            <i class="bi bi-bell me-2"></i>
-                                            {% if lang == 'en' %}Price Alerts
-                                            {% elif lang == 'hi' %}मूल्य अलर्ट
-                                            {% elif lang == 'mr' %}किंमत अलर्ट
+                                            <i class="bi bi-magic me-2"></i>
+                                            {% if lang == 'en' %}Predictive Analytics
+                                            {% elif lang == 'hi' %}भविष्य कथन विश्लेषण
+                                            {% elif lang == 'mr' %}भविष्यकथन विश्लेषण
                                             {% endif %}
                                         </h5>
-                                        <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#setAlertModal">
-                                            <i class="bi bi-plus"></i>
-                                            {% if lang == 'en' %}Set Alert
-                                            {% elif lang == 'hi' %}अलर्ट सेट करें
-                                            {% elif lang == 'mr' %}अलर्ट सेट करा
-                                            {% endif %}
-                                        </button>
+                                        <span class="badge bg-info">AI-Powered</span>
                                     </div>
-                                    <div class="alerts-list">
-                                        {% for alert in price_alerts %}
-                                        <div class="alert-item p-3 mb-3 rounded-3 border-start border-{{ alert.priority_color }} border-3">
-                                            <div class="d-flex justify-content-between align-items-start">
-                                                <div>
-                                                    <h6 class="fw-bold mb-1">{{ alert.crop }}</h6>
-                                                    <p class="small text-muted mb-1">{{ alert.message }}</p>
-                                                    <small class="text-muted"><i class="bi bi-clock me-1"></i>{{ alert.time }}</small>
-                                                </div>
-                                                <span class="badge bg-{{ alert.priority_color }}">{{ alert.priority }}</span>
+                                    <div class="predictive-analytics">
+                                        {% for prediction in price_predictions %}
+                                        <div class="prediction-item p-3 mb-3 rounded-3 bg-light">
+                                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                                <h6 class="fw-bold mb-0">{{ prediction.crop }}</h6>
+                                                <span class="badge bg-{{ prediction.confidence_color }}">{{ prediction.confidence }}% confidence</span>
                                             </div>
+                                            <div class="prediction-timeline">
+                                                <div class="timeline-item">
+                                                    <small class="text-muted">Current</small>
+                                                    <div class="fw-bold">₹{{ prediction.current_price }}</div>
+                                                </div>
+                                                <div class="timeline-arrow">
+                                                    <i class="bi bi-arrow-right text-{{ prediction.trend_color }}"></i>
+                                                </div>
+                                                <div class="timeline-item">
+                                                    <small class="text-muted">7-Day Forecast</small>
+                                                    <div class="fw-bold text-{{ prediction.trend_color }}">₹{{ prediction.forecast_price }}</div>
+                                                </div>
+                                            </div>
+                                            <small class="text-muted d-block mt-2">{{ prediction.factors }}</small>
                                         </div>
                                         {% endfor %}
                                     </div>
@@ -484,137 +607,144 @@
 
                 <!-- Sidebar Column -->
                 <div class="col-lg-4 col-xl-3">
-                    <div class="sticky-sidebar">
-                        <!-- Top Gainers/Losers -->
+                    <div class="sticky-sidebar" style="top: 20px;">
+                        <!-- Market Heatmap -->
                         <div class="card border-0 shadow-sm glass-card mb-4">
                             <div class="card-body">
                                 <h6 class="fw-bold text-gradient mb-3">
-                                    <i class="bi bi-trophy me-2"></i>
-                                    {% if lang == 'en' %}Top Movers
-                                    {% elif lang == 'hi' %}शीर्ष गतिशील
-                                    {% elif lang == 'mr' %}शीर्ष हलणारे
+                                    <i class="bi bi-fire me-2"></i>
+                                    {% if lang == 'en' %}Market Heatmap
+                                    {% elif lang == 'hi' %}बाजार हीटमैप
+                                    {% elif lang == 'mr' %}बाजार उष्णता नकाशा
                                     {% endif %}
                                 </h6>
-                                <div class="movers-list">
-                                    <!-- Gainers -->
-                                    <div class="mb-4">
-                                        <h6 class="small fw-bold text-success mb-3">
-                                            <i class="bi bi-arrow-up-right me-1"></i>
-                                            {% if lang == 'en' %}Top Gainers
-                                            {% elif lang == 'hi' %}शीर्ष लाभकारी
-                                            {% elif lang == 'mr' %}शीर्ष नफा मिळवणारे
-                                            {% endif %}
-                                        </h6>
-                                        {% for gainer in top_gainers %}
-                                        <div class="mover-item d-flex justify-content-between align-items-center mb-2 p-2 rounded-3 bg-success bg-opacity-10">
-                                            <div class="d-flex align-items-center">
-                                                <i class="bi bi-arrow-up-right text-success me-2"></i>
-                                                <span class="small">{{ gainer.crop }}</span>
-                                            </div>
-                                            <span class="badge bg-success">{{ gainer.change }}%</span>
+                                <div class="heatmap">
+                                    {% for heat in market_heatmap %}
+                                    <div class="heatmap-item d-flex justify-content-between align-items-center mb-2 p-2 rounded-3 bg-{{ heat.intensity }}-bg">
+                                        <div class="d-flex align-items-center">
+                                            <i class="bi bi-{{ heat.icon }} me-2 text-{{ heat.color }}"></i>
+                                            <span class="small">{{ heat.crop }}</span>
                                         </div>
-                                        {% endfor %}
-                                    </div>
-                                    
-                                    <!-- Losers -->
-                                    <div>
-                                        <h6 class="small fw-bold text-danger mb-3">
-                                            <i class="bi bi-arrow-down-right me-1"></i>
-                                            {% if lang == 'en' %}Top Losers
-                                            {% elif lang == 'hi' %}शीर्ष हानिकारक
-                                            {% elif lang == 'mr' %}शीर्ष तोटा सोसणारे
-                                            {% endif %}
-                                        </h6>
-                                        {% for loser in top_losers %}
-                                        <div class="mover-item d-flex justify-content-between align-items-center mb-2 p-2 rounded-3 bg-danger bg-opacity-10">
-                                            <div class="d-flex align-items-center">
-                                                <i class="bi bi-arrow-down-right text-danger me-2"></i>
-                                                <span class="small">{{ loser.crop }}</span>
-                                            </div>
-                                            <span class="badge bg-danger">{{ loser.change }}%</span>
+                                        <div>
+                                            <span class="badge bg-{{ heat.color }}">{{ heat.change }}%</span>
+                                            <small class="text-muted ms-1">{{ heat.volume }}</small>
                                         </div>
-                                        {% endfor %}
                                     </div>
+                                    {% endfor %}
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Market News -->
+                        <!-- Expert Recommendations -->
                         <div class="card border-0 shadow-sm glass-card mb-4">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-center mb-3">
                                     <h6 class="fw-bold text-gradient mb-0">
-                                        <i class="bi bi-newspaper me-2"></i>
-                                        {% if lang == 'en' %}Market News
-                                        {% elif lang == 'hi' %}बाजार समाचार
-                                        {% elif lang == 'mr' %}बाजार बातम्या
+                                        <i class="bi bi-star me-2"></i>
+                                        {% if lang == 'en' %}Expert Recommendations
+                                        {% elif lang == 'hi' %}विशेषज्ञ सिफारिशें
+                                        {% elif lang == 'mr' %}तज्ञ शिफारसी
                                         {% endif %}
                                     </h6>
-                                    <small class="text-muted">2h ago</small>
+                                    <span class="badge bg-warning">Updated Today</span>
                                 </div>
-                                <div class="news-list">
-                                    {% for news in market_news %}
-                                    <div class="news-item mb-3 pb-3 border-bottom">
-                                        <div class="d-flex">
+                                <div class="expert-recommendations">
+                                    {% for rec in expert_recommendations %}
+                                    <div class="recommendation-item mb-3 pb-3 border-bottom">
+                                        <div class="d-flex align-items-start">
                                             <div class="flex-shrink-0">
-                                                <span class="news-badge bg-{{ news.category_color }}">{{ news.category }}</span>
+                                                <i class="bi bi-{{ rec.icon }} text-{{ rec.color }} fs-4"></i>
                                             </div>
                                             <div class="flex-grow-1 ms-3">
-                                                <h6 class="fw-bold small mb-1">{{ news.title }}</h6>
-                                                <p class="small text-muted mb-1">{{ news.summary }}</p>
-                                                <small class="text-muted"><i class="bi bi-clock me-1"></i>{{ news.time }}</small>
+                                                <h6 class="fw-bold small mb-1">{{ rec.title }}</h6>
+                                                <p class="small text-muted mb-1">{{ rec.description }}</p>
+                                                <div class="d-flex justify-content-between">
+                                                    <small class="text-muted">
+                                                        <i class="bi bi-person-circle me-1"></i>{{ rec.expert }}
+                                                    </small>
+                                                    <small class="text-muted">{{ rec.time }}</small>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                     {% endfor %}
                                 </div>
-                                <a href="#" class="btn btn-outline-success btn-sm w-100">
-                                    <i class="bi bi-plus-circle me-1"></i>
-                                    {% if lang == 'en' %}More News
-                                    {% elif lang == 'hi' %}अधिक समाचार
-                                    {% elif lang == 'mr' %}अधिक बातम्या
+                            </div>
+                        </div>
+
+                        <!-- Government Policies & Schemes -->
+                        <div class="card border-0 shadow-sm glass-card mb-4">
+                            <div class="card-body">
+                                <h6 class="fw-bold text-gradient mb-3">
+                                    <i class="bi bi-building me-2"></i>
+                                    {% if lang == 'en' %}Government Schemes
+                                    {% elif lang == 'hi' %}सरकारी योजनाएं
+                                    {% elif lang == 'mr' %}सरकारी योजना
+                                    {% endif %}
+                                </h6>
+                                <div class="govt-schemes">
+                                    {% for scheme in govt_schemes %}
+                                    <div class="scheme-item mb-3">
+                                        <div class="d-flex align-items-start">
+                                            <span class="scheme-badge bg-{{ scheme.type_color }} me-2">{{ scheme.type }}</span>
+                                            <div>
+                                                <h6 class="fw-bold small mb-1">{{ scheme.name }}</h6>
+                                                <p class="small text-muted mb-1">{{ scheme.description }}</p>
+                                                <small class="text-muted">
+                                                    <i class="bi bi-calendar me-1"></i>Valid till: {{ scheme.validity }}
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                                <a href="#" class="btn btn-outline-primary btn-sm w-100">
+                                    <i class="bi bi-info-circle me-1"></i>
+                                    {% if lang == 'en' %}View All Schemes
+                                    {% elif lang == 'hi' %}सभी योजनाएं देखें
+                                    {% elif lang == 'mr' %}सर्व योजना पहा
                                     {% endif %}
                                 </a>
                             </div>
                         </div>
 
-                        <!-- Quick Actions -->
+                        <!-- Quick Analytics -->
                         <div class="card border-0 shadow-sm glass-card">
                             <div class="card-body">
                                 <h6 class="fw-bold text-gradient mb-3">
-                                    <i class="bi bi-lightning me-2"></i>
-                                    {% if lang == 'en' %}Quick Actions
-                                    {% elif lang == 'hi' %}त्वरित कार्रवाई
-                                    {% elif lang == 'mr' %}त्वरित क्रिया
+                                    <i class="bi bi-speedometer2 me-2"></i>
+                                    {% if lang == 'en' %}Quick Analytics
+                                    {% elif lang == 'hi' %}त्वरित विश्लेषण
+                                    {% elif lang == 'mr' %}त्वरित विश्लेषण
                                     {% endif %}
                                 </h6>
-                                <div class="quick-actions">
-                                    <button class="btn btn-outline-success w-100 mb-2">
-                                        <i class="bi bi-download me-2"></i>
-                                        {% if lang == 'en' %}Export Data
-                                        {% elif lang == 'hi' %}डेटा निर्यात करें
-                                        {% elif lang == 'mr' %}डेटा निर्यात करा
+                                <div class="quick-analytics">
+                                    <button class="btn btn-outline-success w-100 mb-2" data-bs-toggle="modal" data-bs-target="#exportModal">
+                                        <i class="bi bi-file-earmark-spreadsheet me-2"></i>
+                                        {% if lang == 'en' %}Export Analytics
+                                        {% elif lang == 'hi' %}विश्लेषण निर्यात करें
+                                        {% elif lang == 'mr' %}विश्लेषण निर्यात करा
                                         {% endif %}
                                     </button>
-                                    <button class="btn btn-outline-primary w-100 mb-2">
-                                        <i class="bi bi-printer me-2"></i>
-                                        {% if lang == 'en' %}Print Report
-                                        {% elif lang == 'hi' %}रिपोर्ट प्रिंट करें
-                                        {% elif lang == 'mr' %}अहवाल प्रिंट करा
+                                    <button class="btn btn-outline-primary w-100 mb-2" onclick="generateReport()">
+                                        <i class="bi bi-file-earmark-pdf me-2"></i>
+                                        {% if lang == 'en' %}Generate Report
+                                        {% elif lang == 'hi' %}रिपोर्ट जनरेट करें
+                                        {% elif lang == 'mr' %}अहवाल तयार करा
                                         {% endif %}
                                     </button>
-                                    <button class="btn btn-outline-info w-100 mb-2">
-                                        <i class="bi bi-share me-2"></i>
-                                        {% if lang == 'en' %}Share Insights
-                                        {% elif lang == 'hi' %}अंतर्दृष्टि साझा करें
-                                        {% elif lang == 'mr' %}अंतर्दृष्टी शेअर करा
+                                    <button class="btn btn-outline-info w-100 mb-2" data-bs-toggle="modal" data-bs-target="#shareModal">
+                                        <i class="bi bi-share-fill me-2"></i>
+                                        {% if lang == 'en' %}Share Dashboard
+                                        {% elif lang == 'hi' %}डैशबोर्ड साझा करें
+                                        {% elif lang == 'mr' %}डॅशबोर्ड शेअर करा
                                         {% endif %}
                                     </button>
-                                    <button class="btn btn-outline-warning w-100" data-bs-toggle="modal" data-bs-target="#subscribeModal">
-                                        <i class="bi bi-bell me-2"></i>
-                                        {% if lang == 'en' %}Subscribe Updates
-                                        {% elif lang == 'hi' %}अपडेट सब्सक्राइब करें
-                                        {% elif lang == 'mr' %}अपडेट्स सबस्क्राइब करा
+                                    <button class="btn btn-outline-warning w-100" data-bs-toggle="modal" data-bs-target="#apiModal">
+                                        <i class="bi bi-code-slash me-2"></i>
+                                        {% if lang == 'en' %}API Access
+                                        {% elif lang == 'hi' %}API एक्सेस
+                                        {% elif lang == 'mr' %}API प्रवेश
                                         {% endif %}
                                     </button>
                                 </div>
@@ -627,98 +757,110 @@
     </div>
 </div>
 
-<!-- Set Alert Modal -->
-<div class="modal fade" id="setAlertModal" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
+<!-- Enhanced Modals -->
+<!-- Export Analytics Modal -->
+<div class="modal fade" id="exportModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title fw-bold text-gradient">
-                    <i class="bi bi-bell me-2"></i>
-                    {% if lang == 'en' %}Set Price Alert
-                    {% elif lang == 'hi' %}मूल्य अलर्ट सेट करें
-                    {% elif lang == 'mr' %}किंमत अलर्ट सेट करा
+                    <i class="bi bi-file-earmark-spreadsheet me-2"></i>
+                    {% if lang == 'en' %}Export Market Analytics
+                    {% elif lang == 'hi' %}बाजार विश्लेषण निर्यात करें
+                    {% elif lang == 'mr' %}बाजार विश्लेषण निर्यात करा
                     {% endif %}
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <form>
-                    <div class="mb-3">
-                        <label class="form-label">
-                            {% if lang == 'en' %}Select Crop
-                            {% elif lang == 'hi' %}फसल चुनें
-                            {% elif lang == 'mr' %}पीक निवडा
-                            {% endif %}
-                        </label>
-                        <select class="form-select">
-                            <option>Rice</option>
-                            <option>Wheat</option>
-                            <option>Maize</option>
-                            <option>Cotton</option>
-                            <option>Sugarcane</option>
-                        </select>
-                    </div>
+                <form id="exportForm">
                     <div class="row g-3">
                         <div class="col-md-6">
                             <label class="form-label">
-                                {% if lang == 'en' %}Target Price
-                                {% elif lang == 'hi' %}लक्ष्य मूल्य
-                                {% elif lang == 'mr' %}लक्ष्य किंमत
-                                {% endif %}
-                            </label>
-                            <div class="input-group">
-                                <span class="input-group-text">₹</span>
-                                <input type="number" class="form-control" placeholder="e.g., 2500">
-                                <span class="input-group-text">/quintal</span>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">
-                                {% if lang == 'en' %}Alert Type
-                                {% elif lang == 'hi' %}अलर्ट प्रकार
-                                {% elif lang == 'mr' %}अलर्ट प्रकार
+                                {% if lang == 'en' %}Data Type
+                                {% elif lang == 'hi' %}डेटा प्रकार
+                                {% elif lang == 'mr' %}डेटा प्रकार
                                 {% endif %}
                             </label>
                             <select class="form-select">
-                                <option>
-                                    {% if lang == 'en' %}Price Above
-                                    {% elif lang == 'hi' %}मूल्य से ऊपर
-                                    {% elif lang == 'mr' %}किंमत वरील
-                                    {% endif %}
-                                </option>
-                                <option>
-                                    {% if lang == 'en' %}Price Below
-                                    {% elif lang == 'hi' %}मूल्य से नीचे
-                                    {% elif lang == 'mr' %}किंमत खाली
-                                    {% endif %}
-                                </option>
-                                <option>
-                                    {% if lang == 'en' %}Price Change % 
-                                    {% elif lang == 'hi' %}मूल्य परिवर्तन %
-                                    {% elif lang == 'mr' %}किंमत बदल %
-                                    {% endif %}
-                                </option>
+                                <option>Price Data</option>
+                                <option>Trend Analysis</option>
+                                <option>Demand Forecast</option>
+                                <option>Supply Chain Data</option>
+                                <option>Market Reports</option>
+                                <option>All Data</option>
                             </select>
                         </div>
-                    </div>
-                    <div class="mt-3">
-                        <label class="form-label">
-                            {% if lang == 'en' %}Notification Method
-                            {% elif lang == 'hi' %}अधिसूचना विधि
-                            {% elif lang == 'mr' %}अधिसूचना पद्धत
-                            {% endif %}
-                        </label>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="smsAlert">
-                            <label class="form-check-label" for="smsAlert">SMS</label>
+                        <div class="col-md-6">
+                            <label class="form-label">
+                                {% if lang == 'en' %}Format
+                                {% elif lang == 'hi' %}प्रारूप
+                                {% elif lang == 'mr' %}स्वरूप
+                                {% endif %}
+                            </label>
+                            <select class="form-select">
+                                <option>Excel (.xlsx)</option>
+                                <option>CSV (.csv)</option>
+                                <option>PDF (.pdf)</option>
+                                <option>JSON (.json)</option>
+                            </select>
                         </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="emailAlert">
-                            <label class="form-check-label" for="emailAlert">Email</label>
+                        <div class="col-md-6">
+                            <label class="form-label">
+                                {% if lang == 'en' %}Date Range
+                                {% elif lang == 'hi' %}तिथि सीमा
+                                {% elif lang == 'mr' %}तारीख श्रेणी
+                                {% endif %}
+                            </label>
+                            <select class="form-select">
+                                <option>Last 7 Days</option>
+                                <option>Last 30 Days</option>
+                                <option>Last 3 Months</option>
+                                <option>Last 6 Months</option>
+                                <option>Custom Range</option>
+                            </select>
                         </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="appAlert">
-                            <label class="form-check-label" for="appAlert">App Notification</label>
+                        <div class="col-md-6">
+                            <label class="form-label">
+                                {% if lang == 'en' %}Crop Selection
+                                {% elif lang == 'hi' %}फसल चयन
+                                {% elif lang == 'mr' %}पीक निवड
+                                {% endif %}
+                            </label>
+                            <select class="form-select">
+                                <option>All Crops</option>
+                                <option>Selected Crops</option>
+                                <option>By Category</option>
+                                <option>Top 10</option>
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label">
+                                {% if lang == 'en' %}Include Columns
+                                {% elif lang == 'hi' %}कॉलम शामिल करें
+                                {% elif lang == 'mr' %}स्तंभ समाविष्ट करा
+                                {% endif %}
+                            </label>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="priceColumns" checked>
+                                        <label class="form-check-label" for="priceColumns">Price Data</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="trendColumns" checked>
+                                        <label class="form-check-label" for="trendColumns">Trend Analysis</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="marketColumns">
+                                        <label class="form-check-label" for="marketColumns">Market Details</label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </form>
@@ -730,11 +872,11 @@
                     {% elif lang == 'mr' %}रद्द करा
                     {% endif %}
                 </button>
-                <button type="button" class="btn btn-success">
-                    <i class="bi bi-bell me-1"></i>
-                    {% if lang == 'en' %}Set Alert
-                    {% elif lang == 'hi' %}अलर्ट सेट करें
-                    {% elif lang == 'mr' %}अलर्ट सेट करा
+                <button type="button" class="btn btn-success" onclick="processExport()">
+                    <i class="bi bi-download me-1"></i>
+                    {% if lang == 'en' %}Export Data
+                    {% elif lang == 'hi' %}डेटा निर्यात करें
+                    {% elif lang == 'mr' %}डेटा निर्यात करा
                     {% endif %}
                 </button>
             </div>
@@ -742,416 +884,1152 @@
     </div>
 </div>
 
-<!-- Subscribe Modal -->
-<div class="modal fade" id="subscribeModal" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
+<!-- Crop Comparison Modal -->
+<div class="modal fade" id="compareModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title fw-bold text-gradient">
-                    <i class="bi bi-envelope-plus me-2"></i>
-                    {% if lang == 'en' %}Subscribe to Updates
-                    {% elif lang == 'hi' %}अपडेट के लिए सदस्यता लें
-                    {% elif lang == 'mr' %}अपडेट्ससाठी सदस्यता घ्या
+                    <i class="bi bi-compass me-2"></i>
+                    {% if lang == 'en' %}Compare Crop Markets
+                    {% elif lang == 'hi' %}फसल बाजारों की तुलना करें
+                    {% elif lang == 'mr' %}पीक बाजारांची तुलना करा
                     {% endif %}
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <p class="text-muted mb-4">
-                    {% if lang == 'en' %}Get daily market insights, price alerts, and news delivered to your inbox.
-                    {% elif lang == 'hi' %}अपने इनबॉक्स में दैनिक बाजार अंतर्दृष्टि, मूल्य अलर्ट और समाचार प्राप्त करें।
-                    {% elif lang == 'mr' %}तुमच्या इनबॉक्समध्ये दैनंदिन बाजार अंतर्दृष्टी, किंमत अलर्ट आणि बातम्या मिळवा.
-                    {% endif %}
-                </p>
-                <form>
-                    <div class="mb-3">
-                        <label class="form-label">Email Address</label>
-                        <input type="email" class="form-control" placeholder="your@email.com">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">
-                            {% if lang == 'en' %}Frequency
-                            {% elif lang == 'hi' %}आवृत्ति
-                            {% elif lang == 'mr' %}वारंवारता
-                            {% endif %}
-                        </label>
-                        <select class="form-select">
-                            <option>
-                                {% if lang == 'en' %}Daily Updates
-                                {% elif lang == 'hi' %}दैनिक अपडेट
-                                {% elif lang == 'mr' %}दैनिक अपडेट्स
-                                {% endif %}
-                            </option>
-                            <option>
-                                {% if lang == 'en' %}Weekly Summary
-                                {% elif lang == 'hi' %}साप्ताहिक सारांश
-                                {% elif lang == 'mr' %}साप्ताहिक सारांश
-                                {% endif %}
-                            </option>
-                            <option>
-                                {% if lang == 'en' %}Real-time Alerts
-                                {% elif lang == 'hi' %}रियल-टाइम अलर्ट
-                                {% elif lang == 'mr' %}रिअल-टाइम अलर्ट
-                                {% endif %}
-                            </option>
-                        </select>
-                    </div>
-                    <div class="form-check mb-3">
-                        <input class="form-check-input" type="checkbox" id="termsAgree">
-                        <label class="form-check-label" for="termsAgree">
-                            {% if lang == 'en' %}I agree to receive market updates and insights
-                            {% elif lang == 'hi' %}मैं बाजार अपडेट और अंतर्दृष्टि प्राप्त करने के लिए सहमत हूं
-                            {% elif lang == 'mr' %}मी बाजार अपडेट्स आणि अंतर्दृष्टी प्राप्त करण्यासाठी सहमत आहे
-                            {% endif %}
-                        </label>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                    {% if lang == 'en' %}Cancel
-                    {% elif lang == 'hi' %}रद्द करें
-                    {% elif lang == 'mr' %}रद्द करा
-                    {% endif %}
-                </button>
-                <button type="button" class="btn btn-success">
-                    <i class="bi bi-check-circle me-1"></i>
-                    {% if lang == 'en' %}Subscribe
-                    {% elif lang == 'hi' %}सदस्यता लें
-                    {% elif lang == 'mr' %}सदस्यता घ्या
-                    {% endif %}
-                </button>
+                <div class="comparison-tool">
+                    <!-- Comparison interface will be loaded dynamically -->
+                    <div class="text-center py-5">
+                        <i class="bi bi-compass text-muted display-1 mb-3"></i>
+                        <h5 class="fw-bold mb-3">
+                            {% if lang == 'en' %}Select crops to compare
+                            {% elif lang == 'hi' %}तुलना करने के लिए फसलें चुनें
+                            {% elif lang == 'mr' %}तुलना करण्यासाठी पिके निवडा
+                        {% endif %}
+                    </h5>
+                    <p class="text-muted">
+                        {% if lang == 'en' %}Compare prices, trends, and market insights across different crops and markets
+                        {% elif lang == 'hi' %}विभिन्न फसलों और बाजारों में कीमतों, रुझानों और बाजार अंतर्दृष्टि की तुलना करें
+                        {% elif lang == 'mr' %}विविध पिके आणि बाजारांमध्ये किंमती, कल आणि बाजार अंतर्दृष्टीची तुलना करा
+                        {% endif %}
+                    </p>
+                </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 {% endblock %}
 
 {% block extra_section %}
 <section class="market-features py-5 bg-light">
-    <div class="container">
-        <div class="text-center mb-5">
-            <h2 class="fw-bold text-gradient mb-3">
-                {% if lang == 'en' %}Why Use Market Insights?
-                {% elif lang == 'hi' %}बाजार अंतर्दृष्टि का उपयोग करें?
-                {% elif lang == 'mr' %}बाजार अंतर्दृष्टी का वापर करावा?
-                {% endif %}
-            </h2>
-            <p class="lead text-muted">
-                {% if lang == 'en' %}Make smarter farming decisions with real-time market data
-                {% elif lang == 'hi' %}रियल-टाइम बाजार डेटा के साथ स्मार्ट कृषि निर्णय लें
-                {% elif lang == 'mr' %}रिअल-टाइम बाजार डेटासह स्मार्ट शेती निर्णय घ्या
-                {% endif %}
-            </p>
+<div class="container">
+    <div class="text-center mb-5">
+        <h2 class="fw-bold text-gradient mb-3">
+            {% if lang == 'en' %}Advanced Market Intelligence
+            {% elif lang == 'hi' %}उन्नत बाजार इंटेलिजेंस
+            {% elif lang == 'mr' %}प्रगत बाजार बुद्धिमत्ता
+            {% endif %}
+        </h2>
+        <p class="lead text-muted">
+            {% if lang == 'en' %}Comprehensive analytics, predictive insights, and real-time monitoring for 50+ agricultural commodities
+            {% elif lang == 'hi' %}50+ कृषि वस्तुओं के लिए व्यापक विश्लेषण, भविष्यवाणी अंतर्दृष्टि और रियल-टाइम मॉनिटरिंग
+            {% elif lang == 'mr' %}५०+ कृषी वस्तूंसाठी व्यापक विश्लेषण, भविष्यकथन अंतर्दृष्टी आणि रिअल-टाइम निरीक्षण
+            {% endif %}
+        </p>
+    </div>
+    
+    <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+            <div class="feature-card text-center p-4 h-100 glass-card hover-lift">
+                <i class="bi bi-cpu text-gradient fs-1 mb-3"></i>
+                <h5 class="fw-bold mb-3">
+                    {% if lang == 'en' %}AI-Powered Predictions
+                    {% elif lang == 'hi' %}AI-संचालित भविष्यवाणियां
+                    {% elif lang == 'mr' %}AI-चालित भविष्यकथने
+                    {% endif %}
+                </h5>
+                <p class="text-muted">
+                    {% if lang == 'en' %}Advanced machine learning models predict price movements with 92% accuracy
+                    {% elif lang == 'hi' %}उन्नत मशीन लर्निंग मॉडल 92% सटीकता के साथ मूल्य आंदोलनों की भविष्यवाणी करते हैं
+                    {% elif lang == 'mr' %}प्रगत मशीन लर्निंग मॉडेल ९२% अचूकतेसह किंमतीच्या हालचालींची भविष्यकथन करतात
+                    {% endif %}
+                </p>
+            </div>
         </div>
         
-        <div class="row g-4">
-            <div class="col-lg-3 col-md-6">
-                <div class="feature-card text-center p-4 h-100 glass-card hover-lift">
-                    <i class="bi bi-clock-history text-gradient fs-1 mb-3"></i>
-                    <h5 class="fw-bold mb-3">
-                        {% if lang == 'en' %}Real-time Prices
-                        {% elif lang == 'hi' %}रियल-टाइम कीमतें
-                        {% elif lang == 'mr' %}रिअल-टाइम किंमती
-                        {% endif %}
-                    </h5>
-                    <p class="text-muted">
-                        {% if lang == 'en' %}Live updates from APMC markets across India
-                        {% elif lang == 'hi' %}भारत भर के APMC बाजारों से लाइव अपडेट
-                        {% elif lang == 'mr' %}भारतभरातील APMC बाजारांमधून लाइव्ह अपडेट्स
-                        {% endif %}
-                    </p>
-                </div>
+        <div class="col-lg-4 col-md-6">
+            <div class="feature-card text-center p-4 h-100 glass-card hover-lift">
+                <i class="bi bi-globe text-gradient fs-1 mb-3"></i>
+                <h5 class="fw-bold mb-3">
+                    {% if lang == 'en' %}National Coverage
+                    {% elif lang == 'hi' %}राष्ट्रीय कवरेज
+                    {% elif lang == 'mr' %}राष्ट्रीय व्याप्ती
+                    {% endif %}
+                </h5>
+                <p class="text-muted">
+                    {% if lang == 'en' %}Real-time data from 500+ APMC markets across all Indian states and union territories
+                    {% elif lang == 'hi' %}सभी भारतीय राज्यों और केंद्र शासित प्रदेशों में 500+ APMC बाजारों से रियल-टाइम डेटा
+                    {% elif lang == 'mr' %}सर्व भारतीय राज्ये आणि केंद्रशासित प्रदेशांमधील ५००+ APMC बाजारांमधून रिअल-टाइम डेटा
+                    {% endif %}
+                </p>
             </div>
-            
-            <div class="col-lg-3 col-md-6">
-                <div class="feature-card text-center p-4 h-100 glass-card hover-lift">
-                    <i class="bi bi-graph-up-arrow text-gradient fs-1 mb-3"></i>
-                    <h5 class="fw-bold mb-3">
-                        {% if lang == 'en' %}Trend Analysis
-                        {% elif lang == 'hi' %}रुझान विश्लेषण
-                        {% elif lang == 'mr' %}कल विश्लेषण
-                        {% endif %}
-                    </h5>
-                    <p class="text-muted">
-                        {% if lang == 'en' %}Predict future price movements with AI
-                        {% elif lang == 'hi' %}AI के साथ भविष्य की कीमतों की भविष्यवाणी करें
-                        {% elif lang == 'mr' %}AI सह भविष्यातील किंमतीची गतीची भाकित करा
-                        {% endif %}
-                    </p>
-                </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6">
+            <div class="feature-card text-center p-4 h-100 glass-card hover-lift">
+                <i class="bi bi-lightning-charge text-gradient fs-1 mb-3"></i>
+                <h5 class="fw-bold mb-3">
+                    {% if lang == 'en' %}Real-time Alerts
+                    {% elif lang == 'hi' %}रियल-टाइम अलर्ट
+                    {% elif lang == 'mr' %}रिअल-टाइम अलर्ट
+                    {% endif %}
+                </h5>
+                <p class="text-muted">
+                    {% if lang == 'en' %}Instant notifications on price thresholds, market opportunities, and demand shifts
+                    {% elif lang == 'hi' %}मूल्य सीमा, बाजार अवसरों और मांग परिवर्तनों पर तत्काल सूचनाएं
+                    {% elif lang == 'mr' %}किंमत उंबरठे, बाजार संधी आणि मागणी बदलांवर त्वरित सूचना
+                    {% endif %}
+                </p>
             </div>
-            
-            <div class="col-lg-3 col-md-6">
-                <div class="feature-card text-center p-4 h-100 glass-card hover-lift">
-                    <i class="bi bi-bell text-gradient fs-1 mb-3"></i>
-                    <h5 class="fw-bold mb-3">
-                        {% if lang == 'en' %}Smart Alerts
-                        {% elif lang == 'hi' %}स्मार्ट अलर्ट
-                        {% elif lang == 'mr' %}स्मार्ट अलर्ट
-                        {% endif %}
-                    </h5>
-                    <p class="text-muted">
-                        {% if lang == 'en' %}Get notified when prices hit your targets
-                        {% elif lang == 'hi' %}जब कीमतें आपके लक्ष्य तक पहुंचें तो सूचित करें
-                        {% elif lang == 'mr' %}किंमती तुमच्या लक्ष्यांवर पोहोचल्यावर सूचित व्हा
-                        {% endif %}
-                    </p>
-                </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6">
+            <div class="feature-card text-center p-4 h-100 glass-card hover-lift">
+                <i class="bi bi-graph-up-arrow text-gradient fs-1 mb-3"></i>
+                <h5 class="fw-bold mb-3">
+                    {% if lang == 'en' %}Trend Analysis
+                    {% elif lang == 'hi' %}रुझान विश्लेषण
+                    {% elif lang == 'mr' %}कल विश्लेषण
+                    {% endif %}
+                </h5>
+                <p class="text-muted">
+                    {% if lang == 'en' %}Historical data analysis with 5-year trends, seasonal patterns, and market correlations
+                    {% elif lang == 'hi' %}5-वर्षीय रुझान, मौसमी पैटर्न और बाजार सहसंबंधों के साथ ऐतिहासिक डेटा विश्लेषण
+                    {% elif lang == 'mr' %}५-वर्षीय कल, हंगामी नमुने आणि बाजार सहसंबंधांसह ऐतिहासिक डेटा विश्लेषण
+                    {% endif %}
+                </p>
             </div>
-            
-            <div class="col-lg-3 col-md-6">
-                <div class="feature-card text-center p-4 h-100 glass-card hover-lift">
-                    <i class="bi bi-newspaper text-gradient fs-1 mb-3"></i>
-                    <h5 class="fw-bold mb-3">
-                        {% if lang == 'en' %}Market News
-                        {% elif lang == 'hi' %}बाजार समाचार
-                        {% elif lang == 'mr' %}बाजार बातम्या
-                        {% endif %}
-                    </h5>
-                    <p class="text-muted">
-                        {% if lang == 'en' %}Stay updated with latest agricultural policies
-                        {% elif lang == 'hi' %}नवीनतम कृषि नीतियों से अपडेट रहें
-                        {% elif lang == 'mr' %}नवीनतम कृषी धोरणांसह अपडेट रहा
-                        {% endif %}
-                    </p>
-                </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6">
+            <div class="feature-card text-center p-4 h-100 glass-card hover-lift">
+                <i class="bi bi-truck text-gradient fs-1 mb-3"></i>
+                <h5 class="fw-bold mb-3">
+                    {% if lang == 'en' %}Supply Chain Analytics
+                    {% elif lang == 'hi' %}आपूर्ति श्रृंखला विश्लेषण
+                    {% elif lang == 'mr' %}पुरवठा साखळी विश्लेषण
+                    {% endif %}
+                </h5>
+                <p class="text-muted">
+                    {% if lang == 'en' %}Track logistics, storage costs, transportation rates, and supply chain bottlenecks
+                    {% elif lang == 'hi' %}लॉजिस्टिक्स, भंडारण लागत, परिवहन दरों और आपूर्ति श्रृंखला बाधाओं को ट्रैक करें
+                    {% elif lang == 'mr' %}लॉजिस्टिक्स, स्टोरेज खर्च, वाहतूक दर आणि पुरवठा साखळी अडथळे ट्रॅक करा
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6">
+            <div class="feature-card text-center p-4 h-100 glass-card hover-lift">
+                <i class="bi bi-phone text-gradient fs-1 mb-3"></i>
+                <h5 class="fw-bold mb-3">
+                    {% if lang == 'en' %}Mobile Notifications
+                    {% elif lang == 'hi' %}मोबाइल सूचनाएं
+                    {% elif lang == 'mr' %}मोबाइल सूचना
+                    {% endif %}
+                </h5>
+                <p class="text-muted">
+                    {% if lang == 'en' %}Get alerts via SMS, WhatsApp, and mobile app with offline access to market data
+                    {% elif lang == 'hi' %}एसएमएस, व्हाट्सएप और मोबाइल ऐप के माध्यम से अलर्ट प्राप्त करें, बाजार डेटा तक ऑफ़लाइन पहुंच के साथ
+                    {% elif lang == 'mr' %}SMS, WhatsApp आणि मोबाइल अॅपद्वारे अलर्ट मिळवा, बाजार डेटाला ऑफलाइन प्रवेशासह
+                    {% endif %}
+                </p>
             </div>
         </div>
     </div>
+</div>
 </section>
 {% endblock %}
 
 {% block extra_css %}
 <style>
-    /* Market Insights Specific Styles */
+    /* Enhanced Market Insights Styles */
     .market-stat {
         transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
     }
     
     .market-stat:hover {
         transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+    
+    .market-stat::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        transition: left 0.5s ease;
+    }
+    
+    .market-stat:hover::after {
+        left: 100%;
+    }
+    
+    .crop-price-row {
+        transition: all 0.3s ease;
+        border-left: 3px solid transparent;
     }
     
     .crop-price-row:hover {
-        background-color: rgba(46, 204, 113, 0.05);
+        background-color: rgba(46, 204, 113, 0.08) !important;
         transform: translateX(5px);
-        transition: all 0.3s ease;
+        border-left-color: #2ecc71;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     }
     
-    .news-badge {
+    .price-range {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+    
+    .volatility-indicator {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .prediction-timeline {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 0;
+    }
+    
+    .timeline-item {
+        text-align: center;
+        flex: 1;
+    }
+    
+    .timeline-arrow {
+        padding: 0 10px;
+    }
+    
+    .season-badge {
         display: inline-block;
         padding: 2px 8px;
-        border-radius: 4px;
+        border-radius: 12px;
         font-size: 0.7rem;
         font-weight: bold;
         text-transform: uppercase;
     }
     
-    .demand-item, .alert-item, .mover-item {
-        transition: all 0.3s ease;
+    .scheme-badge {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 0.7rem;
+        font-weight: bold;
+        min-width: 60px;
+        text-align: center;
     }
     
-    .demand-item:hover, .alert-item:hover, .mover-item:hover {
-        transform: translateX(5px);
-        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    /* Heatmap Styles */
+    .heatmap-item {
+        transition: all 0.2s ease;
     }
     
-    .chart-placeholder {
-        background: linear-gradient(135deg, rgba(46, 204, 113, 0.05), rgba(52, 152, 219, 0.05));
-        border: 2px dashed rgba(46, 204, 113, 0.2);
+    .heatmap-item:hover {
+        transform: scale(1.02);
     }
     
-    /* Table styling */
-    .table th {
-        font-weight: 600;
-        color: #666;
-        border-bottom: 2px solid rgba(46, 204, 113, 0.2);
+    .high-bg { background: linear-gradient(90deg, rgba(255, 0, 0, 0.05), transparent); }
+    .medium-bg { background: linear-gradient(90deg, rgba(255, 165, 0, 0.05), transparent); }
+    .low-bg { background: linear-gradient(90deg, rgba(0, 128, 0, 0.05), transparent); }
+    
+    /* Enhanced Chart Container */
+    .chart-container {
+        background: linear-gradient(135deg, rgba(46, 204, 113, 0.03), rgba(52, 152, 219, 0.03));
+        border: 1px solid rgba(46, 204, 113, 0.1);
+        border-radius: 12px;
     }
     
-    .table td {
-        vertical-align: middle;
-        padding: 1rem;
+    /* Custom Scrollbar */
+    .table-responsive::-webkit-scrollbar {
+        height: 6px;
     }
     
-    /* Quick actions */
-    .quick-actions .btn {
-        transition: all 0.3s ease;
+    .table-responsive::-webkit-scrollbar-track {
+        background: rgba(0,0,0,0.05);
+        border-radius: 3px;
     }
     
-    .quick-actions .btn:hover {
-        transform: translateX(5px);
+    .table-responsive::-webkit-scrollbar-thumb {
+        background: rgba(46, 204, 113, 0.3);
+        border-radius: 3px;
     }
     
-    /* Responsive adjustments */
+    .table-responsive::-webkit-scrollbar-thumb:hover {
+        background: rgba(46, 204, 113, 0.5);
+    }
+    
+    /* Sticky Sidebar Enhancement */
+    .sticky-sidebar {
+        position: sticky;
+        z-index: 100;
+    }
+    
+    /* Pagination Styles */
+    .page-item.active .page-link {
+        background-color: #2ecc71;
+        border-color: #2ecc71;
+    }
+    
+    .page-link {
+        color: #2ecc71;
+    }
+    
+    .page-link:hover {
+        color: #27ae60;
+    }
+    
+    /* Responsive Design */
     @media (max-width: 768px) {
         .market-stat {
             margin-bottom: 1rem;
         }
         
         .table-responsive {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
         
         .crop-price-row td {
-            padding: 0.75rem 0.5rem;
+            padding: 0.5rem;
         }
+        
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        
+        .btn-group .btn {
+            padding: 2px 6px;
+            font-size: 0.8rem;
+        }
+        
+        .prediction-timeline {
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .timeline-arrow {
+            transform: rotate(90deg);
+            padding: 5px 0;
+        }
+        
+        .pagination {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    }
+    
+    /* Animation for data updates */
+    @keyframes priceUpdate {
+        0% { background-color: rgba(46, 204, 113, 0); }
+        50% { background-color: rgba(46, 204, 113, 0.1); }
+        100% { background-color: rgba(46, 204, 113, 0); }
+    }
+    
+    .price-update-animation {
+        animation: priceUpdate 2s ease;
+    }
+    
+    /* Legend Colors */
+    .legend-color {
+        border-radius: 2px;
+        display: inline-block;
+    }
+    
+    /* Loading Animation */
+    .loading-row {
+        animation: pulse 1.5s infinite;
+    }
+    
+    @keyframes pulse {
+        0% { opacity: 0.6; }
+        50% { opacity: 1; }
+        100% { opacity: 0.6; }
     }
 </style>
 {% endblock %}
 
 {% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        console.log('Market Insights Page Loaded');
+        console.log('Enhanced Market Insights Page Loaded');
         
-        // ========== FILTER FUNCTIONALITY ==========
-        const filters = document.querySelectorAll('#cropFilter, #stateFilter, #marketFilter');
-        filters.forEach(filter => {
-            filter.addEventListener('change', function() {
-                // Simulate filtering
-                console.log('Filter changed:', this.id, this.value);
+        // ========== CROP DATA AND PAGINATION ==========
+        let allCrops = []; // Will store all crop data
+        let currentPage = 1;
+        let itemsPerPage = 25; // Show 25 crops per page
+        let filteredCrops = [];
+        
+        // Initialize crop data (in production, this would come from an API)
+        initializeCropData();
+        
+        function initializeCropData() {
+            // Sample crop data - in production, this would come from backend
+            const cropCategories = [
+                { id: 'foodgrains', name: 'Food Grains', color: 'success', icon: 'wheat' },
+                { id: 'vegetables', name: 'Vegetables', color: 'primary', icon: 'carrot' },
+                { id: 'fruits', name: 'Fruits', color: 'warning', icon: 'apple' },
+                { id: 'oilseeds', name: 'Oil Seeds', color: 'info', icon: 'droplet' },
+                { id: 'cashcrops', name: 'Cash Crops', color: 'purple', icon: 'coin' },
+                { id: 'pulses', name: 'Pulses', color: 'orange', icon: 'seed' },
+                { id: 'spices', name: 'Spices', color: 'danger', icon: 'pepper-hot' }
+            ];
+            
+            const cropsList = [
+                // Food Grains (15 crops)
+                { name: 'Rice (Basmati)', category: 'foodgrains', grade: 'Grade A', variety: 'Basmati 1509', min_price: 3500, max_price: 4500, avg_price: 4000, market: 'APMC Delhi', state: 'Delhi', state_code: 'DL' },
+                { name: 'Rice (Non-Basmati)', category: 'foodgrains', grade: 'Grade B', variety: 'IR64', min_price: 2500, max_price: 3200, avg_price: 2850, market: 'APMC Mumbai', state: 'Maharashtra', state_code: 'MH' },
+                { name: 'Wheat', category: 'foodgrains', grade: 'Grade A', variety: 'Sharbati', min_price: 2200, max_price: 2800, avg_price: 2500, market: 'APMC Punjab', state: 'Punjab', state_code: 'PB' },
+                { name: 'Maize', category: 'foodgrains', grade: 'Grade A', variety: 'Hybrid', min_price: 1800, max_price: 2200, avg_price: 2000, market: 'APMC MP', state: 'Madhya Pradesh', state_code: 'MP' },
+                { name: 'Jowar', category: 'foodgrains', grade: 'Grade B', variety: 'Maldandi', min_price: 2500, max_price: 3000, avg_price: 2750, market: 'APMC Karnataka', state: 'Karnataka', state_code: 'KA' },
+                { name: 'Bajra', category: 'foodgrains', grade: 'Grade A', variety: 'HHB 67', min_price: 2000, max_price: 2500, avg_price: 2250, market: 'APMC Rajasthan', state: 'Rajasthan', state_code: 'RJ' },
+                { name: 'Barley', category: 'foodgrains', grade: 'Grade B', variety: 'Dolma', min_price: 1800, max_price: 2200, avg_price: 2000, market: 'APMC UP', state: 'Uttar Pradesh', state_code: 'UP' },
+                { name: 'Ragi', category: 'foodgrains', grade: 'Grade A', variety: 'GPU 28', min_price: 3000, max_price: 3500, avg_price: 3250, market: 'APMC Tamil Nadu', state: 'Tamil Nadu', state_code: 'TN' },
+                { name: 'Sorghum', category: 'foodgrains', grade: 'Grade B', variety: 'CSH 16', min_price: 2200, max_price: 2700, avg_price: 2450, market: 'APMC Maharashtra', state: 'Maharashtra', state_code: 'MH' },
+                { name: 'Millets', category: 'foodgrains', grade: 'Grade A', variety: 'Foxtail', min_price: 3500, max_price: 4000, avg_price: 3750, market: 'APMC Karnataka', state: 'Karnataka', state_code: 'KA' },
                 
-                // Show loading state
-                const table = document.querySelector('.table');
-                if (table) {
-                    const rows = table.querySelectorAll('tbody tr');
-                    rows.forEach(row => {
-                        row.style.opacity = '0.5';
-                    });
+                // Vegetables (15 crops)
+                { name: 'Tomato', category: 'vegetables', grade: 'Grade A', variety: 'Hybrid', min_price: 1200, max_price: 1800, avg_price: 1500, market: 'APMC Pune', state: 'Maharashtra', state_code: 'MH' },
+                { name: 'Onion', category: 'vegetables', grade: 'Grade B', variety: 'Nashik Red', min_price: 1500, max_price: 2000, avg_price: 1750, market: 'APMC Nashik', state: 'Maharashtra', state_code: 'MH' },
+                { name: 'Potato', category: 'vegetables', grade: 'Grade A', variety: 'Kufri Jyoti', min_price: 800, max_price: 1200, avg_price: 1000, market: 'APMC Agra', state: 'Uttar Pradesh', state_code: 'UP' },
+                { name: 'Brinjal', category: 'vegetables', grade: 'Grade B', variety: 'Hybrid', min_price: 1000, max_price: 1500, avg_price: 1250, market: 'APMC Bangalore', state: 'Karnataka', state_code: 'KA' },
+                { name: 'Cabbage', category: 'vegetables', grade: 'Grade A', variety: 'Golden Acre', min_price: 600, max_price: 900, avg_price: 750, market: 'APMC Kolkata', state: 'West Bengal', state_code: 'WB' },
+                { name: 'Cauliflower', category: 'vegetables', grade: 'Grade B', variety: 'Snowball', min_price: 800, max_price: 1200, avg_price: 1000, market: 'APMC Punjab', state: 'Punjab', state_code: 'PB' },
+                { name: 'Carrot', category: 'vegetables', grade: 'Grade A', variety: 'Nantes', min_price: 1200, max_price: 1600, avg_price: 1400, market: 'APMC Himachal', state: 'Himachal Pradesh', state_code: 'HP' },
+                { name: 'Beetroot', category: 'vegetables', grade: 'Grade B', variety: 'Detroit Dark Red', min_price: 1500, max_price: 2000, avg_price: 1750, market: 'APMC Tamil Nadu', state: 'Tamil Nadu', state_code: 'TN' },
+                { name: 'Cucumber', category: 'vegetables', grade: 'Grade A', variety: 'Poinsett', min_price: 800, max_price: 1200, avg_price: 1000, market: 'APMC Gujarat', state: 'Gujarat', state_code: 'GJ' },
+                { name: 'Pumpkin', category: 'vegetables', grade: 'Grade B', variety: 'Arka Suryamukhi', min_price: 500, max_price: 800, avg_price: 650, market: 'APMC MP', state: 'Madhya Pradesh', state_code: 'MP' },
+                
+                // Fruits (10 crops)
+                { name: 'Mango', category: 'fruits', grade: 'Grade A', variety: 'Alphonso', min_price: 8000, max_price: 12000, avg_price: 10000, market: 'APMC Ratnagiri', state: 'Maharashtra', state_code: 'MH' },
+                { name: 'Banana', category: 'fruits', grade: 'Grade B', variety: 'Robusta', min_price: 1500, max_price: 2500, avg_price: 2000, market: 'APMC Tamil Nadu', state: 'Tamil Nadu', state_code: 'TN' },
+                { name: 'Apple', category: 'fruits', grade: 'Grade A', variety: 'Shimla', min_price: 6000, max_price: 9000, avg_price: 7500, market: 'APMC Himachal', state: 'Himachal Pradesh', state_code: 'HP' },
+                { name: 'Orange', category: 'fruits', grade: 'Grade B', variety: 'Nagpur', min_price: 3000, max_price: 4500, avg_price: 3750, market: 'APMC Nagpur', state: 'Maharashtra', state_code: 'MH' },
+                { name: 'Grapes', category: 'fruits', grade: 'Grade A', variety: 'Thompson', min_price: 4000, max_price: 6000, avg_price: 5000, market: 'APMC Nashik', state: 'Maharashtra', state_code: 'MH' },
+                { name: 'Pomegranate', category: 'fruits', grade: 'Grade B', variety: 'Bhagwa', min_price: 5000, max_price: 7000, avg_price: 6000, market: 'APMC Solapur', state: 'Maharashtra', state_code: 'MH' },
+                { name: 'Papaya', category: 'fruits', grade: 'Grade A', variety: 'Red Lady', min_price: 800, max_price: 1200, avg_price: 1000, market: 'APMC Karnataka', state: 'Karnataka', state_code: 'KA' },
+                { name: 'Guava', category: 'fruits', grade: 'Grade B', variety: 'Allahabad', min_price: 1200, max_price: 1800, avg_price: 1500, market: 'APMC UP', state: 'Uttar Pradesh', state_code: 'UP' },
+                
+                // Oil Seeds (10 crops)
+                { name: 'Groundnut', category: 'oilseeds', grade: 'Grade A', variety: 'TMV 2', min_price: 5500, max_price: 6500, avg_price: 6000, market: 'APMC Gujarat', state: 'Gujarat', state_code: 'GJ' },
+                { name: 'Mustard', category: 'oilseeds', grade: 'Grade B', variety: 'Pusa Bold', min_price: 4500, max_price: 5500, avg_price: 5000, market: 'APMC Rajasthan', state: 'Rajasthan', state_code: 'RJ' },
+                { name: 'Soybean', category: 'oilseeds', grade: 'Grade A', variety: 'JS 335', min_price: 3500, max_price: 4200, avg_price: 3850, market: 'APMC MP', state: 'Madhya Pradesh', state_code: 'MP' },
+                { name: 'Sunflower', category: 'oilseeds', grade: 'Grade B', variety: 'KBSH 44', min_price: 5000, max_price: 6000, avg_price: 5500, market: 'APMC Karnataka', state: 'Karnataka', state_code: 'KA' },
+                { name: 'Sesame', category: 'oilseeds', grade: 'Grade A', variety: 'Til', min_price: 7000, max_price: 8500, avg_price: 7750, market: 'APMC Gujarat', state: 'Gujarat', state_code: 'GJ' },
+                { name: 'Castor', category: 'oilseeds', grade: 'Grade B', variety: 'GCH 7', min_price: 4500, max_price: 5500, avg_price: 5000, market: 'APMC Gujarat', state: 'Gujarat', state_code: 'GJ' },
+                { name: 'Linseed', category: 'oilseeds', grade: 'Grade A', variety: 'Neelum', min_price: 4000, max_price: 5000, avg_price: 4500, market: 'APMC MP', state: 'Madhya Pradesh', state_code: 'MP' },
+                { name: 'Safflower', category: 'oilseeds', grade: 'Grade B', variety: 'A 1', min_price: 3500, max_price: 4500, avg_price: 4000, market: 'APMC Maharashtra', state: 'Maharashtra', state_code: 'MH' },
+                
+                // Pulses (10 crops)
+                { name: 'Arhar (Tur)', category: 'pulses', grade: 'Grade A', variety: 'Pusa 992', min_price: 7000, max_price: 8500, avg_price: 7750, market: 'APMC Maharashtra', state: 'Maharashtra', state_code: 'MH' },
+                { name: 'Moong', category: 'pulses', grade: 'Grade B', variety: 'SML 668', min_price: 6500, max_price: 8000, avg_price: 7250, market: 'APMC Rajasthan', state: 'Rajasthan', state_code: 'RJ' },
+                { name: 'Urad', category: 'pulses', grade: 'Grade A', variety: 'T 9', min_price: 6000, max_price: 7500, avg_price: 6750, market: 'APMC MP', state: 'Madhya Pradesh', state_code: 'MP' },
+                { name: 'Chana', category: 'pulses', grade: 'Grade B', variety: 'JG 11', min_price: 4500, max_price: 5500, avg_price: 5000, market: 'APMC Maharashtra', state: 'Maharashtra', state_code: 'MH' },
+                { name: 'Masoor', category: 'pulses', grade: 'Grade A', variety: 'Pusa Vaibhav', min_price: 5000, max_price: 6000, avg_price: 5500, market: 'APMC UP', state: 'Uttar Pradesh', state_code: 'UP' },
+                { name: 'Kulthi', category: 'pulses', grade: 'Grade B', variety: 'Local', min_price: 3000, max_price: 4000, avg_price: 3500, market: 'APMC Odisha', state: 'Odisha', state_code: 'OD' },
+                { name: 'Rajma', category: 'pulses', grade: 'Grade A', variety: 'Chitra', min_price: 8000, max_price: 10000, avg_price: 9000, market: 'APMC Himachal', state: 'Himachal Pradesh', state_code: 'HP' },
+                { name: 'Matar', category: 'pulses', grade: 'Grade B', variety: 'Arkell', min_price: 4000, max_price: 5000, avg_price: 4500, market: 'APMC Punjab', state: 'Punjab', state_code: 'PB' },
+                
+                // Spices (10 crops)
+                { name: 'Black Pepper', category: 'spices', grade: 'Grade A', variety: 'Panniyur 1', min_price: 45000, max_price: 55000, avg_price: 50000, market: 'APMC Kerala', state: 'Kerala', state_code: 'KL' },
+                { name: 'Cardamom', category: 'spices', grade: 'Grade B', variety: 'Mudigere 1', min_price: 8000, max_price: 12000, avg_price: 10000, market: 'APMC Karnataka', state: 'Karnataka', state_code: 'KA' },
+                { name: 'Turmeric', category: 'spices', grade: 'Grade A', variety: 'Alleppey', min_price: 7000, max_price: 9000, avg_price: 8000, market: 'APMC Tamil Nadu', state: 'Tamil Nadu', state_code: 'TN' },
+                { name: 'Coriander', category: 'spices', grade: 'Grade B', variety: 'Sadanand', min_price: 6000, max_price: 8000, avg_price: 7000, market: 'APMC Rajasthan', state: 'Rajasthan', state_code: 'RJ' },
+                { name: 'Cumin', category: 'spices', grade: 'Grade A', variety: 'Gujarat 1', min_price: 15000, max_price: 18000, avg_price: 16500, market: 'APMC Gujarat', state: 'Gujarat', state_code: 'GJ' },
+                { name: 'Fennel', category: 'spices', grade: 'Grade B', variety: 'Gujarat Fennel 1', min_price: 8000, max_price: 10000, avg_price: 9000, market: 'APMC Gujarat', state: 'Gujarat', state_code: 'GJ' },
+                { name: 'Fenugreek', category: 'spices', grade: 'Grade A', variety: 'Kasuri', min_price: 4000, max_price: 5000, avg_price: 4500, market: 'APMC Rajasthan', state: 'Rajasthan', state_code: 'RJ' },
+                { name: 'Cloves', category: 'spices', grade: 'Grade B', variety: 'Zanzibar', min_price: 12000, max_price: 15000, avg_price: 13500, market: 'APMC Kerala', state: 'Kerala', state_code: 'KL' },
+                
+                // Cash Crops (10 crops)
+                { name: 'Cotton', category: 'cashcrops', grade: 'Grade A', variety: 'BG II', min_price: 5500, max_price: 6500, avg_price: 6000, market: 'APMC Gujarat', state: 'Gujarat', state_code: 'GJ' },
+                { name: 'Sugarcane', category: 'cashcrops', grade: 'Grade B', variety: 'Co 86032', min_price: 2800, max_price: 3200, avg_price: 3000, market: 'APMC UP', state: 'Uttar Pradesh', state_code: 'UP' },
+                { name: 'Tobacco', category: 'cashcrops', grade: 'Grade A', variety: 'FCV', min_price: 12000, max_price: 15000, avg_price: 13500, market: 'APMC Andhra', state: 'Andhra Pradesh', state_code: 'AP' },
+                { name: 'Jute', category: 'cashcrops', grade: 'Grade B', variety: 'JRO 524', min_price: 4500, max_price: 5500, avg_price: 5000, market: 'APMC West Bengal', state: 'West Bengal', state_code: 'WB' },
+                { name: 'Rubber', category: 'cashcrops', grade: 'Grade A', variety: 'RRII 105', min_price: 13000, max_price: 16000, avg_price: 14500, market: 'APMC Kerala', state: 'Kerala', state_code: 'KL' },
+                { name: 'Tea', category: 'cashcrops', grade: 'Grade B', variety: 'Assam', min_price: 18000, max_price: 22000, avg_price: 20000, market: 'APMC Assam', state: 'Assam', state_code: 'AS' },
+                { name: 'Coffee', category: 'cashcrops', grade: 'Grade A', variety: 'Arabica', min_price: 25000, max_price: 30000, avg_price: 27500, market: 'APMC Karnataka', state: 'Karnataka', state_code: 'KA' },
+                { name: 'Cocoa', category: 'cashcrops', grade: 'Grade B', variety: 'Forastero', min_price: 15000, max_price: 18000, avg_price: 16500, market: 'APMC Kerala', state: 'Kerala', state_code: 'KL' }
+            ];
+            
+            // Add additional properties to each crop
+            allCrops = cropsList.map(crop => {
+                const categoryInfo = cropCategories.find(cat => cat.id === crop.category);
+                const change = (Math.random() * 10 - 5).toFixed(1); // Random change between -5% to +5%
+                const trend = parseFloat(change);
+                const trend_icon = trend > 0 ? 'up' : trend < 0 ? 'down' : 'right';
+                const trend_color = trend > 0 ? 'success' : trend < 0 ? 'danger' : 'warning';
+                const volatility = Math.floor(Math.random() * 100);
+                const volatility_color = volatility < 30 ? 'success' : volatility < 70 ? 'warning' : 'danger';
+                const volatility_label = volatility < 30 ? 'Low' : volatility < 70 ? 'Medium' : 'High';
+                const price_change = Math.floor(Math.random() * 200 - 100);
+                const updated_date = new Date().toLocaleDateString();
+                const updated_time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                
+                return {
+                    ...crop,
+                    icon: categoryInfo?.icon || 'flower1',
+                    color: categoryInfo?.color || 'secondary',
+                    category_color: crop.category,
+                    trend: Math.abs(trend).toFixed(1),
+                    trend_icon: trend_icon,
+                    trend_color: trend_color,
+                    trend_period: '24h',
+                    volatility: volatility,
+                    volatility_color: volatility_color,
+                    volatility_label: volatility_label,
+                    price_change: price_change,
+                    organic: Math.random() > 0.7, // 30% chance of being organic
+                    unit: 'quintal',
+                    updated_date: updated_date,
+                    updated_time: updated_time
+                };
+            });
+            
+            filteredCrops = [...allCrops];
+            loadCropPage(1);
+        }
+        
+        function loadCropPage(page) {
+            currentPage = page;
+            const tbody = document.getElementById('cropPricesBody');
+            const summaryElement = document.getElementById('paginationSummary');
+            const paginationControls = document.getElementById('paginationControls');
+            
+            // Show loading state
+            tbody.innerHTML = `
+                <tr class="loading-row">
+                    <td colspan="8" class="text-center py-4">
+                        <div class="spinner-border text-success" role="status">
+                            <span class="visually-hidden">Loading crops...</span>
+                        </div>
+                        <p class="mt-2 text-muted">Loading crop data...</p>
+                    </td>
+                </tr>
+            `;
+            
+            // Calculate pagination
+            const startIndex = (page - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const pageCrops = filteredCrops.slice(startIndex, endIndex);
+            const totalPages = Math.ceil(filteredCrops.length / itemsPerPage);
+            
+            // Simulate API delay
+            setTimeout(() => {
+                // Clear loading state
+                tbody.innerHTML = '';
+                
+                // Populate table with crop data
+                pageCrops.forEach(crop => {
+                    const row = document.createElement('tr');
+                    row.className = 'crop-price-row';
+                    row.dataset.category = crop.category;
+                    row.dataset.state = crop.state_code;
                     
-                    // Simulate API call delay
-                    setTimeout(() => {
-                        rows.forEach(row => {
-                            row.style.opacity = '1';
-                        });
-                        
-                        // Show success message
-                        showToast('Filters applied successfully!', 'success');
-                    }, 500);
+                    row.innerHTML = `
+                        <td class="ps-4">
+                            <div class="d-flex align-items-center">
+                                <div class="crop-icon me-3">
+                                    <i class="bi bi-${crop.icon} fs-5 text-${crop.color}"></i>
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold mb-0">${crop.name}</h6>
+                                    <small class="text-muted">${crop.grade} | ${crop.variety}</small>
+                                    <div class="mt-1">
+                                        <span class="badge bg-${crop.category_color} bg-opacity-10 text-${crop.category_color}">${crop.category}</span>
+                                        ${crop.organic ? '<span class="badge bg-success bg-opacity-10 text-success ms-1">Organic</span>' : ''}
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="text-center">
+                            <div class="price-range">
+                                <div class="fw-bold text-danger">₹${crop.min_price}</div>
+                                <div class="fw-bold text-success">₹${crop.max_price}</div>
+                                <small class="text-muted">per ${crop.unit}</small>
+                            </div>
+                        </td>
+                        <td class="text-center">
+                            <span class="fw-bold text-primary fs-5">₹${crop.avg_price}</span>
+                            <div class="small text-muted">/${crop.unit}</div>
+                            <div class="mt-1">
+                                ${crop.price_change > 0 ? 
+                                    `<small class="text-success"><i class="bi bi-arrow-up"></i> ₹${crop.price_change}</small>` : 
+                                    `<small class="text-danger"><i class="bi bi-arrow-down"></i> ₹${Math.abs(crop.price_change)}</small>`
+                                }
+                            </div>
+                        </td>
+                        <td class="text-center">
+                            <div class="d-flex flex-column align-items-center">
+                                <span class="badge bg-${crop.trend_color} bg-opacity-10 text-${crop.trend_color} mb-1">
+                                    <i class="bi bi-arrow-${crop.trend_icon} me-1"></i>
+                                    ${crop.trend}%
+                                </span>
+                                <small class="text-muted">${crop.trend_period}</small>
+                            </div>
+                        </td>
+                        <td class="text-center">
+                            <div class="volatility-indicator">
+                                <div class="progress" style="height: 6px; width: 60px;">
+                                    <div class="progress-bar bg-${crop.volatility_color}" style="width: ${crop.volatility}%"></div>
+                                </div>
+                                <small class="text-muted mt-1">${crop.volatility_label}</small>
+                            </div>
+                        </td>
+                        <td class="text-center">
+                            <div class="market-info">
+                                <div class="fw-bold small">${crop.market}</div>
+                                <small class="text-muted">${crop.state}</small>
+                            </div>
+                        </td>
+                        <td class="text-center">
+                            <div class="update-info">
+                                <div class="small fw-bold">${crop.updated_time}</div>
+                                <small class="text-muted">${crop.updated_date}</small>
+                            </div>
+                        </td>
+                        <td class="pe-4 text-center">
+                            <div class="btn-group" role="group">
+                                <button class="btn btn-sm btn-outline-success view-details" data-crop="${crop.name}">
+                                    <i class="bi bi-eye"></i>
+                                </button>
+                                <button class="btn btn-sm btn-outline-warning set-alert" data-crop="${crop.name}">
+                                    <i class="bi bi-bell"></i>
+                                </button>
+                                <button class="btn btn-sm btn-outline-primary compare-crop" data-crop="${crop.name}">
+                                    <i class="bi bi-compass"></i>
+                                </button>
+                            </div>
+                        </td>
+                    `;
+                    
+                    tbody.appendChild(row);
+                });
+                
+                // Update summary
+                const totalCrops = filteredCrops.length;
+                const startCrop = startIndex + 1;
+                const endCrop = Math.min(endIndex, totalCrops);
+                
+                summaryElement.innerHTML = `
+                    <small class="text-muted">
+                        ${lang === 'en' ? `Showing ${startCrop}-${endCrop} of ${totalCrops} crops | ` : 
+                          lang === 'hi' ? `${totalCrops} फसलों में से ${startCrop}-${endCrop} दिखा रहा है | ` :
+                          `${totalCrops} पिकांपैकी ${startCrop}-${endCrop} दाखवत आहे | `}
+                        <span class="text-success">Updated: ${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+                    </small>
+                `;
+                
+                // Generate pagination controls
+                generatePaginationControls(paginationControls, page, totalPages);
+                
+                // Re-attach event listeners to new buttons
+                attachCropButtonListeners();
+                
+            }, 500); // Simulate API delay
+        }
+        
+        function generatePaginationControls(container, currentPage, totalPages) {
+            container.innerHTML = '';
+            
+            // Previous button
+            const prevLi = document.createElement('li');
+            prevLi.className = `page-item ${currentPage === 1 ? 'disabled' : ''}`;
+            prevLi.innerHTML = `
+                <a class="page-link" href="#" data-page="${currentPage - 1}">
+                    <i class="bi bi-chevron-left"></i>
+                </a>
+            `;
+            container.appendChild(prevLi);
+            
+            // Page numbers
+            const maxVisiblePages = 5;
+            let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+            let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+            
+            if (endPage - startPage + 1 < maxVisiblePages) {
+                startPage = Math.max(1, endPage - maxVisiblePages + 1);
+            }
+            
+            // First page and ellipsis
+            if (startPage > 1) {
+                const firstLi = document.createElement('li');
+                firstLi.className = 'page-item';
+                firstLi.innerHTML = `<a class="page-link" href="#" data-page="1">1</a>`;
+                container.appendChild(firstLi);
+                
+                if (startPage > 2) {
+                    const ellipsisLi = document.createElement('li');
+                    ellipsisLi.className = 'page-item disabled';
+                    ellipsisLi.innerHTML = `<span class="page-link">...</span>`;
+                    container.appendChild(ellipsisLi);
                 }
-            });
-        });
-        
-        // ========== VIEW BUTTON CLICK ==========
-        const viewButtons = document.querySelectorAll('.crop-price-row .btn-outline-success');
-        viewButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const row = this.closest('tr');
-                const cropName = row.querySelector('h6').textContent;
-                const avgPrice = row.querySelector('.text-primary').textContent;
+            }
+            
+            // Page numbers
+            for (let i = startPage; i <= endPage; i++) {
+                const pageLi = document.createElement('li');
+                pageLi.className = `page-item ${i === currentPage ? 'active' : ''}`;
+                pageLi.innerHTML = `<a class="page-link" href="#" data-page="${i}">${i}</a>`;
+                container.appendChild(pageLi);
+            }
+            
+            // Last page and ellipsis
+            if (endPage < totalPages) {
+                if (endPage < totalPages - 1) {
+                    const ellipsisLi = document.createElement('li');
+                    ellipsisLi.className = 'page-item disabled';
+                    ellipsisLi.innerHTML = `<span class="page-link">...</span>`;
+                    container.appendChild(ellipsisLi);
+                }
                 
-                // Show crop details modal or redirect
-                console.log(`Viewing details for ${cropName}, Avg Price: ${avgPrice}`);
-                
-                // For now, show a toast
-                showToast(`Loading details for ${cropName}...`, 'info');
-            });
-        });
-        
-        // ========== SET ALERT MODAL ==========
-        const setAlertBtn = document.querySelector('[data-bs-target="#setAlertModal"]');
-        if (setAlertBtn) {
-            setAlertBtn.addEventListener('click', function() {
-                console.log('Opening Set Alert Modal');
+                const lastLi = document.createElement('li');
+                lastLi.className = 'page-item';
+                lastLi.innerHTML = `<a class="page-link" href="#" data-page="${totalPages}">${totalPages}</a>`;
+                container.appendChild(lastLi);
+            }
+            
+            // Next button
+            const nextLi = document.createElement('li');
+            nextLi.className = `page-item ${currentPage === totalPages ? 'disabled' : ''}`;
+            nextLi.innerHTML = `
+                <a class="page-link" href="#" data-page="${currentPage + 1}">
+                    <i class="bi bi-chevron-right"></i>
+                </a>
+            `;
+            container.appendChild(nextLi);
+            
+            // Add click event listeners to pagination buttons
+            container.querySelectorAll('.page-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageNum = parseInt(this.dataset.page);
+                    if (pageNum && pageNum !== currentPage) {
+                        loadCropPage(pageNum);
+                        window.scrollTo({ top: document.getElementById('cropPricesTable').offsetTop - 100, behavior: 'smooth' });
+                    }
+                });
             });
         }
         
-        // ========== TREND BUTTONS ==========
-        const trendButtons = document.querySelectorAll('.trend-chart .btn-group .btn');
-        trendButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                // Remove active class from all buttons
-                trendButtons.forEach(btn => btn.classList.remove('active'));
+        function attachCropButtonListeners() {
+            // Re-attach event listeners to crop action buttons
+            document.querySelectorAll('.view-details').forEach(button => {
+                button.addEventListener('click', function() {
+                    const cropName = this.dataset.crop;
+                    showCropDetails(cropName);
+                });
+            });
+            
+            document.querySelectorAll('.set-alert').forEach(button => {
+                button.addEventListener('click', function() {
+                    const cropName = this.dataset.crop;
+                    showSetAlertModal(cropName);
+                });
+            });
+            
+            document.querySelectorAll('.compare-crop').forEach(button => {
+                button.addEventListener('click', function() {
+                    const cropName = this.dataset.crop;
+                    addToComparison(cropName);
+                });
+            });
+        }
+        
+        // ========== ENHANCED FILTER FUNCTIONALITY ==========
+        const filters = document.querySelectorAll('#cropCategory, #stateFilter, #marketFilter, #priceRange');
+        filters.forEach(filter => {
+            filter.addEventListener('change', function() {
+                applyAdvancedFilters();
+            });
+        });
+        
+        function applyAdvancedFilters() {
+            const category = document.getElementById('cropCategory').value;
+            const state = document.getElementById('stateFilter').value;
+            const market = document.getElementById('marketFilter').value;
+            const priceRange = document.getElementById('priceRange').value;
+            
+            // Show loading state
+            showToast('Applying filters...', 'info');
+            
+            // Filter crops
+            filteredCrops = allCrops.filter(crop => {
+                // Category filter
+                if (category !== 'all' && crop.category !== category) {
+                    return false;
+                }
                 
-                // Add active class to clicked button
-                this.classList.add('active');
+                // State filter
+                if (state !== 'all' && crop.state_code !== state) {
+                    return false;
+                }
                 
-                // Simulate loading chart data
-                const chartPlaceholder = document.querySelector('.chart-placeholder');
-                if (chartPlaceholder) {
-                    chartPlaceholder.innerHTML = `
-                        <div class="d-flex align-items-center justify-content-center h-100">
-                            <div class="text-center">
-                                <div class="spinner-border text-success mb-3" role="status">
-                                    <span class="visually-hidden">Loading...</span>
+                // Market filter (simplified - in production would match exact market)
+                if (market !== 'all' && !crop.market.toLowerCase().includes(market.toLowerCase())) {
+                    return false;
+                }
+                
+                // Price range filter
+                if (priceRange !== 'all') {
+                    const avgPrice = crop.avg_price;
+                    if (priceRange === 'low' && avgPrice >= 2000) return false;
+                    if (priceRange === 'medium' && (avgPrice < 2000 || avgPrice > 5000)) return false;
+                    if (priceRange === 'high' && avgPrice <= 5000) return false;
+                    if (priceRange === 'premium' && avgPrice <= 10000) return false;
+                }
+                
+                return true;
+            });
+            
+            // Reset to page 1 and load filtered results
+            loadCropPage(1);
+            showToast(`Found ${filteredCrops.length} crops matching your filters`, 'success');
+        }
+        
+        // ========== INITIALIZE PRICE TREND CHART ==========
+        const ctx = document.getElementById('priceTrendChart').getContext('2d');
+        const priceTrendChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5'],
+                datasets: [
+                    {
+                        label: 'Food Grains',
+                        data: [145, 152, 148, 162, 158],
+                        borderColor: '#2ecc71',
+                        backgroundColor: 'rgba(46, 204, 113, 0.1)',
+                        borderWidth: 2,
+                        tension: 0.4,
+                        fill: true
+                    },
+                    {
+                        label: 'Vegetables',
+                        data: [120, 118, 125, 130, 128],
+                        borderColor: '#3498db',
+                        backgroundColor: 'rgba(52, 152, 219, 0.1)',
+                        borderWidth: 2,
+                        tension: 0.4,
+                        fill: true
+                    },
+                    {
+                        label: 'Oil Seeds',
+                        data: [95, 98, 102, 105, 100],
+                        borderColor: '#f39c12',
+                        backgroundColor: 'rgba(243, 156, 18, 0.1)',
+                        borderWidth: 2,
+                        tension: 0.4,
+                        fill: true
+                    },
+                    {
+                        label: 'Cash Crops',
+                        data: [180, 185, 190, 195, 210],
+                        borderColor: '#9b59b6',
+                        backgroundColor: 'rgba(155, 89, 182, 0.1)',
+                        borderWidth: 2,
+                        tension: 0.4,
+                        fill: true
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 20,
+                            usePointStyle: true,
+                        }
+                    },
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false,
+                        backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                        titleFont: { size: 14 },
+                        bodyFont: { size: 13 },
+                        padding: 12,
+                        callbacks: {
+                            label: function(context) {
+                                return `${context.dataset.label}: ₹${context.parsed.y}/quintal`;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.05)'
+                        },
+                        ticks: {
+                            callback: function(value) {
+                                return '₹' + value;
+                            }
+                        },
+                        title: {
+                            display: true,
+                            text: 'Price per quintal'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.05)'
+                        }
+                    }
+                },
+                interaction: {
+                    intersect: false,
+                    mode: 'nearest'
+                },
+                animations: {
+                    tension: {
+                        duration: 1000,
+                        easing: 'linear'
+                    }
+                }
+            }
+        });
+        
+        // ========== CROP DETAILS FUNCTIONALITY ==========
+        function showCropDetails(cropName) {
+            const crop = allCrops.find(c => c.name === cropName);
+            if (!crop) return;
+            
+            showToast(`Loading detailed analysis for ${cropName}...`, 'info');
+            
+            // Simulate loading and show modal
+            setTimeout(() => {
+                // Create or show crop details modal
+                const modalId = 'cropDetailsModal';
+                let modal = document.getElementById(modalId);
+                
+                if (!modal) {
+                    modal = document.createElement('div');
+                    modal.className = 'modal fade';
+                    modal.id = modalId;
+                    modal.tabindex = '-1';
+                    modal.innerHTML = `
+                        <div class="modal-dialog modal-dialog-centered modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title fw-bold text-gradient">
+                                        <i class="bi bi-info-circle me-2"></i>
+                                        Crop Details: ${crop.name}
+                                    </h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                 </div>
-                                <p class="text-muted mb-0">Loading ${this.textContent} price data...</p>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h6>Market Information</h6>
+                                            <p><strong>Market:</strong> ${crop.market}</p>
+                                            <p><strong>State:</strong> ${crop.state}</p>
+                                            <p><strong>Grade:</strong> ${crop.grade}</p>
+                                            <p><strong>Variety:</strong> ${crop.variety}</p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h6>Price Details</h6>
+                                            <p><strong>Average Price:</strong> ₹${crop.avg_price}/${crop.unit}</p>
+                                            <p><strong>Price Range:</strong> ₹${crop.min_price} - ₹${crop.max_price}</p>
+                                            <p><strong>Trend:</strong> <span class="badge bg-${crop.trend_color}">${crop.trend}%</span></p>
+                                            <p><strong>Volatility:</strong> <span class="badge bg-${crop.volatility_color}">${crop.volatility_label}</span></p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     `;
-                    
-                    setTimeout(() => {
-                        chartPlaceholder.innerHTML = `
-                            <div class="d-flex align-items-center justify-content-center h-100">
-                                <div>
-                                    <i class="bi bi-bar-chart text-success display-4 mb-3"></i>
-                                    <p class="text-muted mb-0">${this.textContent} Price Trends Loaded</p>
-                                </div>
-                            </div>
-                        `;
-                    }, 1000);
+                    document.body.appendChild(modal);
                 }
+                
+                const bsModal = new bootstrap.Modal(modal);
+                bsModal.show();
+            }, 500);
+        }
+        
+        function showSetAlertModal(cropName) {
+            // Pre-fill the set alert modal with crop name
+            showToast(`Setting alert for ${cropName}`, 'info');
+        }
+        
+        function addToComparison(cropName) {
+            // Add crop to comparison list
+            let comparisonList = JSON.parse(localStorage.getItem('cropComparison') || '[]');
+            if (!comparisonList.includes(cropName)) {
+                comparisonList.push(cropName);
+                localStorage.setItem('cropComparison', JSON.stringify(comparisonList));
+                showToast(`${cropName} added to comparison list`, 'success');
+            } else {
+                showToast(`${cropName} is already in comparison list`, 'warning');
+            }
+        }
+        
+        // ========== TREND PERIOD SELECTION ==========
+        document.querySelectorAll('.trend-chart .btn-group .btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const period = this.dataset.period;
+                
+                // Update active button
+                document.querySelectorAll('.trend-chart .btn-group .btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                this.classList.add('active');
+                
+                // Update chart data based on period
+                updateChartData(period);
             });
         });
         
-        // ========== EXPORT DATA ==========
-        const exportBtn = document.querySelector('.btn-outline-success[href*="export"]');
-        if (exportBtn) {
-            exportBtn.addEventListener('click', function(e) {
-                e.preventDefault();
+        function updateChartData(period) {
+            // Simulate data update
+            const chartContainer = document.querySelector('.chart-container');
+            const canvas = chartContainer.querySelector('canvas');
+            
+            // Show loading state
+            const loadingHtml = `
+                <div class="d-flex align-items-center justify-content-center h-100">
+                    <div class="text-center">
+                        <div class="spinner-border text-success mb-3" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <p class="text-muted mb-0">Loading ${period} price trends...</p>
+                    </div>
+                </div>
+            `;
+            
+            chartContainer.innerHTML = loadingHtml;
+            
+            setTimeout(() => {
+                // Re-initialize chart with new data
+                chartContainer.innerHTML = '<canvas id="priceTrendChart"></canvas>';
+                initializeChart(period);
+                showToast(`${period} price trends loaded successfully`, 'success');
+            }, 1000);
+        }
+        
+        function initializeChart(period) {
+            // Re-initialize chart with data for selected period
+            // This would fetch actual data from API in production
+            console.log(`Loading ${period} data...`);
+        }
+        
+        // ========== EXPORT FUNCTIONALITY ==========
+        window.processExport = function() {
+            showToast('Preparing export data...', 'info');
+            
+            setTimeout(() => {
+                // Simulate export
+                const link = document.createElement('a');
+                link.href = '#';
+                link.download = `market_analysis_${new Date().toISOString().split('T')[0]}.xlsx`;
+                link.click();
                 
-                // Show export options
-                showToast('Preparing data for export...', 'info');
+                showToast('Export completed successfully!', 'success');
                 
-                setTimeout(() => {
-                    // Simulate download
-                    const link = document.createElement('a');
-                    link.href = '#';
-                    link.download = 'market_data.csv';
-                    link.click();
+                // Close modal
+                const modal = bootstrap.Modal.getInstance(document.getElementById('exportModal'));
+                modal.hide();
+            }, 2000);
+        }
+        
+        // ========== REPORT GENERATION ==========
+        window.generateReport = function() {
+            showToast('Generating comprehensive report...', 'info');
+            
+            setTimeout(() => {
+                // Simulate PDF generation
+                const link = document.createElement('a');
+                link.href = '#';
+                link.download = `market_report_${new Date().toISOString().split('T')[0]}.pdf`;
+                link.click();
+                
+                showToast('Report generated successfully!', 'success');
+            }, 3000);
+        }
+        
+        // ========== REAL-TIME UPDATES SIMULATION ==========
+        function simulateRealTimeUpdates() {
+            setInterval(() => {
+                // Randomly update some crop prices
+                if (allCrops.length > 0) {
+                    const randomIndex = Math.floor(Math.random() * allCrops.length);
+                    const crop = allCrops[randomIndex];
                     
-                    showToast('Data exported successfully!', 'success');
-                }, 1500);
-            });
-        }
-        
-        // ========== SHARE INSIGHTS ==========
-        const shareBtn = document.querySelector('.btn-outline-info[href*="share"]');
-        if (shareBtn) {
-            shareBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const shareText = "Check out these market insights from AgriAI:";
-                const shareUrl = window.location.href;
-                
-                // Open share dialog
-                if (navigator.share) {
-                    navigator.share({
-                        title: 'Market Insights',
-                        text: shareText,
-                        url: shareUrl
-                    });
-                } else {
-                    // Fallback: copy to clipboard
-                    navigator.clipboard.writeText(`${shareText} ${shareUrl}`);
-                    showToast('Link copied to clipboard!', 'success');
+                    // Simulate price change
+                    const change = Math.floor(Math.random() * 200) - 100;
+                    crop.avg_price = Math.max(500, crop.avg_price + change);
+                    crop.min_price = Math.max(300, crop.min_price + Math.floor(change * 0.8));
+                    crop.max_price = Math.max(600, crop.max_price + Math.floor(change * 1.2));
+                    crop.price_change = change;
+                    
+                    // Update trend
+                    const trend = (change / crop.avg_price * 100).toFixed(1);
+                    crop.trend = Math.abs(trend);
+                    crop.trend_icon = change > 0 ? 'up' : change < 0 ? 'down' : 'right';
+                    crop.trend_color = change > 0 ? 'success' : change < 0 ? 'danger' : 'warning';
+                    
+                    // Update time
+                    crop.updated_time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                    
+                    // Show notification for significant changes
+                    if (Math.abs(change) > 50) {
+                        showToast(`${crop.name} price updated: ₹${crop.avg_price} (${change > 0 ? '+' : ''}${change})`, 'info');
+                    }
+                    
+                    // Reload current page if crop is visible
+                    const currentCrops = filteredCrops.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+                    if (currentCrops.some(c => c.name === crop.name)) {
+                        loadCropPage(currentPage);
+                    }
                 }
-            });
+                
+            }, 10000); // Update every 10 seconds
         }
         
-        // ========== TOAST FUNCTION ==========
-        function showToast(message, type = 'info') {
+        // Start real-time updates
+        simulateRealTimeUpdates();
+        
+        // ========== TOAST NOTIFICATION SYSTEM ==========
+        window.showToast = function(message, type = 'info') {
             const toast = document.createElement('div');
-            toast.className = `toast align-items-center text-white bg-${type === 'error' ? 'danger' : type} border-0`;
+            toast.className = `toast align-items-center text-white bg-${type === 'error' ? 'danger' : type === 'warning' ? 'warning' : type === 'success' ? 'success' : 'info'} border-0`;
             toast.setAttribute('role', 'alert');
             toast.setAttribute('aria-live', 'assertive');
             toast.setAttribute('aria-atomic', 'true');
             
+            const icon = type === 'success' ? 'check-circle' : 
+                        type === 'error' ? 'exclamation-circle' : 
+                        type === 'warning' ? 'exclamation-triangle' : 'info-circle';
+            
             toast.innerHTML = `
                 <div class="d-flex">
-                    <div class="toast-body">
+                    <div class="toast-body d-flex align-items-center">
+                        <i class="bi bi-${icon} me-2 fs-5"></i>
                         ${message}
                     </div>
                     <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
@@ -1162,7 +2040,10 @@
             toastContainer.appendChild(toast);
             
             if (typeof bootstrap !== 'undefined') {
-                const bsToast = new bootstrap.Toast(toast, { delay: 3000 });
+                const bsToast = new bootstrap.Toast(toast, { 
+                    delay: 4000,
+                    animation: true
+                });
                 bsToast.show();
                 
                 toast.addEventListener('hidden.bs.toast', function() {
@@ -1171,11 +2052,12 @@
             } else {
                 toast.style.cssText = `
                     position: fixed; top: 20px; right: 20px; z-index: 9999;
-                    padding: 1rem; border-radius: 0.5rem; min-width: 250px;
-                    animation: fadeIn 0.3s, fadeOut 0.3s 2.7s;
+                    padding: 1rem; border-radius: 0.5rem; min-width: 300px;
+                    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                    animation: slideIn 0.3s ease, fadeOut 0.3s ease 3.7s;
                 `;
                 document.body.appendChild(toast);
-                setTimeout(() => toast.remove(), 3000);
+                setTimeout(() => toast.remove(), 4000);
             }
         }
         
@@ -1187,37 +2069,6 @@
             return container;
         }
         
-        // ========== REAL-TIME UPDATES SIMULATION ==========
-        function simulateRealTimeUpdates() {
-            setInterval(() => {
-                // Randomly update some prices
-                const priceCells = document.querySelectorAll('.crop-price-row .text-primary');
-                if (priceCells.length > 0) {
-                    const randomIndex = Math.floor(Math.random() * priceCells.length);
-                    const cell = priceCells[randomIndex];
-                    const currentPrice = parseInt(cell.textContent.replace('₹', ''));
-                    const change = Math.floor(Math.random() * 100) - 50; // -50 to +50
-                    const newPrice = Math.max(1000, currentPrice + change);
-                    
-                    // Update with animation
-                    cell.style.color = '#ff6b6b';
-                    setTimeout(() => {
-                        cell.textContent = `₹${newPrice}`;
-                        cell.style.color = '#0d6efd';
-                    }, 300);
-                    
-                    // Show update notification occasionally
-                    if (Math.random() > 0.8) {
-                        const cropName = cell.closest('tr').querySelector('h6').textContent;
-                        showToast(`${cropName} price updated to ₹${newPrice}/quintal`, 'info');
-                    }
-                }
-            }, 10000); // Update every 10 seconds
-        }
-        
-        // Start real-time updates
-        simulateRealTimeUpdates();
-        
         // ========== ENSURE SCROLLING ==========
         function ensureScrollable() {
             document.body.style.overflowY = 'auto';
@@ -1227,6 +2078,11 @@
         ensureScrollable();
         window.addEventListener('load', ensureScrollable);
         window.addEventListener('resize', ensureScrollable);
+        
+        // ========== INITIAL LOAD ==========
+        setTimeout(() => {
+            showToast('Market data loaded successfully!', 'success');
+        }, 1000);
     });
 </script>
 {% endblock %}

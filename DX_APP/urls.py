@@ -1,10 +1,11 @@
 from django.urls import path
 from . import views
 from .views import disease_diagnosis
+from django.shortcuts import redirect
 
 urlpatterns = [
-    # Home
-    path('', views.home, name='home'),
+    # Home - using redirect for root URL
+    path('', lambda request: redirect('crop_recommendation'), name='home'),
     path('crop-recommendation/', views.home, name='crop_recommendation'),
     path('disease-diagnosis/', disease_diagnosis, name='disease_diagnosis'),
 
@@ -25,14 +26,9 @@ urlpatterns = [
     path('login/', views.login_view, name='login'),
     path('logout/', views.logout_view, name='logout'),
     path('register/', views.register_view, name='register'),
-    path('password-reset/', views.password_reset_view, name='password_reset'),
 
     # Features
     path('market-insights/', views.market_insights, name='market_insights'),
-    path('disease-diagnosis/', views.disease_diagnosis, name='disease_diagnosis'),
-    
-
-    # ... your existing URLs ...
     
     # New report URLs
     path('my-report/', views.my_report, name='my_report'),
@@ -41,4 +37,3 @@ urlpatterns = [
     path('download-report/<int:report_id>/', views.download_report, name='download_report'),
     path('create-action-plans/<int:recommendation_id>/', views.create_action_plans, name='create_action_plans'),
 ]
-
