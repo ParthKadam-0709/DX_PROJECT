@@ -4,7 +4,15 @@
     <title>Disease Diagnosis</title>
 </head>
 <body>
-    <h1>Disease Diagnosis Page</h1>
-    <p>Page is working successfully ✅</p>
+    <h1>Disease Diagnosis</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload and Diagnose</button>
+    </form>
+
+    {% if prediction %}
+        <h2>Predicted Disease: {{ prediction }}</h2>
+    {% endif %}
 </body>
-</html>
+</html> 

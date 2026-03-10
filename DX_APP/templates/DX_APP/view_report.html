@@ -1,0 +1,193 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}View Report{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <!-- Report Header -->
+    <div class="card shadow-sm mb-4">
+        <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
+            <h4 class="mb-0">
+                <i class="fas fa-file-pdf me-2"></i>
+                {{ recommendation.crop_name }} Report
+            </h4>
+            <div>
+                <a href="{% url 'download_report' report.id %}" class="btn btn-light btn-sm me-2">
+                    <i class="fas fa-download"></i> Download PDF
+                </a>
+                <a href="{% url 'my_reports' %}" class="btn btn-light btn-sm">
+                    <i class="fas fa-arrow-left"></i> Back to Reports
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <!-- Generated Date -->
+            <p class="text-muted text-end">
+                Generated: {{ report.generated_at|date:"F j, Y, g:i a" }}
+            </p>
+
+            <!-- Report Content -->
+            <div class="report-content">
+                <!-- Header -->
+                <div class="text-center mb-4">
+                    <h2 class="text-success">🌾 Your Personalized Crop Advisory Report</h2>
+                    <p class="text-muted">
+                        Prepared for: {{ user.get_full_name|default:user.username }}<br>
+                        Date: {% now "F j, Y" %}
+                    </p>
+                </div>
+
+                <!-- Input Snapshot -->
+                <div class="card mb-4">
+                    <div class="card-header bg-light">
+                        <h5 class="mb-0">1. Your Input Snapshot</h5>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-bordered">
+                            <thead class="table-success">
+                                <tr>
+                                    <th>Parameter</th>
+                                    <th>Your Value</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Nitrogen (N)</td>
+                                    <td>{{ soil_data.nitrogen }} kg/ha</td>
+                                    <td>
+                                        {% if soil_data.nitrogen >= 250 and soil_data.nitrogen <= 350 %}
+                                            <span class="badge bg-success">Optimal</span>
+                                        {% else %}
+                                            <span class="badge bg-warning">Adjust Needed</span>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Phosphorus (P)</td>
+                                    <td>{{ soil_data.phosphorus }} kg/ha</td>
+                                    <td>
+                                        {% if soil_data.phosphorus >= 50 and soil_data.phosphorus <= 70 %}
+                                            <span class="badge bg-success">Optimal</span>
+                                        {% else %}
+                                            <span class="badge bg-warning">Adjust Needed</span>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Potassium (K)</td>
+                                    <td>{{ soil_data.potassium }} kg/ha</td>
+                                    <td>
+                                        {% if soil_data.potassium >= 200 and soil_data.potassium <= 300 %}
+                                            <span class="badge bg-success">Optimal</span>
+                                        {% else %}
+                                            <span class="badge bg-warning">Adjust Needed</span>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>pH Level</td>
+                                    <td>{{ soil_data.ph_level }}</td>
+                                    <td>
+                                        {% if soil_data.ph_level >= 6.0 and soil_data.ph_level <= 7.5 %}
+                                            <span class="badge bg-success">Optimal</span>
+                                        {% else %}
+                                            <span class="badge bg-warning">Adjust Needed</span>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Rainfall</td>
+                                    <td>{{ soil_data.rainfall }} mm</td>
+                                    <td><span class="badge bg-success">✓ Recorded</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Temperature</td>
+                                    <td>{{ soil_data.temperature }}°C</td>
+                                    <td><span class="badge bg-success">✓ Recorded</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Recommendation -->
+                <div class="card mb-4">
+                    <div class="card-header bg-light">
+                        <h5 class="mb-0">2. Crop Recommendation</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-success">
+                            <h4 class="alert-heading">🥇 Recommended: {{ recommendation.crop_name }}</h4>
+                            <p>Confidence Score: {{ recommendation.confidence_score|default:"85" }}%</p>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p><strong>Expected Yield:</strong> {{ recommendation.expected_yield|default:"High" }}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><strong>Risk Factor:</strong> 
+                                    <span class="badge {% if recommendation.risk_factor == 'Low' %}bg-success{% else %}bg-warning{% endif %}">
+                                        {{ recommendation.risk_factor|default:"Low" }}
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Plans -->
+                <div class="card mb-4">
+                    <div class="card-header bg-light">
+                        <h5 class="mb-0">3. Action Plan</h5>
+                    </div>
+                    <div class="card-body">
+                        {% if action_plans %}
+                            {% for plan in action_plans %}
+                                <div class="mb-3">
+                                    <h6 class="text-success">Month {{ plan.month }}</h6>
+                                    <p>{{ plan.action }}</p>
+                                    <small class="text-muted">
+                                        <i class="fas fa-lightbulb text-warning"></i> 
+                                        {{ plan.ai_note }}
+                                    </small>
+                                    {% if not forloop.last %}<hr>{% endif %}
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <p class="text-muted">No action plans available for this recommendation.</p>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- Summary -->
+                <div class="card">
+                    <div class="card-header bg-light">
+                        <h5 class="mb-0">4. Summary</h5>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Efficiency Score:</strong> {{ recommendation.confidence_score|default:"85" }}%</p>
+                        <p><strong>Sustainability Tip:</strong> Consider crop rotation to maintain soil health for future seasons.</p>
+                        <p><strong>Next Steps:</strong> Begin implementing the Month 1 action plan for optimal results.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.report-content {
+    font-family: 'Arial', sans-serif;
+}
+.report-content .card {
+    border: 1px solid #dee2e6;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+.report-content .card-header {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #28a745;
+}
+</style>
+{% endblock %}

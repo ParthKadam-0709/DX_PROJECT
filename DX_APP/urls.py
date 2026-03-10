@@ -1,10 +1,12 @@
 from django.urls import path
 from . import views
+from .views import disease_diagnosis
 
 urlpatterns = [
     # Home
     path('', views.home, name='home'),
     path('crop-recommendation/', views.home, name='crop_recommendation'),
+    path('disease-diagnosis/', disease_diagnosis, name='disease_diagnosis'),
 
     # Quick Links
     path('about/', views.about, name='about'),
@@ -28,5 +30,15 @@ urlpatterns = [
     # Features
     path('market-insights/', views.market_insights, name='market_insights'),
     path('disease-diagnosis/', views.disease_diagnosis, name='disease_diagnosis'),
+    
 
+    # ... your existing URLs ...
+    
+    # New report URLs
+    path('my-report/', views.my_report, name='my_report'),
+    path('generate-report/<int:recommendation_id>/', views.generate_report, name='generate_report'),
+    path('view-report/<int:report_id>/', views.view_report, name='view_report'),
+    path('download-report/<int:report_id>/', views.download_report, name='download_report'),
+    path('create-action-plans/<int:recommendation_id>/', views.create_action_plans, name='create_action_plans'),
 ]
+

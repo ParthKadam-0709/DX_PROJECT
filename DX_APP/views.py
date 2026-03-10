@@ -1,15 +1,19 @@
+
 # DX_APP/views.py
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
 from django.contrib.auth.models import User
-from django.utils import timezone
+from django.utils import timezone 
 from datetime import timedelta
 import json
 import pickle
 import os
+
+# ...existing code...
 
 # Import your forms
 from .forms import CropForm, UserRegistrationForm
@@ -130,14 +134,6 @@ def about(request):
 def solutions(request):
     lang = request.GET.get('lang', 'en')
     return render(request, 'DX_APP/solutions.html', {'lang': lang})
-
-def pricing(request):
-    lang = request.GET.get('lang', 'en')
-    return render(request, 'DX_APP/pricing.html', {'lang': lang})
-
-def case_studies(request):
-    lang = request.GET.get('lang', 'en')
-    return render(request, 'DX_APP/case_studies.html', {'lang': lang})
 
 # ======================================================
 # RESOURCES PAGES
@@ -937,3 +933,117 @@ def generate_treatment_plan(diagnosis, severity, crop_type, lang):
     treatment_plan['long_term'].append('Regular soil testing and fertilization')
     
     return treatment_plan
+
+
+# ...existing code...
+
+@login_required
+def my_report(request):
+    """Display user's crop recommendation report"""
+    from .models import CropRecommendation
+    
+    recommendations = CropRecommendation.objects.filter(
+        user=request.user,
+        is_active=True
+    ).order_by('-recommendation_date')
+    
+    context = {
+        'recommendations': recommendations,
+    }
+    return render(request, 'reports/my_report.html', context)
+
+
+@login_required
+def generate_report(request, recommendation_id):
+    """Generate detailed crop recommendation report"""
+    lang = request.GET.get('lang', 'en')
+    
+    try:
+        from .models import CropRecommendation
+        recommendation = CropRecommendation.objects.get(
+            id=recommendation_id,
+            user=request.user
+        )
+    except:
+        recommendation = None
+    
+    context = {
+        'recommendation': recommendation,
+        'lang': lang
+    }
+    return render(request, 'reports/generate_report.html', context)
+
+
+@login_required
+def view_report(request, report_id):
+    """View a specific report"""
+    from .models import Report
+    try:
+        report = Report.objects.get(id=report_id, user=request.user)
+    except Report.DoesNotExist:
+        return redirect('my_report')
+    
+    context = {
+        'report': report,
+    }
+    return render(request, 'DX_APP/view_report.html', context)
+
+
+@login_required
+def download_report(request, report_id):
+    """Download PDF report"""
+    from django.shortcuts import get_object_or_404
+    from django.http import FileResponse
+    from .models import Report
+    
+    report = get_object_or_404(Report, id=report_id, user=request.user)
+    
+    if report.report_file:
+        return FileResponse(report.report_file, as_attachment=True)
+    else:
+        # Generate report if not exists
+        return redirect('generate_report', recommendation_id=report.recommendation.id)
+
+
+@login_required
+def create_action_plans(request, recommendation_id):
+    """Create action plans for a recommendation"""
+    from django.shortcuts import get_object_or_404
+    from .models import CropRecommendation, ActionPlan
+    
+    recommendation = get_object_or_404(CropRecommendation, id=recommendation_id, user=request.user)
+    
+    # Check if action plans already exist
+    if ActionPlan.objects.filter(recommendation=recommendation).exists():
+        messages.info(request, 'Action plans already exist for this recommendation.')
+        return redirect('view_report', report_id=recommendation.id)
+    
+    # Create action plans
+    plans = [
+        {
+            'month': 1,
+            'action': 'Prepare soil with basal fertilizer',
+            'note': 'Apply potash-rich fertilizer for root development'
+        },
+        {
+            'month': 2,
+            'action': 'Sowing and initial irrigation',
+            'note': 'Maintain proper spacing of 30cm between plants'
+        },
+        {
+            'month': 3,
+            'action': 'Monitor for pests and apply nutrients',
+            'note': 'Watch for common pests in your region'
+        }
+    ]
+    
+    for plan in plans:
+        ActionPlan.objects.create(
+            recommendation=recommendation,
+            month=plan['month'],
+            action=plan['action'],
+            ai_note=plan['note']
+        )
+    
+    messages.success(request, 'Action plans created successfully!')
+    return redirect('my_report')
